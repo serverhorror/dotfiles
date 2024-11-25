@@ -1,1 +1,5 @@
-# dotfilex-tmux
+# dotfiles
+
+```
+stow .
+```
