@@ -5,3 +5,5 @@
 --ignore=.*/README.md
 --ignore=tmux.conf.nix
 --ignore=.*.bak.*
+# managed by nix
+--ignore=tmux
