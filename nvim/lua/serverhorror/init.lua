@@ -13,6 +13,17 @@ vim.g.have_nerd_font = true
 
 vim.opt.number = true
 vim.opt.relativenumber = true
+-- This makes the relative line numbers toggle when entering a window or buffer
+vim.api.nvim_create_augroup("numbertoggle", { clear = true })
+vim.api.nvim_create_autocmd(
+	{ "BufEnter", "WinEnter", "FocusGained", "InsertLeave" },
+	{ group = "numbertoggle", pattern = "*", command = "set relativenumber" }
+)
+vim.api.nvim_create_autocmd(
+	{ "BufLeave", "WinLeave", "FocusLost", "InsertEnter" },
+	{ group = "numbertoggle", pattern = "*", command = "set norelativenumber" }
+)
+
 vim.opt.background = "dark"
 
 -- -- Sync clipboard between OS and Neovim.
@@ -51,19 +62,19 @@ vim.opt.scrolloff = 10
 
 vim.opt.hlsearch = true
 if vim.fn.has("win32") then
-    vim.opt.shell = "pwsh"
-    local powershell_options = {
-        shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
-        shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8; $PSDefaultParameterValues['Out-File:Encoding']='UTF8';Remove-Alias -Force -ErrorAction SilentlyContinue tee;",
-        shellredir = '2>&1 > | %%{ "$_" } | Out-File %s; exit $LastExitCode',
-        shellpipe = '2>&1 > | %%{ "$_" } | tee %s; exit $LastExitCode',
-        shellquote = "",
-        shellxquote = "",
-    }
+	vim.opt.shell = "pwsh"
+	local powershell_options = {
+		shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
+		shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8; $PSDefaultParameterValues['Out-File:Encoding']='UTF8';Remove-Alias -Force -ErrorAction SilentlyContinue tee;",
+		shellredir = '2>&1 > | %%{ "$_" } | Out-File %s; exit $LastExitCode',
+		shellpipe = '2>&1 > | %%{ "$_" } | tee %s; exit $LastExitCode',
+		shellquote = "",
+		shellxquote = "",
+	}
 
-    for option, value in pairs(powershell_options) do
-        vim.opt[option] = value
-    end
+	for option, value in pairs(powershell_options) do
+		vim.opt[option] = value
+	end
 else
-    vim.opt.shell = "bash"
+	vim.opt.shell = "bash"
 end
