@@ -25,6 +25,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- My Config
 require("serverhorror")
+require("serverhorror.plugins")
 
 -- Plugins & Color Themes
 require("serverhorror.lazy")
