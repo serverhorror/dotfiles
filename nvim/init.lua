@@ -16,21 +16,17 @@ vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
-    desc = "Highlight when yanking (copying) text",
-    group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
 
 -- My Config
-local serverhorror = require("serverhorror")
+require("serverhorror")
 
 -- Plugins & Color Themes
 require("serverhorror.lazy")
-
--- Theme
-local set_colortheme = require("serverhorror.set_colortheme")
-set_colortheme("gruvbox")
 
 -- use 'marko-cerovac/material.nvim'
