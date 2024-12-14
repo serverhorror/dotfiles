@@ -3,6 +3,3 @@
 --target=~
 --ignore=.stowrc
 --ignore=README.md
---ignore=.*/README.md
---ignore=tmux.conf.nix
---ignore=.*.bak.*
