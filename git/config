@@ -1,0 +1,37 @@
+[core]
+	whitespace = "trailing-space,space-before-tab"
+
+[credential]
+	credentialStore = "cache"
+	helper = "cache --timeout 21600"
+	helper = "/home/m/.nix-profile/bin/git-credential-manager"
+	useHttpPath = "true"
+
+[credential "https://bitbucket.biscrum.com"]
+	bitbucketAuthModes = "oauth"
+	helper = "cache --timeout 21600"
+	helper = "oauth"
+	provider = "bitbucket"
+	useHttpPath = "true"
+
+[credential "https://dev.azure.com"]
+	useHttpPath = "true"
+
+[credential "https://huggingface.co"]
+	provider = "generic"
+
+[credential "https://gist.github.com"]
+	helper = "/nix/store/ziar5idvk8zxckyhyqhvaszisda27b2s-gh-2.63.2/bin/gh auth git-credential"
+
+[credential "https://github.com"]
+	helper = "/nix/store/ziar5idvk8zxckyhyqhvaszisda27b2s-gh-2.63.2/bin/gh auth git-credential"
+
+[rerere]
+	enabled = true
+
+[user]
+	email = "serverhorror@users.noreply.github.com"
+	name = "serverhorror"
+
+[includeIf "hasconfig:remote.*.url:https://bitbucket.biscrum.com/**"]
+	path = ".config/git/boehringer-ingelheim.inc"
