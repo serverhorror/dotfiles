@@ -9,12 +9,27 @@ HISTFILESIZE=100000
 HISTIGNORE='cd ..:cd:exit:ll:ls -l:ls:history'
 HISTSIZE=10000
 
+export EDITOR="nvim || command -v code >/dev/null 2>&1 && code --wait - || vim"
+export VISUAL="nvim || command -v code >/dev/null 2>&1 && code --wait - || vim"
+export GOBIN="/home/m/bin"
+export GOPRIVATE="*.biscrum.com"
+export PATH="$HOME/bin:$PATH"
+export XDG_CACHE_HOME="/home/m/.cache"
+export XDG_CONFIG_HOME="/home/m/.config"
+export XDG_DATA_HOME="/home/m/.local/share"
+export XDG_STATE_HOME="/home/m/.local/state"
+
 shopt -s histappend
 shopt -s checkwinsize
 shopt -s extglob
 shopt -s globstar
 shopt -s checkjobs
 
+# always use nvim instead of vim
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+alias vidiff='nvim -d'
 alias vimdiff='nvim -d'
 
 if [[ ! -v BASH_COMPLETION_VERSINFO ]]; then
@@ -25,9 +40,7 @@ if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
   eval "$(fzf --bash)"
 fi
 
-if [ -e /home/m/.nix-profile/etc/profile.d/nix.sh ]; then . /home/m/.nix-profile/etc/profile.d/nix.sh; fi                                  # added by Nix installer
-if [ -r /etc/profiles/per-user/m/etc/profile.d/hm-session-vars.sh ]; then . /etc/profiles/per-user/m/etc/profile.d/hm-session-vars.sh; fi  # added by Nix installer
-if [ -r ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then echo "sourcing session vars"; . ~/.nix-profile/etc/profile.d/hm-session-vars.sh; fi                                                                    # added by Nix installer
+if [ -e /home/m/.nix-profile/etc/profile.d/nix.sh ]; then . /home/m/.nix-profile/etc/profile.d/nix.sh; fi                                            # added by Nix installer
 # echo "#INIT [ -e zsh ] && exec zsh"
 # echo '#INIT [ -d ~/bin ] && export PATH="~/bin:$PATH"'
 
