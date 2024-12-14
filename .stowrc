@@ -1,3 +1,4 @@
+--verbose
 --dotfiles
 --target=~
 --ignore=.stowrc
