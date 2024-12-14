@@ -1,5 +1,5 @@
 --dotfiles
---target=~/.config
+--target=~
 --ignore=.stowrc
 --ignore=README.md
 --ignore=.*/README.md
