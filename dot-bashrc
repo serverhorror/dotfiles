@@ -1,0 +1,35 @@
+# echo "#EXTRA [ -e zsh ] && exec zsh"
+
+
+# Commands that should be applied only for interactive shells.
+[[ $- == *i* ]] || return
+
+HISTCONTROL=erasedups:ignoredups:ignorespace:ignoreboth
+HISTFILESIZE=100000
+HISTIGNORE='cd ..:cd:exit:ll:ls -l:ls:history'
+HISTSIZE=10000
+
+shopt -s histappend
+shopt -s checkwinsize
+shopt -s extglob
+shopt -s globstar
+shopt -s checkjobs
+
+alias vimdiff='nvim -d'
+
+if [[ ! -v BASH_COMPLETION_VERSINFO ]]; then
+  . "/nix/store/0zmgwbn1h48qrk6xn3qdbj2xm8vpk1n7-bash-completion-2.14.0/etc/profile.d/bash_completion.sh"
+fi
+
+if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
+  eval "$(fzf --bash)"
+fi
+
+if [ -e /home/m/.nix-profile/etc/profile.d/nix.sh ]; then . /home/m/.nix-profile/etc/profile.d/nix.sh; fi                                  # added by Nix installer
+if [ -r /etc/profiles/per-user/m/etc/profile.d/hm-session-vars.sh ]; then . /etc/profiles/per-user/m/etc/profile.d/hm-session-vars.sh; fi  # added by Nix installer
+if [ -r ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then echo "sourcing session vars"; . ~/.nix-profile/etc/profile.d/hm-session-vars.sh; fi                                                                    # added by Nix installer
+# echo "#INIT [ -e zsh ] && exec zsh"
+# echo '#INIT [ -d ~/bin ] && export PATH="~/bin:$PATH"'
+
+eval "$(direnv hook bash)"
+
