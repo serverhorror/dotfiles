@@ -12,6 +12,10 @@ vim.keymap.set("n", "gcc", "<C-/>", { desc = "Comment selection" })
 -- the greatest remap ever (Primeagen)
 vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
 
+-- <leader>n to set nohlsearch, the second parameter is the function (reference) to call
+vim.keymap.set("n", "<leader>n", function()
+	vim.cmd("nohlsearch")
+end, { desc = "Clear search highlights" })
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
