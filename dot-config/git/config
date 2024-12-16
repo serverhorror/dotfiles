@@ -4,7 +4,7 @@
 [credential]
 	credentialStore = "cache"
 	helper = "cache --timeout 21600"
-	helper = "/home/m/.nix-profile/bin/git-credential-manager"
+	helper = "manager"
 	useHttpPath = "true"
 
 [credential "https://bitbucket.biscrum.com"]
@@ -21,10 +21,10 @@
 	provider = "generic"
 
 [credential "https://gist.github.com"]
-	helper = "/nix/store/ziar5idvk8zxckyhyqhvaszisda27b2s-gh-2.63.2/bin/gh auth git-credential"
+	helper = "auth git-credential"
 
 [credential "https://github.com"]
-	helper = "/nix/store/ziar5idvk8zxckyhyqhvaszisda27b2s-gh-2.63.2/bin/gh auth git-credential"
+	helper = "auth git-credential"
 
 [rerere]
 	enabled = true
