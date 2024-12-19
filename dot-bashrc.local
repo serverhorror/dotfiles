@@ -1,13 +1,15 @@
-# echo "#EXTRA [ -e zsh ] && exec zsh"
+if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
+  eval "$(fzf --bash)"
+fi
 
-
+if [ -r "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
+    source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+fi
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+    source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi
 # Commands that should be applied only for interactive shells.
 [[ $- == *i* ]] || return
-
-HISTCONTROL=erasedups:ignoredups:ignorespace:ignoreboth
-HISTFILESIZE=100000
-HISTIGNORE='cd ..:cd:exit:ll:ls -l:ls:history'
-HISTSIZE=10000
 
 function _editor() {
   if command -v nvim >/dev/null 2>&1; then
@@ -19,6 +21,12 @@ function _editor() {
   fi
 }
 export _editor
+
+PS1='\u@\h:\W\n$(__git_ps1) \$ '
+export HISTCONTROL=erasedups:ignoredups:ignorespace:ignoreboth
+export HISTFILESIZE=100000
+export HISTIGNORE='cd ..:cd:exit:ll:ls -l:ls:history'
+export HISTSIZE=10000
 
 export EDITOR=$(_editor)
 export VISUAL=$(_editor)
@@ -42,23 +50,6 @@ alias vi='nvim'
 alias vim='nvim'
 alias vidiff='nvim -d'
 alias vimdiff='nvim -d'
-
-if [[ ! -v BASH_COMPLETION_VERSINFO ]]; then
-  . "/nix/store/0zmgwbn1h48qrk6xn3qdbj2xm8vpk1n7-bash-completion-2.14.0/etc/profile.d/bash_completion.sh"
-fi
-
-if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
-  eval "$(fzf --bash)"
-fi
-
-if [ -r "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
-    source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-fi
-if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
-    source "$HOME/.nix-profile/etc/profile.d/nix.sh"
-fi                                            # added by Nix installer
-# echo "#INIT [ -e zsh ] && exec zsh"
-# echo '#INIT [ -d ~/bin ] && export PATH="~/bin:$PATH"'
 
 eval "$(direnv hook bash)"
 
