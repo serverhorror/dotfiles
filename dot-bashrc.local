@@ -1,15 +1,28 @@
+# vim: set filetype=bash :
 if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
   eval "$(fzf --bash)"
 fi
 
 if [ -r "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
-    source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+  source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 fi
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
-    source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+  source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
 # Commands that should be applied only for interactive shells.
 [[ $- == *i* ]] || return
+
+## BEGIN completion
+# see: https://mtlynch.io/notes/nix-git-bash-shell/
+# Load __git_ps1 bash command.
+if [ -r "$HOME/.nix-profile/share/git/contrib/completion/git-prompt.sh" ]; then
+  source "$HOME/.nix-profile/share/git/contrib/completion/git-prompt.sh"
+fi
+# Optional: Also load git command completions for bash.
+if [ -r "$HOME/.nix-profile/share/git/contrib/completion/git-completion.bash" ]; then
+  source "$HOME/.nix-profile/share/git/contrib/completion/git-completion.bash"
+fi
+## END completion
 
 function _editor() {
   if command -v nvim >/dev/null 2>&1; then
@@ -45,6 +58,7 @@ shopt -s globstar
 shopt -s checkjobs
 
 # always use nvim instead of vim
+alias nv='nvim'
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
@@ -52,4 +66,3 @@ alias vidiff='nvim -d'
 alias vimdiff='nvim -d'
 
 eval "$(direnv hook bash)"
-
