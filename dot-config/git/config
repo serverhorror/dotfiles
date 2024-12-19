@@ -35,3 +35,5 @@
 
 [includeIf "hasconfig:remote.*.url:https://bitbucket.biscrum.com/**"]
 	path = ".config/git/boehringer-ingelheim.inc"
+[alias]
+	root = !git rev-parse --show-toplevel
