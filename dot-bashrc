@@ -9,8 +9,19 @@ HISTFILESIZE=100000
 HISTIGNORE='cd ..:cd:exit:ll:ls -l:ls:history'
 HISTSIZE=10000
 
-export EDITOR="nvim || command -v code >/dev/null 2>&1 && code --wait - || vim"
-export VISUAL="nvim || command -v code >/dev/null 2>&1 && code --wait - || vim"
+function _editor() {
+  if command -v nvim >/dev/null 2>&1; then
+    echo nvim
+  elif command -v code >/dev/null 2>&1; then
+    echo code --wait
+  else
+    echo vim
+  fi
+}
+export _editor
+
+export EDITOR=$(_editor)
+export VISUAL=$(_editor)
 export GOBIN="$HOME/bin"
 export GOPRIVATE="*.biscrum.com"
 export PATH="$HOME/bin:$PATH"
@@ -40,7 +51,12 @@ if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
   eval "$(fzf --bash)"
 fi
 
-if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then . "$HOME/.nix-profile/etc/profile.d/nix.sh"; fi                                            # added by Nix installer
+if [ -r "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
+    source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+fi
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+    source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi                                            # added by Nix installer
 # echo "#INIT [ -e zsh ] && exec zsh"
 # echo '#INIT [ -d ~/bin ] && export PATH="~/bin:$PATH"'
 
