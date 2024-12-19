@@ -14,17 +14,17 @@ vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
 
 -- <leader>n to set nohlsearch, the second parameter is the function (reference) to call
 vim.keymap.set("n", "<leader>n", function()
-    vim.cmd("nohlsearch")
+	vim.cmd("nohlsearch")
 end, { desc = "Clear search highlights" })
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
-    desc = "Highlight when yanking (copying) text",
-    group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
 
 -- My Config
@@ -32,17 +32,17 @@ require("serverhorror")
 
 -- Plugins & Color Themes
 require("serverhorror.lazy")
--- use 'marko-cerovac/material.nvim'
-local _border = "double"
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = _border,
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = _border,
-})
-
-vim.diagnostic.config({
-    float = { border = _border },
-})
+-- local _border = "double"
+--
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+--     border = _border,
+-- })
+--
+-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+--     border = _border,
+-- })
+--
+-- vim.diagnostic.config({
+--     float = { border = _border },
+-- })
