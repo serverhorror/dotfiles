@@ -21,10 +21,12 @@
 	provider = "generic"
 
 [credential "https://gist.github.com"]
-	helper = "auth git-credential"
+	helper = "cache --timeout 21600"
+	helper = "auth manager"
 
 [credential "https://github.com"]
-	helper = "auth git-credential"
+	helper = "cache --timeout 21600"
+	helper = "auth manager"
 
 [rerere]
 	enabled = true
