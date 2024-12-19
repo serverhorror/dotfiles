@@ -175,7 +175,13 @@ return {
 			--
 			-- But for many setups, the LSP (`ts_ls`) will work just fine
 			-- ts_ls = {},
-			--
+
+			shellcheck = {
+				filetypes = { "sh", "bash" },
+			},
+			shfmt = {
+				filetypes = { "sh", "bash" },
+			},
 
 			lua_ls = {
 				-- cmd = {...},
@@ -217,6 +223,8 @@ return {
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 		require("mason-lspconfig").setup({
+			ensure_installed = ensure_installed,
+			auto_install = true,
 			handlers = {
 				function(server_name)
 					local server = servers[server_name] or {}
