@@ -176,13 +176,6 @@ return {
 			-- But for many setups, the LSP (`ts_ls`) will work just fine
 			-- ts_ls = {},
 
-			shellcheck = {
-				filetypes = { "sh", "bash" },
-			},
-			shfmt = {
-				filetypes = { "sh", "bash" },
-			},
-
 			lua_ls = {
 				-- cmd = {...},
 				-- filetypes = { ...},

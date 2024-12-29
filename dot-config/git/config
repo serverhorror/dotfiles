@@ -22,7 +22,7 @@
 
 [credential "https://gist.github.com"]
 	helper = "cache --timeout 21600"
-	helper = "auth manager"
+	helper = "manager"
 
 [credential "https://github.com"]
 	helper = "cache --timeout 21600"

@@ -61,7 +61,14 @@ vim.opt.cursorcolumn = false
 vim.opt.scrolloff = 10
 
 vim.opt.hlsearch = true
-if vim.fn.has("win32") then
+local function is_wsl()
+	return vim.fn.systemlist("uname -r")[1] == "microsoft-standard"
+end
+if not (vim.fn.has("win32")) then
+	print("Not Windows")
+	vim.opt.shell = "bash"
+else
+	print("Windows")
 	vim.opt.shell = "pwsh"
 	local powershell_options = {
 		shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
@@ -75,6 +82,4 @@ if vim.fn.has("win32") then
 	for option, value in pairs(powershell_options) do
 		vim.opt[option] = value
 	end
-else
-	vim.opt.shell = "bash"
 end
