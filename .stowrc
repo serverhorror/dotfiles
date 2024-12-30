@@ -2,4 +2,5 @@
 --dotfiles
 --target=~
 --ignore=.stowrc
+--ignore=dot-bash_profile
 --ignore=README.md
