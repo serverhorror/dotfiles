@@ -58,11 +58,6 @@ shopt -s extglob
 shopt -s globstar
 shopt -s checkjobs
 
-## zkvim
-_zkvim() ( cd "$ZK_NOTEBOOK_DIR" ; NVIM_APPNAME="zkvim" nvim "$@"; )
-zkv() { _zkvim; }
-zkvi() { _zkvim; }
-zkvim() { _zkvim; }
 ## lazyvim
 lv() { NVIM_APPNAME="lazyvim" nvim "$@"; }
 lvi() { NVIM_APPNAME="lazyvim" nvim "$@"; }
