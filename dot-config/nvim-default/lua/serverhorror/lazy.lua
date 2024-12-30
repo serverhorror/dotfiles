@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- local plugin_list = require("serverhorror.plugins")
 
-require("lazy").setup("serverhorror.plugins", { -- these opts are for lazy itself
+require("lazy").setup("plugins", { -- these opts are for lazy itself
 	ui = {
 		border = "rounded",
 		-- If you are using a Nerd Font: set icons to an empty table which will use the

@@ -1,18 +1,43 @@
+-- Keybinds to make split navigation easier.
+--  Use CTRL+<hjkl> to switch between windows
+--
+--  See `:help wincmd` for a list of all window commands
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+
+-- vim.keymap.set("n", "<C-/>", "gcc", { desc = "Comment selection" })
+vim.keymap.set("n", "gcc", "<C-/>", { desc = "Comment selection" })
+-- the greatest remap ever (Primeagen)
+vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
+
+-- <leader>n to set nohlsearch, the second parameter is the function (reference) to call
+vim.keymap.set("n", "<leader>n", function()
+	vim.cmd("nohlsearch")
+end, { desc = "Clear search highlights" })
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
+
+-- begin global settings
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
--- vim.g.netrw_liststyle = "3"
--- vim.cmd("let g:netrw_liststyle = 3")
-
 vim.g.wrap = false
-
 vim.g.have_nerd_font = true
+-- end global settings
 
--- -- general options
--- vim.opt.statusline = "%<%f %h%m%r%=%-14.(%l,%c%V%)"
-
+vim.opt.background = "dark"
 vim.opt.number = true
 vim.opt.relativenumber = true
+-- begin mode based relative line numbers
 -- This makes the relative line numbers toggle when entering a window or buffer
 vim.api.nvim_create_augroup("numbertoggle", { clear = true })
 vim.api.nvim_create_autocmd(
@@ -23,8 +48,7 @@ vim.api.nvim_create_autocmd(
 	{ "BufLeave", "WinLeave", "FocusLost", "InsertEnter" },
 	{ group = "numbertoggle", pattern = "*", command = "set norelativenumber" }
 )
-
-vim.opt.background = "dark"
+-- end mode based relative line numbers
 
 -- -- Sync clipboard between OS and Neovim.
 -- --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -54,7 +78,7 @@ vim.opt.splitright = false
 vim.opt.splitbelow = false
 
 vim.opt.list = true
-vim.opt.listchars = { tab = "» ", multispace = "·", leadmultispace = "·", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "»", multispace = "·", leadmultispace = "·", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = false
@@ -83,3 +107,5 @@ else
 		vim.opt[option] = value
 	end
 end
+-- Plugins & Color Themes
+require("serverhorror.lazy")
