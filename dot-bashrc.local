@@ -58,6 +58,9 @@ shopt -s globstar
 shopt -s checkjobs
 
 # always use nvim instead of vim
+lvim() {
+  NVIM_APPNAME=lazyvim nvim "$@"
+}
 alias nv='nvim'
 alias v='nvim'
 alias vi='nvim'
