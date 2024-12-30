@@ -41,12 +41,12 @@ vim.opt.relativenumber = true
 -- This makes the relative line numbers toggle when entering a window or buffer
 vim.api.nvim_create_augroup("numbertoggle", { clear = true })
 vim.api.nvim_create_autocmd(
-	{ "BufEnter", "WinEnter", "FocusGained", "InsertLeave" },
-	{ group = "numbertoggle", pattern = "*", command = "set relativenumber" }
+	{ "BufEnter", "WinEnter", "FocusGained", "InsertEnter" },
+	{ group = "numbertoggle", pattern = "*", command = "set number relativenumber" }
 )
 vim.api.nvim_create_autocmd(
-	{ "BufLeave", "WinLeave", "FocusLost", "InsertEnter" },
-	{ group = "numbertoggle", pattern = "*", command = "set norelativenumber" }
+	{ "BufLeave", "WinLeave", "FocusLost", "InsertLeave" },
+	{ group = "numbertoggle", pattern = "*", command = "set number norelativenumber" }
 )
 -- end mode based relative line numbers
 
@@ -78,34 +78,13 @@ vim.opt.splitright = false
 vim.opt.splitbelow = false
 
 vim.opt.list = true
-vim.opt.listchars = { tab = "»»", multispace = "·", leadmultispace = "·", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "»·»", multispace = "·", leadmultispace = "·", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = false
 vim.opt.scrolloff = 10
 
 vim.opt.hlsearch = true
-local function is_wsl()
-	return vim.fn.systemlist("uname -r")[1] == "microsoft-standard"
-end
-if not (vim.fn.has("win32")) then
-	print("Not Windows")
-	vim.opt.shell = "bash"
-else
-	print("Windows")
-	vim.opt.shell = "pwsh"
-	local powershell_options = {
-		shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
-		shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8; $PSDefaultParameterValues['Out-File:Encoding']='UTF8';Remove-Alias -Force -ErrorAction SilentlyContinue tee;",
-		shellredir = '2>&1 > | %%{ "$_" } | Out-File %s; exit $LastExitCode',
-		shellpipe = '2>&1 > | %%{ "$_" } | tee %s; exit $LastExitCode',
-		shellquote = "",
-		shellxquote = "",
-	}
-
-	for option, value in pairs(powershell_options) do
-		vim.opt[option] = value
-	end
-end
+vim.opt.shell = "bash"
 -- Plugins & Color Themes
 require("serverhorror.lazy")
