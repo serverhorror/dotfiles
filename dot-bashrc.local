@@ -57,21 +57,21 @@ shopt -s extglob
 shopt -s globstar
 shopt -s checkjobs
 
-# lazyvim
-lv() { NVIM_APPNAME="lazyvim" nvim "$@" }
-lvi() { NVIM_APPNAME="lazyvim" nvim "$@" }
-lvim() { NVIM_APPNAME="lazyvim" nvim "$@" }
-# lazyvimdiff
-lvidiff() { NVIM_APPNAME="lazyvim" nvim -d "$@" }
-lvimdiff() { NVIM_APPNAME="lazyvim" nvim -d "$@" }
-# always use nvim instead of vim
-nv() { NVIM_APPNAME="nvim-default" nvim "$@" }
-v() { NVIM_APPNAME="nvim-default" nvim "$@" }
-vi() { NVIM_APPNAME="nvim-default" nvim "$@" }
-vim() { NVIM_APPNAME="nvim-default" nvim "$@" }
-
-# vimdiff
-vidiff() { NVIM_APPNAME="nvim-default" nvim -d "$@" }
-vimdiff() { NVIM_APPNAME="nvim-default" nvim -d "$@" }
+## lazyvim
+lv() { NVIM_APPNAME="lazyvim" nvim "$@"; }
+lvi() { NVIM_APPNAME="lazyvim" nvim "$@"; }
+lvim() { NVIM_APPNAME="lazyvim" nvim "$@"; }
+## lazyvimdiff
+lvidiff() { NVIM_APPNAME="lazyvim" nvim -d "$@"; }
+lvimdiff() { NVIM_APPNAME="lazyvim" nvim -d "$@"; }
+## always use nvim instead of vim
+nv() { NVIM_APPNAME="nvim-default" nvim "$@"; }
+v() { NVIM_APPNAME="nvim-default" nvim "$@"; }
+vi() { NVIM_APPNAME="nvim-default" nvim "$@"; }
+vim() { NVIM_APPNAME="nvim-default" nvim "$@"; }
+#
+## vimdiff
+vidiff() { NVIM_APPNAME="nvim-default" nvim -d "$@"; }
+vimdiff() { NVIM_APPNAME="nvim-default" nvim -d "$@"; }
 
 eval "$(direnv hook bash)"
