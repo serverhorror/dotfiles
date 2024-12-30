@@ -78,7 +78,7 @@ vim.opt.splitright = false
 vim.opt.splitbelow = false
 
 vim.opt.list = true
-vim.opt.listchars = { tab = "»", multispace = "·", leadmultispace = "·", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "»»", multispace = "·", leadmultispace = "·", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = false
