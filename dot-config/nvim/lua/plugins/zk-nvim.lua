@@ -23,25 +23,48 @@ return {
 			},
 		})
 
+		local zk = require("zk")
+		local commands = require("zk.commands")
+
+		local function make_edit_fn(defaults, picker_options)
+			return function(options)
+				options = vim.tbl_extend("force", defaults, options or {})
+				zk.edit(options, picker_options)
+			end
+		end
+
+		commands.add("ZkOrphans", make_edit_fn({ orphan = true }, { title = "Zk Orphans" }))
+		commands.add("ZkRecents", make_edit_fn({ createdAfter = "2 weeks ago" }, { title = "Zk Recents" }))
+
+		local get_title = function()
+			return vim.fn.input("Title: ")
+		end
+
 		local which_key = require("which-key")
 		which_key.add({
-			{ "<leader>z", group = "[Z]ettelkasten" },
+			-- normal mode mappings
 			{
-				"<leader>zn",
-				function()
-					require("zk.commands").get("ZkNew")({
-						-- get the title from an input prompt
-						title = vim.fn.input("Title: "),
-					})
-				end,
-				desc = "Create a new Zettelkasten note",
-			},
-			{
-				mode = { "v" },
+				mode = { "n" },
 				{
-					"<leader>zn",
-					"<Cmd>'<,'>ZkNewFromContentSelection<CR>",
-					desc = "Create a new Zettelkasten note from visual selection",
+					{ "<leader>z", group = "[Z]ettelkasten" },
+					{
+						"<leader>zn",
+						function()
+							commands.get("ZkNew")({
+								-- get the title from an input prompt
+								title = get_title(),
+							})
+						end,
+						desc = "Create a new Zettelkasten note",
+					},
+					{
+						"<leader>zl",
+						make_edit_fn({ sort = { "modified" } }, { title = "Zk Notes" }),
+						desc = "[L]ist Notes",
+					},
+					-- { "<leader>zg", commands.get("ZkGrep"), desc = "[G]rep Notes" },
+					{ "<leader>zO", commands.get("ZkOrphans"), desc = "Edit [O]rphans" },
+					{ "<leader>zr", commands.get("ZkRecents"), desc = "Edit [R]ecents" },
 				},
 			},
 			-- { "<leader>ze", "Edit Zk Note" },

@@ -4,7 +4,7 @@
 [note]
   language = "en"
   default-title = "scratch"
-  filename = "{{format-date now '%Y-%m-%dT%H%Mh%z'}}-{{id}}"
+  filename = "{{id}}-{{slug title}}"
   extension = "md"
 
   # relative to templates/
@@ -33,6 +33,7 @@
   #fzf-preview = "bat -p --color always {-1}"
 
 [alias]
+  edit = "zk edit --interactive"
   inline = "zk list --quiet --format {{path}} --delimiter , $@"
   # Edit the last modified note.
   edlast = "zk edit --limit 1 --sort modified- $@"
