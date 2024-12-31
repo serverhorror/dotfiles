@@ -1,5 +1,14 @@
 [core]
 	whitespace = "trailing-space,space-before-tab"
+[alias]
+	push-force = push --force-with-lease
+	br = branch
+	ci = commit
+	civ = commit -v
+	p = pull
+	root = !git rev-parse --show-toplevel
+	st = status
+	sw = switch
 
 [credential]
 	credentialStore = "cache"
@@ -37,5 +46,3 @@
 
 [includeIf "hasconfig:remote.*.url:https://bitbucket.biscrum.com/**"]
 	path = ".config/git/boehringer-ingelheim.inc"
-[alias]
-	root = !git rev-parse --show-toplevel
