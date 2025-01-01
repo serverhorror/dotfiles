@@ -3,4 +3,5 @@
 --target=~
 --ignore=.stowrc
 --ignore=dot-bash_profile
+--ignore=dot-config/komorebi  # this is windows only
 --ignore=README.md
