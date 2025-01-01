@@ -87,12 +87,14 @@ vim.opt.keywordprg = "tldr"
 vim.opt.termguicolors = false
 
 -- tabstop, shiftwidth
+-- See `:help tabstop` and `:help shiftwidth`
+-- this is the actual default
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.signcolumn = "yes:3"
+vim.opt.signcolumn = "yes:5"
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 
