@@ -1,5 +1,6 @@
 [core]
 	whitespace = "trailing-space,space-before-tab"
+	autocrlf = false
 [alias]
 	push-force = push --force-with-lease
 	br = branch
