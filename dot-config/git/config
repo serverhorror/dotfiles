@@ -12,13 +12,13 @@
 
 [credential]
 	credentialStore = "cache"
-	#helper = "cache --timeout 21600"
+	helper = "cache --timeout 21600"
 	helper = "manager"
 	useHttpPath = "true"
 
 [credential "https://bitbucket.biscrum.com"]
 	bitbucketAuthModes = "oauth"
-	#helper = "cache --timeout 21600"
+	helper = "cache --timeout 21600"
 	helper = "oauth"
 	provider = "bitbucket"
 	useHttpPath = "true"
@@ -30,11 +30,11 @@
 	provider = "generic"
 
 [credential "https://gist.github.com"]
-	#helper = "cache --timeout 21600"
+	helper = "cache --timeout 21600"
 	helper = "manager"
 
 [credential "https://github.com"]
-	#helper = "cache --timeout 21600"
+	helper = "cache --timeout 21600"
 	helper = "manager"
 
 [rerere]
