@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version: 3
+final_space: true
+# palette:
+#   black: "#262B44"
+#   blue: "#4B95E9"
+#   green: "#59C9A5"
+#   orange: "#F07623"
+#   red: "#D81E5B"
+#   white: "#E0DEF4"
+#   yellow: "#F3AE35"
+blocks:
+
+  # begin: first block
+  - type: prompt
+    alignment: left
+    style: plain
+    segments:
+      - type: text
+        alignment: left
+        style: plain
+        background: transparent
+        template: "({{.Shell}})"
+        properties:
+          style: letter
+          mapped_locations_enabled: true
+      - type: path
+        background: transparent
+        template: " {{.Path}}"
+        properties:
+          style: letter
+          mapped_locations_enabled: true
+  # end: first block
+
+  # begin: second block
+  - type: prompt
+    alignment: right
+    overflow: hidden
+    segments:
+      - type: executiontime
+        alignment: left
+        style: plain
+        foreground: red
+        template: "{{.FormattedMs}}"
+        properties:
+          threshold: 3000
+      - type: git
+        foreground: 'p:gray'
+        background: transparent
+        template: " {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"
+        # template: |>
+        #   {{ " " }}
+        #   {{ .HEAD }}
+        #   {{ if or (.Working.Changed) (.Staging.Changed) }}
+        #     *
+        #   {{ end }}
+        #   <cyan>
+        #     {{ if gt .Behind 0 }}⇣{{ end }}
+        #     {{ if gt .Ahead 0 }}⇡{{ end }}
+        #   </cyan>
+        style: plain
+        properties:
+          branch_icon: ""
+          commit_icon: "@"
+          fetch_status: false
+  # end: second block
+
+  # begin: third block
+  - type: prompt
+    alignment: left
+    style: plain
+    newline: true
+    segments:
+      - type: text
+        alignment: left
+        style: plain
+        background: transparent
+        foreground_templates:
+          - "{{if gt .Code 0}}red{{end}}"
+          # - "{{if eq .Code 0}}magenta{{end}}"
+        template: "❯ "
+  # end: third block
+
+transient_prompt:
+  background: transparent
+  # foreground: "#ffffff"
+  template: "❯ "
+
+secondary_prompt:
+  foreground: 'magenta'
+  background: 'transparent'
+  template: '❯❯ '
+
