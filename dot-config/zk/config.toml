@@ -4,7 +4,7 @@
 [note]
   language = "en"
   default-title = "scratch"
-  filename = "{{id}}-{{slug title}}"
+  filename = "{{slug title}}"
   extension = "md"
 
   # relative to templates/
