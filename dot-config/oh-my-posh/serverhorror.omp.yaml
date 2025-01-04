@@ -48,17 +48,16 @@ blocks:
       - type: git
         foreground: 'p:gray'
         background: transparent
-        template: " {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"
-        # template: |>
-        #   {{ " " }}
-        #   {{ .HEAD }}
-        #   {{ if or (.Working.Changed) (.Staging.Changed) }}
-        #     *
-        #   {{ end }}
-        #   <cyan>
-        #     {{ if gt .Behind 0 }}⇣{{ end }}
-        #     {{ if gt .Ahead 0 }}⇡{{ end }}
-        #   </cyan>
+        # template: " ({{ .User.Email }}){{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"
+        template: >-
+          {{- " " -}}{{- .HEAD -}}
+          {{- if or (.Working.Changed) (.Staging.Changed) -}}
+          *
+          {{- end -}}
+          <cyan>
+          {{- if gt .Behind 0 -}}({{ .Behind }}⇣){{- end -}}
+          {{- if gt .Ahead 0 -}}({{ .Ahead }}⇡){{- end -}}
+          </cyan>
         style: plain
         properties:
           branch_icon: ""
