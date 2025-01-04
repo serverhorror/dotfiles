@@ -76,3 +76,14 @@ vidiff() { nvim -d "$@"; }
 vimdiff() { nvim -d "$@"; }
 
 eval "$(direnv hook bash)"
+
+# oh-my-posh
+# check if the command 'oh-my-posh' exists
+if command -v oh-my-posh >/dev/null 2>&1; then
+  posh_shell="$(oh-my-posh get shell)" || posh_shell="bash"
+  eval "$(oh-my-posh init "$posh_shell" --config ~/.config/oh-my-posh/serverhorror.omp.yaml)"
+fi
+
+if command -v zsh >/dev/null 2>&1; then
+	zsh
+fi
