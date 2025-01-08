@@ -1,13 +1,13 @@
 # vim: set filetype=bash :
 if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
-  eval "$(fzf --bash)"
+    eval "$(fzf --bash)"
 fi
 
 if [ -r "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
-  source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+    source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 fi
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
-  source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+    source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi
 # Commands that should be applied only for interactive shells.
 [[ $- == *i* ]] || return
@@ -16,22 +16,22 @@ fi
 # see: https://mtlynch.io/notes/nix-git-bash-shell/
 # Load __git_ps1 bash command.
 if [ -r "$HOME/.nix-profile/share/git/contrib/completion/git-prompt.sh" ]; then
-  source "$HOME/.nix-profile/share/git/contrib/completion/git-prompt.sh"
+    source "$HOME/.nix-profile/share/git/contrib/completion/git-prompt.sh"
 fi
 # Optional: Also load git command completions for bash.
 if [ -r "$HOME/.nix-profile/share/git/contrib/completion/git-completion.bash" ]; then
-  source "$HOME/.nix-profile/share/git/contrib/completion/git-completion.bash"
+    source "$HOME/.nix-profile/share/git/contrib/completion/git-completion.bash"
 fi
 ## END completion
 
 function _editor() {
-  if command -v nvim >/dev/null 2>&1; then
-    echo nvim
-  elif command -v code >/dev/null 2>&1; then
-    echo code --wait
-  else
-    echo vim
-  fi
+    if command -v nvim >/dev/null 2>&1; then
+        echo nvim
+    elif command -v code >/dev/null 2>&1; then
+        echo code --wait
+    else
+        echo vim
+    fi
 }
 export _editor
 
@@ -80,8 +80,8 @@ eval "$(direnv hook bash)"
 # oh-my-posh
 # check if the command 'oh-my-posh' exists
 if command -v oh-my-posh >/dev/null 2>&1; then
-  posh_shell="$(oh-my-posh get shell)" || posh_shell="bash"
-  eval "$(oh-my-posh init "$posh_shell" --config ~/.config/oh-my-posh/serverhorror.omp.yaml)"
+    posh_shell="$(oh-my-posh get shell)" || posh_shell="bash"
+    eval "$(oh-my-posh init "$posh_shell" --config ~/.config/oh-my-posh/serverhorror.omp.yaml)"
 fi
 
 if command -v zsh >/dev/null 2>&1; then
