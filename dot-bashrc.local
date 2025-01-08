@@ -84,6 +84,7 @@ if command -v oh-my-posh >/dev/null 2>&1; then
     eval "$(oh-my-posh init "$posh_shell" --config ~/.config/oh-my-posh/serverhorror.omp.yaml)"
 fi
 
-if command -v zsh >/dev/null 2>&1; then
-	zsh
-fi
+# # nah ... zsh is shit
+# if command -v zsh >/dev/null 2>&1; then
+#  zsh
+# fi
