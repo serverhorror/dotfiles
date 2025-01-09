@@ -80,6 +80,11 @@ in {
   # Let Home Manager install and manage itself.
   programs = {
     home-manager.enable = true;
+    fzf = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+    };
     zsh = {
       enable = true;
       # dotDir = "/home/${inputs.systemUserName}/.config/zsh";

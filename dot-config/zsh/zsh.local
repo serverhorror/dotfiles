@@ -1,0 +1,12 @@
+# echo "I am sourced!"
+
+# bind -v
+# bindkey "^R" history-incremental-pattern-search-backward
+
+bindkey -e
+
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+
+# available from Nix, but has to be configured separately
+eval "$(zoxide init --cmd cd zsh)"

@@ -25,10 +25,10 @@ fi
 ## END completion
 
 function _editor() {
-    if command -v nvim >/dev/null 2>&1; then
-        echo nvim
-    elif command -v code >/dev/null 2>&1; then
+    if command -v code >/dev/null 2>&1; then
         echo code --wait
+    elif command -v nvim >/dev/null 2>&1; then
+        echo nvim
     else
         echo vim
     fi
@@ -84,7 +84,7 @@ if command -v oh-my-posh >/dev/null 2>&1; then
     eval "$(oh-my-posh init "$posh_shell" --config ~/.config/oh-my-posh/serverhorror.omp.yaml)"
 fi
 
-# # nah ... zsh is shit
-# if command -v zsh >/dev/null 2>&1; then
-#  zsh
-# fi
+# nah ... zsh is shit
+if command -v zsh >/dev/null 2>&1; then
+    exec zsh
+fi

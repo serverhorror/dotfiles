@@ -49,7 +49,7 @@
         openrsync
         pup
         ripgrep
-        fzf
+        # fzf  # managed by home-manager
         rsync
         stow
         tmux
@@ -59,6 +59,7 @@
         yq
         zellij
         zk
+        zoxide
         oh-my-posh
         # IaC, containers, K8S
         docker-client
