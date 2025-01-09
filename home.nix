@@ -82,6 +82,7 @@ in {
     home-manager.enable = true;
     zsh = {
       enable = true;
+      # dotDir = "/home/${inputs.systemUserName}/.config/zsh";
       enableCompletion = true;
       history = {
         ignoreDups = true;
@@ -89,8 +90,14 @@ in {
         ignoreSpace = true;
         ignorePatterns = [ "cd *" "exit" "ll" "ls *" "ls" "history" ];
       };
+      historySubstringSearch = {
+        enable = false;
+      };
       initExtraFirst = ''
         eval "$(oh-my-posh init zsh)"
+      '';
+      initExtra = ''
+        if [ -r "$HOME/.config/zsh/zsh.local" ]; then source "$HOME/.config/zsh/zsh.local"; fi
       '';
     };
  
