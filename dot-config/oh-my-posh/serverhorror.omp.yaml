@@ -36,6 +36,20 @@ blocks:
     alignment: right
     newline: true
     segments:
+      - type: executiontime
+        alignment: left
+        style: plain
+        # foreground: red
+        # foreground: 'lightWhite'
+        foreground_templates:
+          - "{{- if gt .Ms 1000 }}red{{ end -}}"
+        template: "{{.FormattedMs}} ⌛"
+        properties:
+          threshold: 500
+  - type: prompt
+    alignment: right
+    newline: true
+    segments:
       - type: docker
         template: "{{ .Context }} "
   - type: prompt
@@ -46,19 +60,67 @@ blocks:
         template: "{{.Profile}}{{if .Region}}@{{.Region}}{{end}} "
   - type: prompt
     alignment: right
+    newline: true
     segments:
       - type: azure
         template: "{{ .Name }} "
   - type: prompt
     alignment: right
+    newline: true
     segments:
       - type: go
         template: "{{ .Full }} "
   - type: prompt
     alignment: right
+    newline: true
     segments:
       - type: python
         template: "{{ .Full }} "
+  - type: prompt
+    alignment: right
+    newline: true
+    segments:
+      - type: git
+        style: plain
+        # foreground: 'gray'
+        background: transparent
+        templates_logic: "merge"
+        foreground_templates:
+          - "{{- if gt .Ahead 0 }}yellow{{ end -}}"
+          - "{{- if gt .Behind 0 }}red{{ end -}}"
+          - "{{- if gt .Working.Untracked 0 }}yellow{{ end -}}"
+          - "{{- if or (.Working.Changed) (.Staging.Changed) ( gt .StashCount 0) (.Detached) -}}red{{- end -}}"
+          - "green"
+        template: >-
+          {{- if gt .Ahead 0 }}({{ .Ahead }}⇡){{ end -}}
+          {{- if gt .Behind 0 }}({{ .Behind }}⇣){{ end -}}
+          {{- if gt .StashCount 0 }}({{ .StashCount }}){{ end -}}
+
+          {{- if gt .Working.Untracked 0 }}(💩{{ .Working.Untracked }}??){{ end -}}
+          {{- if gt .Working.Modified 0 }}(💩{{ .Working.Modified }}M){{ end -}}
+
+          {{- concat .Commit.Refs.Heads .Commit.Refs.Tags | join ", " | printf "(%v)" -}}
+
+          {{- printf "(%v)" .User.Email -}}
+
+          {{- printf " %v" .UpstreamIcon -}}
+        properties:
+          branch_icon: " "
+          commit_icon: "󰜛"
+          fetch_status: true
+          fetch_upstream_icon: true
+          fetch_user: true
+          full_branch_path: true
+          git_icon: ""
+          github_icon: ""
+          mapped_branches:
+            feat/*: "🚀 "
+            feature/*: "🚀 "
+            bug/*: "🐛 "
+            bugfix/*: "🐛 "
+            "*": "🔧 "
+          upstream_icons:
+            "https://bitbucket.biscrum.com/*": ""
   # end: preamble
 
   # begin: first block
@@ -90,32 +152,19 @@ blocks:
     # filler: "{{ if not .Overflow }}…{{ end }}"
     padding: 1
     segments:
-      - type: executiontime
-        alignment: left
-        style: plain
-        # foreground: red
-        foreground: 'lightWhite'
-        foreground_templates:
-          - "{{- if gt .Ms 1000 }}red{{ end -}}"
-        template: "{{.FormattedMs}} ⌛ "
-        properties:
-          threshold: 1000
       - type: git
         style: plain
         # foreground: 'gray'
         background: transparent
         templates_logic: "merge"
-        foreground_templates:
-          - "{{- if gt .Ahead 0 }}yellow{{ end -}}"
-          - "{{- if gt .Behind 0 }}yellow{{ end -}}"
-          - "{{- if or (.Working.Changed) (.Staging.Changed) ( gt .StashCount 0) (.Detached) -}}yellow{{- end -}}"
-          - "green"
-        # template: " ({{ .User.Email }}){{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"
+        # foreground_templates:
+        #   - "{{- if gt .Ahead 0 }}yellow{{ end -}}"
+        #   - "{{- if gt .Behind 0 }}yellow{{ end -}}"
+        #   - "{{- if gt .Working.Untracked 0 }}yellow{{ end -}}"
+        #   - "{{- if or (.Working.Changed) (.Staging.Changed) ( gt .StashCount 0) (.Detached) -}}yellow{{- end -}}"
+        #   - "green"
         template: >-
-          {{- if or (.Working.Changed) (.Staging.Changed) ( gt .StashCount 0) -}}💩 {{ end -}}
           {{- .HEAD -}}
-          {{- /* concat .Commit.Refs.Heads .Commit.Refs.Tags | join ", " | printf " (%v)" */ -}}
-          {{- printf " (%v)" .User.Email -}}
           {{- if gt .Ahead 0 }}({{ .Ahead }}⇡){{ end -}}
           {{- if gt .Behind 0 }}({{ .Behind }}⇣){{ end -}}
           {{- if gt .StashCount 0 }}({{ .StashCount }}⚑){{ end -}}
