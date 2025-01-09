@@ -47,7 +47,7 @@ blocks:
           threshold: 3000
       - type: git
         style: plain
-        # foreground: 'p:gray'
+        foreground: 'p:gray'
         background: transparent
         foreground_templates:
           - "{{- if gt .Ahead 0 }}yellow{{ end -}}"
