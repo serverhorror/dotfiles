@@ -85,7 +85,15 @@ blocks:
         foreground_templates:
           - "{{if gt .Code 0}}red{{end}}"
           # - "{{if eq .Code 0}}magenta{{end}}"
-        template: "❯ "
+        # template: "❯ "
+        template: >-
+          {{- if not (gt .Code 0) }}
+          {{- "❯" -}}
+          {{- else -}}
+          ({{- .Code -}})
+          {{ "?" }}
+          {{- end -}}
+
   # end: third block
 
 secondary_prompt:
