@@ -12,6 +12,34 @@ final_space: true
 #   yellow: "#F3AE35"
 blocks:
 
+  # - type: prompt
+  #   alignment: right
+  #   segments:
+  #     - type: time
+  #       alignment: right
+  #       style: plain
+  #       background: transparent
+  #       foreground: 'lightWhite'
+  - type: prompt
+    alignment: right
+    segments:
+      - type: aws
+        template: "{{.Profile}}{{if .Region}}@{{.Region}}{{end}}"
+  - type: prompt
+    alignment: right
+    segments:
+      - type: azure
+        template: "  {{ .Name }}"
+  - type: prompt
+    alignment: right
+    segments:
+      - type: go
+        template: "{{ .Full }}"
+  - type: prompt
+    alignment: right
+    segments:
+      - type: python
+        template: "{{ .Full }}"
   # begin: first block
   - type: prompt
     alignment: left
@@ -27,6 +55,7 @@ blocks:
       #     style: letter
       #     mapped_locations_enabled: true
       - type: path
+        foreground: 'lightWhite'
         background: transparent
         template: "{{.Path}}"
         properties:
@@ -45,6 +74,7 @@ blocks:
         alignment: left
         style: plain
         # foreground: red
+        foreground: 'lightWhite'
         foreground_templates:
           - "{{- if gt .Ms 3000 }}red{{ end -}}"
         template: "{{.FormattedMs}} "
@@ -84,8 +114,10 @@ blocks:
         alignment: left
         style: plain
         background: transparent
+        templates_logic: "first_match"
         foreground_templates:
           - "{{if gt .Code 0}}red{{end}}"
+          - "lightWhite"
           # - "{{if eq .Code 0}}magenta{{end}}"
         # template: "❯ "
         template: >-
@@ -95,16 +127,13 @@ blocks:
           ({{- .Code -}})
           {{ "?" }}
           {{- end -}}
-
   # end: third block
-
-secondary_prompt:
-  foreground: 'magenta'
-  background: 'transparent'
-  template: '|❯ '
-
 transient_prompt:
   background: transparent
-  # foreground: "#ffffff"
+  foreground: "darkGray"
   template: "❯ "
+secondary_prompt:
+  foreground: 'light-red'
+  background: 'transparent'
+  template: "❯❯ "
 
