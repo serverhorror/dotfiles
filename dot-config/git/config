@@ -3,6 +3,7 @@
 	autocrlf = false
 [alias]
 	push-force = push --force-with-lease
+	reset-upstream = reset --hard '@{u}'
 	br = branch
 	ci = commit
 	civ = commit -v
