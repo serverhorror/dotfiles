@@ -37,6 +37,7 @@
 [credential "https://github.com"]
 	helper = "cache --timeout 21600"
 	helper = "manager"
+	provider = "github"
 
 [rerere]
 	enabled = true
