@@ -36,15 +36,18 @@ blocks:
   # begin: second block
   - type: prompt
     alignment: right
-    overflow: hidden
+    overflow: hide
+    filler: "{{ if .Overflow }}…{{ end }}"
     segments:
       - type: executiontime
         alignment: left
         style: plain
-        foreground: red
-        template: "{{.FormattedMs}}"
+        # foreground: red
+        foreground_templates:
+          - "{{- if gt .FormattedMs 3000 }}red{{ end -}}"
+        template: "{{.FormattedMs}} "
         properties:
-          threshold: 3000
+          threshold: 0
       - type: git
         style: plain
         # foreground: 'p:gray'
