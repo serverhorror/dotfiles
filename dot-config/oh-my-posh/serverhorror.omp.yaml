@@ -37,14 +37,15 @@ blocks:
   - type: prompt
     alignment: right
     overflow: hide
-    filler: "{{ if .Overflow }}…{{ end }}"
+    # filler: "{{ if not .Overflow }}…{{ end }}"
+    padding: 1
     segments:
       - type: executiontime
         alignment: left
         style: plain
         # foreground: red
         foreground_templates:
-          - "{{- if gt .FormattedMs 3000 }}red{{ end -}}"
+          - "{{- if gt .Ms 3000 }}red{{ end -}}"
         template: "{{.FormattedMs}} "
         properties:
           threshold: 0
@@ -87,13 +88,13 @@ blocks:
         template: "❯ "
   # end: third block
 
+secondary_prompt:
+  foreground: 'magenta'
+  background: 'transparent'
+  template: '|❯ '
+
 transient_prompt:
   background: transparent
   # foreground: "#ffffff"
   template: "❯ "
-
-secondary_prompt:
-  foreground: 'magenta'
-  background: 'transparent'
-  template: '❯❯ '
 
