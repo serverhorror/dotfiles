@@ -2,12 +2,12 @@
 
 version: 3
 final_space: true
-palette:
+# palette:
 #   black: "#262B44"
 #   blue: "#4B95E9"
 #   green: "#59C9A5"
 #   orange: "#F07623"
-  red: "#D81E5B"
+#   red: "#D81E5B"
 #   white: "#E0DEF4"
 #   yellow: "#F3AE35"
 blocks:
@@ -53,7 +53,7 @@ blocks:
           - "{{- if gt .Ahead 0 }}yellow{{ end -}}"
           - "{{- if gt .Behind 0 }}orange{{ end -}}"
           - "{{- if or (.Working.Changed) (.Staging.Changed) ( gt .StashCount 0) -}}red{{- end -}}"
-          - "darkgreen"
+          - "green"
         # template: " ({{ .User.Email }}){{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"
         template: >-
           {{- .HEAD -}}
