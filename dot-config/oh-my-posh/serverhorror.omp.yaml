@@ -29,7 +29,7 @@ blocks:
         background: transparent
         template: "{{.Path}}"
         properties:
-          style: letter
+          style: full
           mapped_locations_enabled: true
   # end: first block
 
