@@ -20,31 +20,51 @@ blocks:
   #       style: plain
   #       background: transparent
   #       foreground: 'lightWhite'
+
+  # begin: preamble
+  # * all info on a separate line
+  # * right-aligned
+  # * first block is just to get a separate line
+  - type: prompt
+    newline: true
+    segments:
+      - type: text
+        template: "Ω"
+        alignment: left
+        style: plain
   - type: prompt
     alignment: right
+    newline: true
+    segments:
+      - type: docker
+        template: "{{ .Context }} "
+  - type: prompt
+    alignment: right
+    newline: true
     segments:
       - type: aws
-        template: "{{.Profile}}{{if .Region}}@{{.Region}}{{end}}"
+        template: "{{.Profile}}{{if .Region}}@{{.Region}}{{end}} "
   - type: prompt
     alignment: right
     segments:
       - type: azure
-        template: "  {{ .Name }}"
+        template: "{{ .Name }} "
   - type: prompt
     alignment: right
     segments:
       - type: go
-        template: "{{ .Full }}"
+        template: "{{ .Full }} "
   - type: prompt
     alignment: right
     segments:
       - type: python
-        template: "{{ .Full }}"
+        template: "{{ .Full }} "
+  # end: preamble
+
   # begin: first block
   - type: prompt
     alignment: left
     style: plain
-    newline: true
     segments:
       # - type: text
       #   alignment: left
@@ -76,32 +96,47 @@ blocks:
         # foreground: red
         foreground: 'lightWhite'
         foreground_templates:
-          - "{{- if gt .Ms 3000 }}red{{ end -}}"
-        template: "{{.FormattedMs}} "
+          - "{{- if gt .Ms 1000 }}red{{ end -}}"
+        template: "{{.FormattedMs}} ⌛ "
         properties:
-          threshold: 0
+          threshold: 1000
       - type: git
         style: plain
         # foreground: 'gray'
         background: transparent
+        templates_logic: "merge"
         foreground_templates:
           - "{{- if gt .Ahead 0 }}yellow{{ end -}}"
-          - "{{- if gt .Behind 0 }}orange{{ end -}}"
-          - "{{- if or (.Working.Changed) (.Staging.Changed) ( gt .StashCount 0) -}}red{{- end -}}"
+          - "{{- if gt .Behind 0 }}yellow{{ end -}}"
+          - "{{- if or (.Working.Changed) (.Staging.Changed) ( gt .StashCount 0) (.Detached) -}}yellow{{- end -}}"
           - "green"
         # template: " ({{ .User.Email }}){{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"
         template: >-
-          {{- .User -}}
+          {{- if or (.Working.Changed) (.Staging.Changed) ( gt .StashCount 0) -}}💩 {{ end -}}
           {{- .HEAD -}}
-          {{- " " -}}
-          {{- if or (.Working.Changed) (.Staging.Changed) ( gt .StashCount 0) -}}💩{{- end -}}
+          {{- /* concat .Commit.Refs.Heads .Commit.Refs.Tags | join ", " | printf " (%v)" */ -}}
+          {{- printf " (%v)" .User.Email -}}
           {{- if gt .Ahead 0 }}({{ .Ahead }}⇡){{ end -}}
           {{- if gt .Behind 0 }}({{ .Behind }}⇣){{ end -}}
           {{- if gt .StashCount 0 }}({{ .StashCount }}⚑){{ end -}}
+          {{- printf " %v" .UpstreamIcon -}}
         properties:
-          branch_icon: ""
-          # commit_icon: "@"
+          branch_icon: " "
+          commit_icon: "󰜛"
           fetch_status: true
+          fetch_upstream_icon: true
+          fetch_user: true
+          full_branch_path: true
+          git_icon: ""
+          github_icon: ""
+          mapped_branches:
+            feat/*: "🚀 "
+            feature/*: "🚀 "
+            bug/*: "🐛 "
+            bugfix/*: "🐛 "
+            "*": "🔧 "
+          upstream_icons:
+            "https://bitbucket.biscrum.com/*": ""
   # end: second block
 
   # begin: third block
@@ -121,11 +156,13 @@ blocks:
           # - "{{if eq .Code 0}}magenta{{end}}"
         # template: "❯ "
         template: >-
-          {{- if not (gt .Code 0) }}
+          {{- if not (gt .Code 0) -}}
           {{- "❯" -}}
           {{- else -}}
-          ({{- .Code -}})
-          {{ "?" }}
+          <f>
+            ({{- .Code -}})
+            {{- "?" -}}
+          </f>
           {{- end -}}
   # end: third block
 transient_prompt:
@@ -133,7 +170,8 @@ transient_prompt:
   foreground: "darkGray"
   template: "❯ "
 secondary_prompt:
-  foreground: 'light-red'
+  foreground: 'lightWhite'
   background: 'transparent'
-  template: "❯❯ "
+  # template: "❯❯"
+  template: "≫"
 
