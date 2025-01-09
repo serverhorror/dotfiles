@@ -47,13 +47,13 @@ blocks:
           threshold: 3000
       - type: git
         style: plain
-        foreground: 'p:gray'
+        # foreground: 'p:gray'
         background: transparent
         foreground_templates:
           - "{{- if gt .Ahead 0 }}yellow{{ end -}}"
           - "{{- if gt .Behind 0 }}orange{{ end -}}"
           - "{{- if or (.Working.Changed) (.Staging.Changed) ( gt .StashCount 0) -}}red{{- end -}}"
-          - "green"
+          - "p:gray"
         # template: " ({{ .User.Email }}){{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"
         template: >-
           {{- .HEAD -}}
