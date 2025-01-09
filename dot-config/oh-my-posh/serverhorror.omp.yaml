@@ -17,17 +17,17 @@ blocks:
     alignment: left
     style: plain
     segments:
-      - type: text
-        alignment: left
-        style: plain
-        background: transparent
-        template: "({{.Shell}})"
-        properties:
-          style: letter
-          mapped_locations_enabled: true
+      # - type: text
+      #   alignment: left
+      #   style: plain
+      #   background: transparent
+      #   template: "({{.Shell}})"
+      #   properties:
+      #     style: letter
+      #     mapped_locations_enabled: true
       - type: path
         background: transparent
-        template: " {{.Path}}"
+        template: "{{.Path}}"
         properties:
           style: letter
           mapped_locations_enabled: true
