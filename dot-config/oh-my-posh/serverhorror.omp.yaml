@@ -16,6 +16,7 @@ blocks:
   - type: prompt
     alignment: left
     style: plain
+    newline: true
     segments:
       # - type: text
       #   alignment: left
@@ -51,7 +52,7 @@ blocks:
           threshold: 0
       - type: git
         style: plain
-        # foreground: 'p:gray'
+        # foreground: 'gray'
         background: transparent
         foreground_templates:
           - "{{- if gt .Ahead 0 }}yellow{{ end -}}"
@@ -60,6 +61,7 @@ blocks:
           - "green"
         # template: " ({{ .User.Email }}){{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"
         template: >-
+          {{- .User -}}
           {{- .HEAD -}}
           {{- " " -}}
           {{- if or (.Working.Changed) (.Staging.Changed) ( gt .StashCount 0) -}}💩{{- end -}}
