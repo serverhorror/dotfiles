@@ -53,6 +53,7 @@ blocks:
           - "{{- if gt .Ahead 0 }}yellow{{ end -}}"
           - "{{- if gt .Behind 0 }}orange{{ end -}}"
           - "{{- if or (.Working.Changed) (.Staging.Changed) ( gt .StashCount 0) -}}red{{- end -}}"
+          - "green"
         # template: " ({{ .User.Email }}){{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"
         template: >-
           {{- .HEAD -}}
