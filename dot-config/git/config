@@ -7,7 +7,7 @@
 	ci = commit
 	civ = commit -v
 	p = pull
-	root = !git rev-parse --show-toplevel
+	root = rev-parse --show-toplevel
 	st = status
 	sw = switch
 
