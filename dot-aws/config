@@ -1,0 +1,65 @@
+[default]
+region = eu-west-1
+
+[aws4pa.cb.prod]
+region = eu-west-1
+
+[ods-in-a-box]
+region = eu-west-1
+
+[contrabas-marcherm]
+region = eu-west-1
+
+[sso-session boehringer-eu-west-1-bi-wcdeusecases]
+sso_start_url = https://d-936706e69b.awsapps.com/start
+sso_region = eu-west-1
+sso_registration_scopes = sso:account:access
+sso_role_name = BI-WCDEUseCases
+
+[sso-session boehringer-eu-west-1-bi-usecasadmins]
+sso_start_url = https://d-936706e69b.awsapps.com/start
+sso_region = eu-west-1
+sso_registration_scopes = sso:account:access
+sso_role_name = BI-UseCaseAdmins
+
+[sso-session boehringer-eu-west-1-bi-awsadmins]
+sso_start_url = https://d-936706e69b.awsapps.com/start
+sso_region = eu-west-1
+sso_registration_scopes = sso:account:access
+sso_role_name = BI-AWSAdmins
+
+[profile BI-AWSAdmins-WCDE-Dev]
+sso_session = boehringer-eu-west-1-bi-awsadmins
+sso_account_id = 362404229566
+region = eu-west-1
+output = json
+
+[profile BI-UseCaseAdmins-362404229566]
+sso_session = boehringer-eu-west-1-bi-usecasadmins
+sso_account_id = 362404229566
+region = eu-west-1
+
+[profile BI-WCDEUseCases-362404229566]
+sso_session = boehringer-eu-west-1-bi-wcdeusecases
+sso_account_id = 362404229566
+region = eu-west-1
+
+[profile BI-WCDEUseCases-598057347649]
+sso_session = boehringer-eu-west-1-bi-wcdeusecases
+sso_account_id = 598057347649
+region = eu-west-1
+
+[profile bi-is-ideationspace-play-teamspace]
+sso_session = boehringer-eu-west-1-bi-wcdeusecases
+sso_account_id = 590183976922
+region = eu-west-1
+
+[profile bi-is-ideationspace-ibbsddc-teamspace]
+sso_session = boehringer-eu-west-1-bi-wcdeusecases
+sso_account_id = 851725646698
+region = eu-west-1
+
+[profile bi-is-ideationspace-techtrain-teamspace]
+sso_session = boehringer-eu-west-1-bi-wcdeusecases
+sso_account_id = 471112548035
+region = eu-west-1
