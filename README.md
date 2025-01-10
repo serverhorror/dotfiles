@@ -1,13 +1,49 @@
 # dotfiles
 
+## Bootstrap Nix
+
+```text
+sh <(curl -L https://nixos.org/nix/install) --no-daemon --no-channel-add
+exec bash
+nix --extra-experimental-features 'nix-command flakes' shell nixpkgs#git nixpkgs#git-credential-oauth nixpkgs#home-manager
+#source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+home-manager --version
+git -c credential.helper='oauth --device' clone 'https://github.com/serverhorror/dotfiles.git' src/dotfiles
+cd src/dotfiles/
+mkdir --parent ~/.config/nix
+echo "experimental-features = nix-command flakes" >~/.config/nix/nix.conf
+home-manager -v switch -b "'$(date +%F)'" --flake ~/src/dotfiles # that will take a while!
+rm -rf ~/.config/nix
+cd ~/src/dotfiles
+stow --adopt .
+git reset --hard '@{u}'
+stow .
+```
+
+```text
+sh <(curl -L https://raw.githubusercontent.com/serverhorror/dotfiles/master/install)
+```
+
+### Update the flake
+
+```text
+nix flake update --flake .
+home-manager switch -b '' --flake .
+```
+
 ## Linux
 
 ```bash
-stow .
-# stow --verbose .  # alternative
+stow --verbose . --simulate
+# stow --verbose .             # alternative
+# stow .                       # alternative
 ```
 
 ## Windows
+
+> [!WARNING]  
+> This is a work in progress!
+> Use at your own risk!
 
 * required environment variables
 
@@ -29,6 +65,9 @@ stow .
   ```
 
 ## LazyVIM
+
+> [!NOTE]
+> LazVim is already in the `dot-config` directory.
 
 * initial install
 
@@ -70,26 +109,11 @@ Enable the `nix` command and `flakes` (e.g. `nix flake show`)
 
 ### Bootstrap Nix
 
-```text
-sudo dnf install --assumeyes --quiet git
-sh <(curl -L https://nixos.org/nix/install) --daemon
-mkdir --parent ~/.config/nix
-echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
-exec bash
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
-nix-shell '<home-manager>' -A install
-source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
-home-manager --version
-home-manager switch -b "bak$((RANDOM))" --flake .
-```
+* See above!
 
 #### Update the flake
 
-```text
-nix flake update --flake .
-home-manager switch -b '' --flake .
-```
+* See above!
 
 ### Other Info
 

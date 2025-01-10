@@ -5,6 +5,7 @@
 --ignore=flake.lock
 --ignore=flake.nix
 --ignore=home.nix
+--ignore=install              # this is our magic install script
 --ignore=dot-bash_profile
 --ignore=dot-config/komorebi  # this is windows only
 --ignore=README.md
