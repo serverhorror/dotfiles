@@ -1,27 +1,32 @@
+[user]
+	email = "serverhorror@users.noreply.github.com"
+	name = "serverhorror"
 [core]
 	whitespace = "trailing-space,space-before-tab"
 	autocrlf = false
+[rerere]
+	enabled = true
 [alias]
-	push-force = push --force-with-lease
-	reset-upstream = reset --hard '@{u}'
 	br = branch
 	ci = commit
 	civ = commit -v
 	p = pull
+	push-force = push --force-with-lease
+	reset-upstream = reset --hard '@{u}'
 	root = rev-parse --show-toplevel
 	st = status
 	sw = switch
 
 [credential]
 	credentialStore = "cache"
-	helper = "cache --timeout 21600"
+	helper = "cache --timeout 86399"
 	helper = "manager"
 	useHttpPath = "true"
 
 [credential "https://bitbucket.biscrum.com"]
 	bitbucketAuthModes = "oauth"
-	helper = "cache --timeout 21600"
-	helper = "oauth"
+	helper = "cache --timeout 86399"
+	helper = "oauth -device"
 	provider = "bitbucket"
 	useHttpPath = "true"
 
@@ -32,20 +37,13 @@
 	provider = "generic"
 
 [credential "https://gist.github.com"]
-	helper = "cache --timeout 21600"
+	helper = "cache --timeout 86399"
 	helper = "manager"
 
 [credential "https://github.com"]
-	helper = "cache --timeout 21600"
+	helper = "cache --timeout 86399"
 	helper = "manager"
 	provider = "github"
-
-[rerere]
-	enabled = true
-
-[user]
-	email = "serverhorror@users.noreply.github.com"
-	name = "serverhorror"
 
 [includeIf "hasconfig:remote.*.url:https://bitbucket.biscrum.com/**"]
 	path = ".config/git/boehringer-ingelheim.inc"
