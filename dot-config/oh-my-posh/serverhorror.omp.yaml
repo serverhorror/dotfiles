@@ -25,18 +25,19 @@ blocks:
   # * right-aligned
   # * first block is just to get a separate line
   - type: prompt
+    alignment: right
     newline: true
     segments:
-      - type: text
-        template: "Ω"
+      - type: project
         alignment: left
         style: plain
+        # template: "Ω"
   - type: prompt
     alignment: right
     newline: true
     segments:
       - type: executiontime
-        alignment: left
+        alignment: right
         style: plain
         # foreground: red
         # foreground: 'lightWhite'
@@ -44,7 +45,7 @@ blocks:
           - "{{- if gt .Ms 1000 }}red{{ end -}}"
         template: "{{.FormattedMs}} ⌛"
         properties:
-          threshold: 500
+          threshold: 50
   - type: prompt
     alignment: right
     newline: true
@@ -74,7 +75,7 @@ blocks:
     newline: true
     segments:
       - type: python
-        template: "{{ .Full }} "
+        template: "{{ .Full }} {{ .Venv }} "
   - type: prompt
     alignment: right
     newline: true

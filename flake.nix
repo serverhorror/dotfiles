@@ -40,6 +40,7 @@
         git-credential-oauth
         gitFull
         gnumake
+        cmake
         httpie
         jq
         lazygit
@@ -61,6 +62,8 @@
         zk
         zoxide
         oh-my-posh
+        # crypto stuff
+        sops age
         # IaC, containers, K8S
         docker-client
         docker-buildx
@@ -72,8 +75,9 @@
         # lua51Packages.luarocks
         lua51Packages.luarocks-nix
         # Python
-        python3Full
-        python3Packages.pip
+        python313
+        python313Packages.pip
+        python313Packages.requests
         poetry  # can be pip installed!
         uv  # can be pip installed!
         ruff  # can be pip installed!
@@ -85,8 +89,7 @@
         # Go
         go gopls
         # Zig
-        zig
-        zls
+        zig zls
 	texliveFull
         # nix stuff
         nixfmt-rfc-style

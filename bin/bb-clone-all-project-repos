@@ -1,0 +1,110 @@
+#!/usr/bin/env python
+
+import argparse
+import logging
+import os
+import subprocess
+from collections.abc import Generator, Iterable
+from dataclasses import dataclass
+from pathlib import Path
+
+# from pprint import pprint
+from typing import Final
+
+import requests
+
+BASE_URL: Final[str] = "https://bitbucket.biscrum.com"
+PROJECT_REPOS: Final[str] = "{}/rest/api/1.0/projects/{}/repos"
+
+
+@dataclass
+class Repo:
+    name: Path
+    href: str
+
+    def __str__(self):
+        return f"{self.name}: {self.href}"
+
+
+def get_all_project_repos(
+    session: requests.Session, url: str, token: str
+) -> Generator[Repo, None, None]:
+    response = session.get(url)
+    response.raise_for_status()
+    json_response = response.json()
+    values = json_response["values"]
+    for value in values:
+        name = value["name"]
+        for link in value["links"]["clone"]:
+            if link["name"] in ("http", "https"):
+                href = link["href"]
+                yield Repo(name, href)
+
+
+def clone_all_repos(repos: Iterable[Repo]) -> None:
+    for repo in repos:
+        clone_repo(repo)
+
+
+def clone_repo(repo: Repo) -> None:
+    git_dir = repo.name
+    clone_url = repo.href
+    try:
+        logging.info(f"Pulling {git_dir} from {clone_url}")
+        proc = subprocess.Popen(
+            args=["git", "-C", git_dir, "pull"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        stdout, stderr = proc.communicate()
+        ret = proc.returncode
+        if ret != 0:
+            logging.error(f"Error: {ret}")
+            logging.error(f"stderr: {stderr.decode('utf-8').strip()}")
+            raise FileNotFoundError(f"Error: {ret} -- {stderr.decode('utf-8').strip()}")
+        else:
+            logging.info(f"stdout: {stdout.decode('utf-8').strip()}")
+            logging.info(f"Pulled {clone_url}")
+
+    except (FileNotFoundError,) as err:
+        logging.info(f"Trying clone instead of pull -- Error: {err}")
+        proc = subprocess.Popen(
+            args=["git", "clone", clone_url, git_dir],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        stdout, stderr = proc.communicate()
+        ret = proc.returncode
+        if ret != 0:
+            logging.error(f"Error: {ret}")
+            logging.error(f"stderr: {stderr.decode('utf-8').strip()}")
+        else:
+            logging.info(f"stdout: {stdout.decode('utf-8').strip()}")
+            print(f"Cloned {clone_url}")
+
+
+if __name__ == "__main__":
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(filename)s::%(module)s::%(funcName)s::%(lineno)s - %(levelname)s - %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+    )
+
+    bitbucket_token = os.environ.get("BITBUCKET_TOKEN")
+    token_arg_required = not bool(bitbucket_token)
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--token", required=token_arg_required, default=bitbucket_token)
+    parser.add_argument("--project", required=True)
+    args = parser.parse_args()
+
+    url = PROJECT_REPOS.format(BASE_URL, args.project)
+
+    session = requests.Session()
+    session.headers.update(
+        {"Authorization": f"Bearer {args.token}", "Accept": "application/json"}
+    )
+    session
+
+    repos = get_all_project_repos(session, url, args.token)
+    clone_all_repos(repos=repos)

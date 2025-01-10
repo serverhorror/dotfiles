@@ -9,8 +9,5 @@ bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
 
 # available from Nix, but has to be configured separately
+eval "$(direnv hook zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-
-if [ -d "$HOME/bin" ]; then
-	export PATH="$HOME/bin:$PATH"
-fi

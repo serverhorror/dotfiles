@@ -2,6 +2,7 @@
 --dotfiles
 --target=~
 --ignore=.stowrc
+--ignore=.envrc
 --ignore=flake.lock
 --ignore=flake.nix
 --ignore=home.nix
