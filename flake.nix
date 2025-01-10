@@ -73,8 +73,10 @@
         lua51Packages.luarocks-nix
         # Python
         python3Full
-        poetry
-        uv
+        python3Packages.pip
+        poetry  # can be pip installed!
+        uv  # can be pip installed!
+        ruff  # can be pip installed!
         # python313Full
         # NodeJS
         # nodejs_18
