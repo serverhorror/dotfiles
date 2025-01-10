@@ -1,8 +1,4 @@
 # vim: set filetype=bash :
-if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
-    eval "$(fzf --bash)"
-fi
-
 if [ -r "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
     source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 fi
@@ -11,6 +7,10 @@ if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
 fi
 # Commands that should be applied only for interactive shells.
 [[ $- == *i* ]] || return
+if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
+    eval "$(fzf --bash)"
+fi
+
 
 ## BEGIN completion
 # see: https://mtlynch.io/notes/nix-git-bash-shell/
