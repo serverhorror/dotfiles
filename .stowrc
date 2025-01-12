@@ -3,6 +3,7 @@
 --target=~
 --ignore=.stowrc
 --ignore=.envrc
+--ignore=.editorconfig
 --ignore=flake.lock
 --ignore=flake.nix
 --ignore=home.nix
