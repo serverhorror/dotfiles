@@ -62,6 +62,8 @@
         zk
         zoxide
         oh-my-posh
+        # cheat sheets and docs
+        cht-sh tlrc
         # crypto stuff
         sops age
         # IaC, containers, K8S
