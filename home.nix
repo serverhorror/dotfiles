@@ -105,7 +105,7 @@ in {
         if [ -r "$HOME/.config/zsh/zsh.local" ]; then source "$HOME/.config/zsh/zsh.local"; fi
       '';
     };
- 
+
     bash = {
       enable = true;
       historyControl = [ "erasedups" "ignoredups" "ignorespace" "ignoreboth" ];
