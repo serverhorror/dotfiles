@@ -111,6 +111,12 @@ in {
       historyControl = [ "erasedups" "ignoredups" "ignorespace" "ignoreboth" ];
       historyIgnore = [ "cd .." "cd" "exit" "ll" "ls -l" "ls" "history" ];
       ## near the start
+      profileExtra = ''
+        # profileExtra
+        if [ -d "$HOME/.nix-profile/bin" ]; then
+          export PATH="$HOME/.nix-profile/bin:$PATH"
+        fi
+      '';
       initExtra = ''
         if [ -e /home/${inputs.systemUserName}/.nix-profile/etc/profile.d/nix.sh ]; then . /home/${inputs.systemUserName}/.nix-profile/etc/profile.d/nix.sh; fi                                  # added by Nix installer
         if [ -r /etc/profiles/per-user/${inputs.systemUserName}/etc/profile.d/hm-session-vars.sh ]; then . /etc/profiles/per-user/${inputs.systemUserName}/etc/profile.d/hm-session-vars.sh; fi  # added by Nix installer
