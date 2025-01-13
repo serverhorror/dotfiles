@@ -26,7 +26,7 @@
 [credential "https://bitbucket.biscrum.com"]
 	bitbucketAuthModes = "oauth"
 	helper = "cache --timeout 86399"
-	helper = "oauth -device"
+	helper = "oauth --device"
 	provider = "bitbucket"
 	useHttpPath = "true"
 
@@ -42,7 +42,7 @@
 
 [credential "https://github.com"]
 	helper = "cache --timeout 86399"
-	helper = "manager"
+	helper = "manager --no-ui"
 	provider = "github"
 
 [includeIf "hasconfig:remote.*.url:https://bitbucket.biscrum.com/**"]
