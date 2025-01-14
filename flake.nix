@@ -46,12 +46,15 @@
         lazygit
         libsecret
         libxml2
+        # fzf  # managed by home-manager
         neovim
+        oh-my-posh
         openrsync
         pup
         ripgrep
-        # fzf  # managed by home-manager
         rsync
+        shellcheck
+        shfmt
         stow
         tmux
         tree
@@ -61,7 +64,6 @@
         zellij
         zk
         zoxide
-        oh-my-posh
         # cheat sheets and docs
         cht-sh tlrc
         # crypto stuff
