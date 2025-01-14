@@ -6,19 +6,23 @@
     This script starts a devbox in AWS Service Catalog and opens VS Code.
 
     .PARAMETER AWSProfile
-    The AWS profile to use for the AWS CLI.
+    The AWS profile to use for the AWS CLI. (Default: $Env:USERNAME-teamspace)
 
-    .PARAMETER BoxName
-    The name of the devbox to start.
+    .PARAMETER DevBox
+    The name of the devbox to start. (Default: First devbox found)
+
+    .PARAMETER StartVSCode
+    Start VS Code after starting the devbox. (Default: do not start VS Code)
 
     .EXAMPLE
-    PS> Start-Devbox -AWSProfile "teamspace" -BoxName "devbox"
+    PS> Start-Devbox -AWSProfile "teamspace" -DevBox "devbox"
 #>
 
 [cmdletbinding()]
 param (
-    [string]$AWSProfile = "bi-is-ideationspace-play-teamspace",
-    [string]$BoxName = "play-devbox",
+    [string]$AWSProfile = "teamspace",
+    [string]$DevBox,
+    [switch]$StartVSCode,
     [switch]$Help
 )
 
@@ -32,11 +36,17 @@ function Start-DevBox {
     param (
         [Parameter(Mandatory = $true)]
         [string]$AWSProfile,
-        [Parameter(Mandatory = $true)]
-        [string]$BoxName,
+        [string]$DevBox,
+        [switch]$StartVSCode,
         [switch]$Help
     )
 
+    # check if aws knows about hte profile
+    $discoveredAwsProfile = & aws configure list-profiles | Select-String -Pattern $AWSProfile
+    if ($null -eq $discoveredAwsProfile) {
+        Write-Warning -Message "$(Get-TimeStamp) - Profile ``$AWSProfile' not found." -fo
+        return
+    }
 
     # check if we have a valid session
     try {
@@ -50,6 +60,9 @@ function Start-DevBox {
         # Login to AWS SSO
         Write-Verbose "$(Get-TimeStamp) - Could not find a valid session for profile $AWSProfile. Logging in to AWS SSO."
         & aws sso login --profile "$AWSProfile"
+        if ($LASTEXITCODE -ne 0) {
+            throw "Could not find a valid profile $AWSProfile."
+        }
     }
 
 
@@ -57,6 +70,11 @@ function Start-DevBox {
     $provisionedProducts = $(& aws --profile $AWSProfile servicecatalog list-provisioned-product-plans | ConvertFrom-Json)
     Write-Debug "$(Get-TimeStamp) - Provisioned Products: $provisionedProducts"
 
+    # check if provisionedProducts has a key ProvisionedProductPlans and if it has at least one element
+    if ($null -eq $provisionedProducts.ProvisionedProductPlans) {
+        Write-Error "$(Get-TimeStamp) - No provisioned product plans found."
+        return
+    }
 
     if ($null -ne $provisionedProducts.ProvisionedProductPlans -and $provisionedProducts.ProvisionedProductPlans.Count -gt 0) {
         $provisionedProductId = $provisionedProducts.ProvisionedProductPlans[0].ProvisionProductId
@@ -70,10 +88,16 @@ function Start-DevBox {
         Write-Error "$(Get-TimeStamp) - No provisioned product plans found."
         return
     }
-    $provisionedProductId = $provisionedProducts.ProvisionedProductPlans[0].ProvisionProductId
-    Write-Debug "$(Get-TimeStamp) - Provisioned Product Id: $provisionedProductId"
     $provisioningArtifactId = $provisionedProducts.ProvisionedProductPlans[0].ProvisioningArtifactId
     Write-Debug "$(Get-TimeStamp) - Provisioning Artifact Id: $provisioningArtifactId"
+
+    if (-Not $DevBox) {
+        # get the provisioned product outputs
+        Write-Debug "$(Get-TimeStamp) - Getting the provisioned product outputs."
+        $provisionedProductOutputs = aws servicecatalog get-provisioned-product-outputs --profile $AWSProfile --provisioned-product-id $provisionedProductId
+        $DevBox = ($($provisionedProductOutputs | ConvertFrom-Json).Outputs | Where-Object { $_.OutputKey -eq 'Instance' }).OutputValue
+        Write-Debug "$(Get-TimeStamp) - Found DevBox: $DevBox"
+    }
 
     $serviceCatalogActions = $(& aws --profile $AWSProfile servicecatalog list-service-actions-for-provisioning-artifact --product-id "$productId" --provisioning-artifact-id "$provisioningArtifactId" | ConvertFrom-Json)
     Write-Debug "$(Get-TimeStamp) - Service Catalog Action Id: $serviceCatalogActions"
@@ -90,14 +114,14 @@ function Start-DevBox {
     $waitPeriod = 300
     $timeout = [datetime]::Now.AddSeconds($waitPeriod)
     $desiredStatus = "AVAILABLE"
-    Write-Output "$(Get-TimeStamp) - Triggering the start of the $BoxName ... "
-    Write-Output "Starting $BoxName ... (wait for $waitPeriod seconds)"
-    while ($status -ne "$desiredStatus" -and [datetime]::Now -lt $timeout) {
+    Write-Output "$(Get-TimeStamp) - Triggering the start of the $DevBox ... "
+    Write-Output "Starting $DevBox ... (wait for $waitPeriod seconds)"
+    while ($status -ne "$desiredStatus" -or [datetime]::Now -ge $timeout) {
         Start-Sleep -Seconds 3
         $status = $(& aws --profile $AWSProfile servicecatalog describe-provisioned-product --id $provisionedProductId | ConvertFrom-Json).ProvisionedProductDetail.Status
-        Write-Progress -Activity "Starting $BoxName" -Status "Status: $status" -PercentComplete (([datetime]::Now - [datetime]::Now.AddSeconds(-$waitPeriod)).TotalSeconds / $waitPeriod * 100)
+        Write-Progress -Activity "Starting DevBox: $DevBox" -Status "Status: $status" -SecondsRemaining ($timeout - [datetime]::Now).TotalSeconds
     }
-    write-progress -Activity "Starting $BoxName" -completed
+    write-progress -Activity "Starting DevBox: $DevBox" -completed
 
     if ($status -ne "$desiredStatus") {
         Write-Error "$(Get-TimeStamp) -  xxx I don't know what to do! Send help! xxx"
@@ -110,9 +134,22 @@ function Start-DevBox {
 
     try {
         # start a code instance in the devbox via remote tunnels
-        & ssh -T play-devbox "echo 'Good day sir!'"
-        # & code --new-window --remote "ssh-remote+$BoxName"
-        Write-Output "$(Get-TimeStamp) - Open VS Code at will!"
+        & ssh -T $DevBox "echo 'Good day sir!'"
+        Write-Information "Open VS Code at will!"
+        $msg = (
+            "Open VS Code at will!" + "`n" +
+            "`n" +
+            "* code --new-window --remote ssh-remote+$DevBox" + "`n" +
+            "* Start VS Code and use the Remote-SSH extension to connect to the $DevBox." + "`n" +
+            ""
+        )
+        Write-Output $msg
+        if ($StartVSCode) {
+            Write-Information "$(Get-TimeStamp) - Starting VS Code..."
+            & code --new-window --remote "ssh-remote+$DevBox"
+        }
+
+
         exit 0
     }
     catch {
@@ -128,4 +165,4 @@ if ($Help) {
     exit 0
 }
 
-Start-DevBox -AWSProfile $AWSProfile -BoxName $BoxName
+Start-DevBox -AWSProfile $AWSProfile -DevBox $DevBox -StartVSCode:$StartVSCode
