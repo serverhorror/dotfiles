@@ -26,6 +26,8 @@ param (
     [switch]$Help
 )
 
+$ErrorActionPreference = "Stop"
+
 if ($Debug) {
     $VerbosePreference = "Continue"
     $DebugPreference = "Continue"
