@@ -65,6 +65,7 @@ stow --verbose . --simulate
   ```pwsh
   # this is so git actually works
   [Environment]::SetEnvironmentVariable("GCM_CREDENTIAL_STORE", "wincredman", [System.EnvironmentVariableTarget]::User)
+  New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE/src/dotfiles/scripts" -Path "$env:USERPROFILE/Scripts"
   New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\src\dotfiles\dot-config\git" -Path "$env:XDG_CONFIG_HOME/git"
   New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\src\dotfiles\dot-config\nvim" -Path "$env:XDG_CONFIG_HOME/nvim"
   New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\src\dotfiles\dot-config\komorebi" -Path "$env:XDG_CONFIG_HOME/komorebi"
