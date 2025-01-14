@@ -14,5 +14,9 @@ insert_final_newline = true
 [*.md]
 indent_size = 2
 
+[*.ps1]
+indent_size = 2
+end_of_line = crlf
+
 [{*.yaml,*.json}]
 indent_size = 2
