@@ -1,0 +1,84 @@
+{
+    "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.29/schema.bar.json",
+    "monitor": {
+        "index": 0,
+        "work_area_offset": {
+            "left": 0,
+            "top": 40,
+            "right": 0,
+            "bottom": 40
+        }
+    },
+    "font_family": "Jokerman",
+    "theme": {
+        "palette": "Base16",
+        "name": "Ashes",
+        "accent": "Base0D"
+    },
+    "left_widgets": [
+        {
+            "Komorebi": {
+                "workspaces": {
+                    "enable": false,
+                    "hide_empty_workspaces": false
+                },
+                "layout": {
+                    "enable": true
+                },
+                "focused_window": {
+                    "enable": true,
+                    "show_icon": true
+                },
+                "unfocused_windows": {
+                    "enable": true,
+                    "show_icon": true
+                }
+            }
+        }
+    ],
+    "right_widgets": [
+        {
+            "Media": {
+                "enable": true
+            }
+        },
+        {
+            "Storage": {
+                "enable": false
+            }
+        },
+        {
+            "Memory": {
+                "enable": true
+            }
+        },
+        {
+            "Network": {
+                "enable": true,
+                "show_total_data_transmitted": true,
+                "show_network_activity": true
+            }
+        },
+        {
+            "Date": {
+                "enable": true,
+                "format": {
+                    "Custom": "%Y-%m-%d (%B, %A) 👻 "
+                }
+            }
+        },
+        {
+            "Time": {
+                "enable": true,
+                "format": {
+                    "Custom": "%Y-%m-%d (%B, %A) 👻 %H:%Mh (TZ: %Z)"
+                }
+            }
+        },
+        {
+            "Battery": {
+                "enable": false
+            }
+        }
+    ]
+}

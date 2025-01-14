@@ -1,49 +1,50 @@
 [user]
-	email = "serverhorror@users.noreply.github.com"
-	name = "serverhorror"
+    email = "serverhorror@users.noreply.github.com"
+    name = "serverhorror"
 [core]
-	whitespace = "trailing-space,space-before-tab"
-	autocrlf = false
+    whitespace = "trailing-space,space-before-tab"
+    autocrlf = false
+    excludesfile = ~/.config/git/ignore
 [rerere]
-	enabled = true
+    enabled = true
 [alias]
-	br = branch
-	ci = commit
-	civ = commit -v
-	p = pull
-	push-force = push --force-with-lease
-	reset-upstream = reset --hard '@{u}'
-	root = rev-parse --show-toplevel
-	st = status
-	sw = switch
+    br = branch
+    ci = commit
+    civ = commit -v
+    p = pull
+    push-force = push --force-with-lease
+    reset-upstream = reset --hard '@{u}'
+    root = rev-parse --show-toplevel
+    st = status
+    sw = switch
 
 [credential]
-	credentialStore = "cache"
-	helper = "cache --timeout 86399"
-	helper = "manager"
-	useHttpPath = "true"
+    credentialStore = "cache"
+    helper = "cache --timeout 86399"
+    helper = "manager"
+    useHttpPath = "true"
 
 [credential "https://bitbucket.biscrum.com"]
-	bitbucketAuthModes = "oauth"
-	helper = "cache --timeout 86399"
-	helper = "oauth --device"
-	provider = "bitbucket"
-	useHttpPath = "true"
+    bitbucketAuthModes = "oauth"
+    helper = "cache --timeout 86399"
+    helper = "oauth --device"
+    provider = "bitbucket"
+    useHttpPath = "true"
 
 [credential "https://dev.azure.com"]
-	useHttpPath = "true"
+    useHttpPath = "true"
 
 [credential "https://huggingface.co"]
-	provider = "generic"
+    provider = "generic"
 
 [credential "https://gist.github.com"]
-	helper = "cache --timeout 86399"
-	helper = "manager"
+    helper = "cache --timeout 86399"
+    helper = "manager"
 
 [credential "https://github.com"]
-	helper = "cache --timeout 86399"
-	helper = "manager --no-ui"
-	provider = "github"
+    helper = "cache --timeout 86399"
+    helper = "manager --no-ui"
+    provider = "github"
 
 [includeIf "hasconfig:remote.*.url:https://bitbucket.biscrum.com/**"]
-	path = ".config/git/boehringer-ingelheim.inc"
+    path = ".config/git/boehringer-ingelheim.inc"

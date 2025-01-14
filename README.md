@@ -41,27 +41,35 @@ stow --verbose . --simulate
 
 ## Windows
 
-> [!WARNING]  
+> [!WARNING]
 > This is a work in progress!
 > Use at your own risk!
 
 * required environment variables
 
-  ```pwsh
-  ```
+  generally:
 
   ```pwsh
   [Environment]::SetEnvironmentVariable("XDG_CONFIG_HOME", "$env:USERPROFILE\.config", [System.EnvironmentVariableTarget]::User)
   [Environment]::SetEnvironmentVariable("KOMOREBI_CONFIG_HOME", "$env:XDG_CONFIG_HOME\komorebi", [System.EnvironmentVariableTarget]::User)
   ```
 
-* symlinks for git and nvim (PowerShell)
+  for `git`:
+
+  ```pwsh
+  [Environment]::SetEnvironmentVariable("GCM_CREDENTIAL_STORE", "wincredman", [System.EnvironmentVariableTarget]::User)
+  ```
+
+* symlinks for `git`, `nvim`, ...
 
   ```pwsh
   # this is so git actually works
   [Environment]::SetEnvironmentVariable("GCM_CREDENTIAL_STORE", "wincredman", [System.EnvironmentVariableTarget]::User)
+  New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE/src/dotfiles/scripts" -Path "$env:USERPROFILE/Scripts"
   New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\src\dotfiles\dot-config\git" -Path "$env:XDG_CONFIG_HOME/git"
   New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\src\dotfiles\dot-config\nvim" -Path "$env:XDG_CONFIG_HOME/nvim"
+  New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\src\dotfiles\dot-config\komorebi" -Path "$env:XDG_CONFIG_HOME/komorebi"
+  New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\src\dotfiles\dot-config\whkdrc" -Path "$env:XDG_CONFIG_HOME/whkdrc"
   ```
 
 ## LazyVIM
@@ -107,13 +115,8 @@ Enable the `nix` command and `flakes` (e.g. `nix flake show`)
 > # ...(more lines here)...
 > ```
 
-### Bootstrap Nix
-
-* See above!
-
-#### Update the flake
-
-* See above!
+* to bootstrap Nix See above!
+* to update the flake See above!
 
 ### Other Info
 
@@ -122,13 +125,13 @@ Enable the `nix` command and `flakes` (e.g. `nix flake show`)
     ```bash
     nix --extra-experimental-features 'nix-command flakes' flake init
     ```
+
 * "Develop"
   Enters a new shell based on `devShells.x86_64-linux.default`
 
     ```bash
     nix  --extra-experimental-features 'nix-command flakes' develop
     ```
-
 
 * Do it!
   This requires a program/package to be runable
