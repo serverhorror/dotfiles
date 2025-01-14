@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.25/schema.json",
+  "animation": {
+    "enabled": true,
+    "duration": 150,
+    "style": "EaseInOutQuad",
+    "fps": 60
+  },
+  "app_specific_configuration_path": "C:/Users/m/.config/komorebi/applications.json",
+  "window_hiding_behaviour": "Cloak",
+  "cross_monitor_move_behaviour": "Insert",
+  "default_workspace_padding": 20,
+  "default_container_padding": 5,
+  "border": true,
+  "border_offset": -1,
+  "border_width": 10,
+  "border_colours": {
+    "monocle": "#ff3399",
+    "single": "#42a5f5",
+    "stack": "#00a542",
+    "unfocused": "#808080"
+  },
+  "monitors": [
+    {
+      "workspaces": [
+        {
+          "layout": "RightMainVerticalStack",
+          "name": "I"
+        }
+      ]
+    },
+    {
+      "workspaces": [
+        {
+          "name": "I",
+          "layout": "Rows"
+        }
+      ]
+    }
+  ],
+  "theme": {
+    "palette": "Catppuccin",
+    "name": "Frappe",
+    "bar_accent": "Yellow"
+  },
+  "stackbar": {
+    "height": 35,
+    "mode": "OnStack",
+    "tabs": {
+      "background": "#141414",
+      "focused_text": "#00a542",
+      "unfocused_text": "#b3b3b3",
+      "width": 300
+    }
+  }
+}
