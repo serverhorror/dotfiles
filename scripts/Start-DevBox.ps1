@@ -26,6 +26,11 @@ param (
     [switch]$Help
 )
 
+if ($Debug) {
+    $VerbosePreference = "Continue"
+    $DebugPreference = "Continue"
+}
+
 function Get-TimeStamp {
     return Get-Date -Format "yyyy-MM-dd\THH:mm:ss"
 }
