@@ -37,6 +37,29 @@ function Get-TimeStamp {
     return Get-Date -Format "yyyy-MM-dd\THH:mm:ss"
 }
 
+function Invoke-WithErrorHandling {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$Command,
+        [Parameter(ValueFromRemainingArguments = $true)]
+        [string[]]$Arguments
+    )
+
+    try {
+        & $Command @Arguments
+    }
+    catch {
+        # Whenever we get a 'command not found'
+        throw
+    }
+    if ($LASTEXITCODE -ne 0) {
+        # # Both of these are $null here
+        # Write-Error $_.Exception.Message
+        # Write-Error $_.ScriptStackTrace
+        throw "$Command exited with code $LASTEXITCODE."
+    }
+}
+
 
 function Start-DevBox {
     [CmdletBinding()]
@@ -49,8 +72,8 @@ function Start-DevBox {
     )
 
     try {
-        # check if aws knows about hte profile
-        $discoveredAwsProfile = & aws configure list-profiles | Select-String -Pattern $AWSProfile
+        # check if aws knows about the profile
+        $discoveredAwsProfile = Invoke-WithErrorHandling aws configure list-profiles | Select-String -Pattern $AWSProfile
         if ($null -eq $discoveredAwsProfile) {
             Write-Warning -Message "$(Get-TimeStamp) - Profile ``$AWSProfile' not found." -fo
             return
@@ -58,7 +81,7 @@ function Start-DevBox {
 
         # check if we have a valid session
         try {
-            $awsSession = & aws --profile $AWSProfile sts get-caller-identity
+            $awsSession = Invoke-WithErrorHandling aws --profile $AWSProfile sts get-caller-identity
             if ($LASTEXITCODE -ne 0) {
                 throw "Could not find a valid session for profile $AWSProfile."
             }
@@ -67,7 +90,7 @@ function Start-DevBox {
         catch {
             # Login to AWS SSO
             Write-Verbose "$(Get-TimeStamp) - Could not find a valid session for profile $AWSProfile. Logging in to AWS SSO."
-            & aws sso login --profile "$AWSProfile"
+            Invoke-WithErrorHandling aws sso login --profile "$AWSProfile"
             if ($LASTEXITCODE -ne 0) {
                 throw "Could not find a valid profile $AWSProfile."
             }
@@ -75,8 +98,8 @@ function Start-DevBox {
         }
 
 
-        # & aws sso --profile "$AWSProfile" login
-        $provisionedProducts = $(& aws --profile $AWSProfile servicecatalog list-provisioned-product-plans | ConvertFrom-Json)
+        # Invoke-WithErrorHandling aws sso --profile "$AWSProfile" login
+        $provisionedProducts = $(Invoke-WithErrorHandling aws --profile $AWSProfile servicecatalog list-provisioned-product-plans | ConvertFrom-Json)
         Write-Debug "$(Get-TimeStamp) - Provisioned Products: $provisionedProducts"
 
         # check if provisionedProducts has a key ProvisionedProductPlans and if it has at least one element
@@ -89,7 +112,7 @@ function Start-DevBox {
             $provisionedProductId = $provisionedProducts.ProvisionedProductPlans[0].ProvisionProductId
             Write-Debug "$(Get-TimeStamp) - Provisioned Product Id: $provisionedProductId"
 
-            $productDetails = $(& aws --profile $AWSProfile servicecatalog describe-provisioned-product --id $provisionedProductId | ConvertFrom-Json)
+            $productDetails = $(Invoke-WithErrorHandling aws --profile $AWSProfile servicecatalog describe-provisioned-product --id $provisionedProductId | ConvertFrom-Json)
             if ($LASTEXITCODE -ne 0) {
                 throw "Could not describe provisioned product: $provisionedProductId."
                 exit 1
@@ -112,14 +135,14 @@ function Start-DevBox {
             Write-Debug "$(Get-TimeStamp) - Found DevBox: $DevBox"
         }
 
-        $serviceCatalogActions = $(& aws --profile $AWSProfile servicecatalog list-service-actions-for-provisioning-artifact --product-id "$productId" --provisioning-artifact-id "$provisioningArtifactId" | ConvertFrom-Json)
+        $serviceCatalogActions = $(Invoke-WithErrorHandling aws --profile $AWSProfile servicecatalog list-service-actions-for-provisioning-artifact --product-id "$productId" --provisioning-artifact-id "$provisioningArtifactId" | ConvertFrom-Json)
         Write-Debug "$(Get-TimeStamp) - Service Catalog Action Id: $serviceCatalogActions"
 
         # get the service action id that starts the devbox, the name of the action is "Start-EC2"
         $serviceActionStartEc2Id = $serviceCatalogActions.ServiceActionSummaries | Where-Object { $_.Name -eq "Start-EC2" } | Select-Object -ExpandProperty Id
         Write-Debug "$(Get-TimeStamp) - Service Action Start EC2 Id: $serviceActionStartEc2Id"
 
-        $executionResult = & aws --profile "$AWSProfile" servicecatalog execute-provisioned-product-service-action --provisioned-product-id $provisionedProductId --service-action-id $serviceActionStartEc2Id
+        $executionResult = Invoke-WithErrorHandling aws --profile "$AWSProfile" servicecatalog execute-provisioned-product-service-action --provisioned-product-id $provisionedProductId --service-action-id $serviceActionStartEc2Id
         Write-Debug "$(Get-TimeStamp) - Execution Result: $executionResult"
 
 
@@ -131,7 +154,7 @@ function Start-DevBox {
         Write-Output "Starting $DevBox ... (wait for $waitPeriod seconds)"
         while ($status -ne "$desiredStatus" -or [datetime]::Now -ge $timeout) {
             Start-Sleep -Seconds 3
-            $status = $(& aws --profile $AWSProfile servicecatalog describe-provisioned-product --id $provisionedProductId | ConvertFrom-Json).ProvisionedProductDetail.Status
+            $status = $(Invoke-WithErrorHandling aws --profile $AWSProfile servicecatalog describe-provisioned-product --id $provisionedProductId | ConvertFrom-Json).ProvisionedProductDetail.Status
             Write-Progress -Activity "Starting DevBox: $DevBox" -Status "Status: $status" -SecondsRemaining ($timeout - [datetime]::Now).TotalSeconds
         }
         write-progress -Activity "Starting DevBox: $DevBox" -completed
@@ -155,7 +178,7 @@ function Start-DevBox {
 
     try {
         # start a code instance in the devbox via remote tunnels
-        & ssh -T $DevBox "echo 'Good day sir!'"
+        Invoke-WithErrorHandling ssh -T $DevBox "echo 'Good day sir!'"
         Write-Information "Open VS Code at will!"
         $msg = (
             "Open VS Code at will!" + "`n" +
@@ -167,7 +190,7 @@ function Start-DevBox {
         Write-Output $msg
         if ($StartVSCode) {
             Write-Information "$(Get-TimeStamp) - Starting VS Code..."
-            & code --new-window --remote "ssh-remote+$DevBox"
+            Invoke-WithErrorHandling code --new-window --remote "ssh-remote+$DevBox"
         }
 
 
