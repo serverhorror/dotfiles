@@ -113,10 +113,10 @@ function Start-DevBox {
             Write-Debug "$(Get-TimeStamp) - Provisioned Product Id: $provisionedProductId"
 
             $productDetails = $(Invoke-WithErrorHandling aws --profile $AWSProfile servicecatalog describe-provisioned-product --id $provisionedProductId | ConvertFrom-Json)
-            if ($LASTEXITCODE -ne 0) {
-                throw "Could not describe provisioned product: $provisionedProductId."
-                exit 1
-            }
+            # if ($LASTEXITCODE -ne 0) {
+            #     throw "Could not describe provisioned product: $provisionedProductId."
+            #     exit 1
+            # }
             $productId = $productDetails.ProvisionedProductDetail.ProductId
             Write-Debug "$(Get-TimeStamp) - Product Id: $productId"
         }
