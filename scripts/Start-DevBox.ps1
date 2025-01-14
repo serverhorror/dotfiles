@@ -147,8 +147,11 @@ function Start-DevBox {
     }
     catch {
         # Login to AWS SSO
-        Write-Error "$(Get-TimeStamp) - Could not find a valid session for profile $AWSProfile. Logging in to AWS SSO."
+        Write-Error "$(Get-TimeStamp) -  xxx I don't know what to do! Send help! xxx"
+        Write-Error "$(Get-TimeStamp) - Give them this message: $errorMessage"
         Write-Error $_.ScriptStackTrace
+        Write-Error $_.Exception.Message
+        exit 1
     }
 
     try {
