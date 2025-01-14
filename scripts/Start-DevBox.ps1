@@ -48,21 +48,30 @@ function Start-DevBox {
         [switch]$Help
     )
 
-    # check if aws knows about hte profile
-    $discoveredAwsProfile = & aws configure list-profiles | Select-String -Pattern $AWSProfile
-    if ($null -eq $discoveredAwsProfile) {
-        Write-Warning -Message "$(Get-TimeStamp) - Profile ``$AWSProfile' not found." -fo
-        return
-    }
-
-    # check if we have a valid session
     try {
-        $awsSession = & aws --profile $AWSProfile sts get-caller-identity
-        if ($LASTEXITCODE -ne 0) {
-            throw "Could not find a valid session for profile $AWSProfile."
+        # check if aws knows about hte profile
+        $discoveredAwsProfile = & aws configure list-profiles | Select-String -Pattern $AWSProfile
+        if ($null -eq $discoveredAwsProfile) {
+            Write-Warning -Message "$(Get-TimeStamp) - Profile ``$AWSProfile' not found." -fo
+            return
         }
-        Write-Debug "$(Get-TimeStamp) - AWS Session: $awsSession"
 
+        # check if we have a valid session
+        try {
+            $awsSession = & aws --profile $AWSProfile sts get-caller-identity
+            if ($LASTEXITCODE -ne 0) {
+                throw "Could not find a valid session for profile $AWSProfile."
+            }
+            Write-Debug "$(Get-TimeStamp) - AWS Session: $awsSession"
+        }
+        catch {
+            # Login to AWS SSO
+            Write-Verbose "$(Get-TimeStamp) - Could not find a valid session for profile $AWSProfile. Logging in to AWS SSO."
+            & aws sso login --profile "$AWSProfile"
+            if ($LASTEXITCODE -ne 0) {
+                throw "Could not find a valid profile $AWSProfile."
+            }
+        }
 
 
         # & aws sso --profile "$AWSProfile" login
@@ -133,12 +142,10 @@ function Start-DevBox {
     }
     catch {
         # Login to AWS SSO
-        Write-Verbose "$(Get-TimeStamp) - Could not find a valid session for profile $AWSProfile. Logging in to AWS SSO."
-        & aws sso login --profile "$AWSProfile"
-        if ($LASTEXITCODE -ne 0) {
-            throw "Could not find a valid profile $AWSProfile."
-        }
+        Write-Error "$(Get-TimeStamp) - Could not find a valid session for profile $AWSProfile. Logging in to AWS SSO."
+        Write-Error $_.ScriptStackTrace
     }
+
     try {
         # start a code instance in the devbox via remote tunnels
         & ssh -T $DevBox "echo 'Good day sir!'"
