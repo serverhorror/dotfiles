@@ -71,6 +71,7 @@ function Start-DevBox {
             if ($LASTEXITCODE -ne 0) {
                 throw "Could not find a valid profile $AWSProfile."
             }
+            throw
         }
 
 
