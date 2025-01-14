@@ -180,4 +180,7 @@ if ($Help) {
     exit 0
 }
 
+$ErrorActionPreference = "Stop"
+Set-PSDebug -Trace 1
+
 Start-DevBox -AWSProfile $AWSProfile -DevBox $DevBox -StartVSCode:$StartVSCode
