@@ -1,5 +1,5 @@
-; [default]
-; region = eu-west-1
+# [default]
+# region = eu-west-1
 
 [aws4pa.cb.prod]
 region = eu-west-1
