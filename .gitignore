@@ -7,3 +7,4 @@ bin/golangci-lint
 bin/nilaway
 bin/staticcheck
 bin/goose
+bin/sqlc
