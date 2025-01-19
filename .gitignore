@@ -6,3 +6,4 @@ bin/goimports
 bin/golangci-lint
 bin/nilaway
 bin/staticcheck
+bin/goose
