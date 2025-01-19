@@ -82,9 +82,10 @@
         python313
         python313Packages.pip
         python313Packages.requests
-        poetry  # can be pip installed!
-        uv  # can be pip installed!
-        ruff  # can be pip installed!
+        poetry     # can be pip installed!
+        uv         # can be pip installed!
+        ruff       # can be pip installed!
+        pre-commit # can be pip installed!
         # python313Full
         # NodeJS
         # nodejs_18
@@ -94,6 +95,8 @@
         go gopls
         # Zig
         zig zls
+        # pre-commit dependencies (markdown)
+        ruby  # dear lord Chthulhu, no!
 	texliveFull
         # nix stuff
         nixfmt-rfc-style
