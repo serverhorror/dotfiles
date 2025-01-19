@@ -95,8 +95,9 @@
         go gopls
         # Zig
         zig zls
-        # pre-commit dependencies (markdown)
-        ruby  # dear lord Chthulhu, no!
+        # pre-commit dependencies
+        ruby  # dear lord Chthulhu, no! (markdown)
+        sqlfluff
 	texliveFull
         # nix stuff
         nixfmt-rfc-style
