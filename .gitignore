@@ -1,2 +1,10 @@
 .nvimlog
 startup.log
+bin/cobra-cli
+bin/dlv
+bin/goimports
+bin/golangci-lint
+bin/nilaway
+bin/staticcheck
+bin/goose
+bin/sqlc
