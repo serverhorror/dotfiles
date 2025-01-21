@@ -30,7 +30,7 @@
         awscli
         bash
         coreutils
-        curl
+        curl restish
         dig
         direnv
         fd
