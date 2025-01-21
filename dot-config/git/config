@@ -3,7 +3,7 @@
     name = "serverhorror"
 [core]
     whitespace = "trailing-space,space-before-tab"
-    autocrlf = false
+    autocrlf = true
     excludesfile = ~/.config/git/ignore
 [rerere]
     enabled = true
