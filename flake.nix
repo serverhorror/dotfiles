@@ -74,6 +74,7 @@
         cri-tools
         cue
         kind
+        kubectl
         openshift
         pulumi-bin
         # lua51Packages.luarocks
