@@ -72,6 +72,8 @@
         docker-client
         docker-buildx
         cri-tools
+        kubernetes-helm
+        k9s
         cue
         kind
         kubectl
