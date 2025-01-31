@@ -1,6 +1,3 @@
 *
-credentials
-cli/
-sso/
 !.gitignore
 !config

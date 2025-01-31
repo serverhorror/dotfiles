@@ -14,13 +14,24 @@ Host play-devbox
     ProxyCommand C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe "aws --profile bi-is-ideationspace-play-teamspace ssm start-session --target %h --document-name AWS-StartSSHSession --parameters portNumber=%p"
     # HostName i-08782a2c3ebe4ec37
     # HostName i-098f1c6d551295dac
-    HostName i-0caf2017b94cac978
+    # HostName i-0caf2017b94cac978
+    HostName i-06c971d96d2f0f604
+
+Host techtrain-devbox
+    User ec2-user
+    ProxyCommand C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe "aws --profile bi-is-ideationspace-techtrain-teamspace ssm start-session --target %h --document-name AWS-StartSSHSession --parameters portNumber=%p"
+    HostName i-UNKNOWN
 
 Host ibbsddc-devbox
     User ec2-user
     ProxyCommand C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe "aws --profile bi-is-ideationspace-ibbsddc-teamspace ssm start-session --target %h --document-name AWS-StartSSHSession --parameters portNumber=%p"
     # HostName i-084f847611464a1fc
     HostName i-0113b4c6a9719a232
+
+Host pames-devbox
+    User ec2-user
+    ProxyCommand C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe "aws --profile bi-is-ideationspace-pames-teamspace ssm start-session --target %h --document-name AWS-StartSSHSession --parameters portNumber=%p"
+    HostName i-03571082145bab948
 
 Host i-*
     User ec2-user
@@ -36,4 +47,3 @@ Host *
     TCPKeepAlive yes
     ServerAliveCountMax 100
     ServerAliveInterval 4
-

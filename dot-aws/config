@@ -1,5 +1,5 @@
-# [default]
-# region = eu-west-1
+; [default]
+; region = eu-west-1
 
 [aws4pa.cb.prod]
 region = eu-west-1
@@ -62,4 +62,9 @@ region = eu-west-1
 [profile bi-is-ideationspace-techtrain-teamspace]
 sso_session = boehringer-eu-west-1-bi-wcdeusecases
 sso_account_id = 471112548035
+region = eu-west-1
+
+[profile bi-is-ideationspace-pames-teamspace]
+sso_session = boehringer-eu-west-1-bi-wcdeusecases
+sso_account_id = 920372996079
 region = eu-west-1
