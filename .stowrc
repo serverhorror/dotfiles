@@ -3,6 +3,7 @@
 --target=~
 --ignore=.stowrc
 --ignore=.editorconfig
+--ignore=.gitattributes
 --ignore=.envrc
 --ignore=.venv
 --ignore=.vscode

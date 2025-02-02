@@ -1,0 +1,4 @@
+*.sh eol=lf
+*.ps eol=lf
+*.md eol=lf
+*.lua eol=lf
