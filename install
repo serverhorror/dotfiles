@@ -1,28 +1,34 @@
 #!/bin/bash
 
 make_magic() {
-	sh <(curl -L https://nixos.org/nix/install) --no-daemon --no-channel-add
-	exec bash
-	nix --extra-experimental-features 'nix-command flakes' shell nixpkgs#git nixpkgs#git-credential-oauth nixpkgs#home-manager
-	#source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
-	home-manager --version
-	git -c credential.helper='oauth --device' clone 'https://github.com/serverhorror/dotfiles.git' src/dotfiles
-	cd src/dotfiles/
-	mkdir --parent ~/.config/nix
-	echo "experimental-features = nix-command flakes" >~/.config/nix/nix.conf
-	home-manager -v switch -b "'$(date +%F)'" --flake ~/src/dotfiles # that will take a while!
-	rm -rf ~/.config/nix
-	cd ~/src/dotfiles
-	stow --adopt .
-	git reset --hard '@{u}'
-	stow .
+
+    echo "NOT IMPLEMENTED!"
+    exit 1
+
+    sh <(curl -L https://nixos.org/nix/install) --no-daemon --no-channel-add
+    # exec bash
+    nix --extra-experimental-features 'nix-command flakes' shell nixpkgs#git nixpkgs#git-credential-oauth nixpkgs#home-manager
+    #source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+    home-manager --version
+    git -c credential.helper='oauth --device' clone 'https://github.com/serverhorror/dotfiles.git' src/dotfiles
+    cd src/dotfiles/ || exit
+    mkdir --parent ~/.config/nix
+    echo "experimental-features = nix-command flakes" >~/.config/nix/nix.conf
+    home-manager -v switch -b "'$(date +%F)'" --flake ~/src/dotfiles # that will take a while!
+    rm -rf ~/.config/nix
+    cd ~/src/dotfiles || exit
+    stow --adopt .
+    git reset --hard '@{u}'
+    stow .
 }
 
 if [ "${BASH_SOURCE[0]}" == "$0" ]; then
 
-	if [ -v DEBUG ]; then
-		set -o xtrace
-	fi
+    if [ -v DEBUG ]; then
+        set -o xtrace
+    fi
 
-	make_magic
+    make_magic
+
+    make_foo
 fi
