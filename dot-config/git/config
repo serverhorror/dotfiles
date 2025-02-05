@@ -2,8 +2,8 @@
     email = "serverhorror@users.noreply.github.com"
     name = "serverhorror"
 [core]
-    eol = lf
-    autocrlf = true
+    # eol = lf
+    autocrlf = false
     whitespace = "trailing-space,space-before-tab"
     excludesfile = ~/.config/git/ignore
 [rerere]
@@ -49,3 +49,6 @@
 
 [includeIf "hasconfig:remote.*.url:https://bitbucket.biscrum.com/**"]
     path = ".config/git/boehringer-ingelheim.inc"
+
+[credential "https://config-repo.werum.com/scm/big/com.kphs.big.deployment.environment.git"]
+	provider = bitbucket

@@ -78,6 +78,7 @@
         kind
         kubectl
         openshift
+        skopeo
         pulumi-bin
         # lua51Packages.luarocks
         lua51Packages.luarocks-nix
