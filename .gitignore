@@ -9,3 +9,4 @@ bin/nilaway
 bin/sqlc
 bin/staticcheck
 bin/tailor
+bin/datagrip
