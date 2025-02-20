@@ -1,6 +1,5 @@
 Thumbs.db
 .env
-.envrc
 *.tmp
 *.bak
 *.scratch
