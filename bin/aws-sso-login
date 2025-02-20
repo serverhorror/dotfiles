@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+export BROWSER=chromium-browser
+
+selected_profile="$(/usr/local/bin/aws configure list-profiles \
+    | sort -u \
+    | fzf --layout=reverse)"
+
+/usr/local/bin/aws sso login --profile "$selected_profile"
