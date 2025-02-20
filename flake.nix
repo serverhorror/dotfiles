@@ -71,6 +71,7 @@
         # IaC, containers, K8S
         docker-client
         docker-buildx
+        imgpkg
         cri-tools
         kubernetes-helm
         k9s
