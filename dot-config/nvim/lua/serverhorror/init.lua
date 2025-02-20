@@ -32,11 +32,11 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
+    desc = "Highlight when yanking (copying) text",
+    group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
 })
 
 -- vim.keymap.set("n", "<C-/>", "gcc", { desc = "Comment selection" })
@@ -46,7 +46,7 @@ vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
 
 -- <leader>n to set nohlsearch, the second parameter is the function (reference) to call
 vim.keymap.set("n", "<leader>n", function()
-	vim.cmd("nohlsearch")
+    vim.cmd("nohlsearch")
 end, { desc = "Clear search highlights" })
 
 -- begin global settings
@@ -63,12 +63,12 @@ vim.opt.relativenumber = true
 -- This makes the relative line numbers toggle when entering a window or buffer
 vim.api.nvim_create_augroup("numbertoggle", { clear = true })
 vim.api.nvim_create_autocmd(
-	{ "BufEnter", "WinEnter", "FocusGained", "InsertEnter" },
-	{ group = "numbertoggle", pattern = "*", command = "set number relativenumber" }
+    { "BufEnter", "WinEnter", "FocusGained", "InsertEnter" },
+    { group = "numbertoggle", pattern = "*", command = "set number relativenumber" }
 )
 vim.api.nvim_create_autocmd(
-	{ "BufLeave", "WinLeave", "FocusLost", "InsertLeave" },
-	{ group = "numbertoggle", pattern = "*", command = "set number norelativenumber" }
+    { "BufLeave", "WinLeave", "FocusLost", "InsertLeave" },
+    { group = "numbertoggle", pattern = "*", command = "set number norelativenumber" }
 )
 -- end mode based relative line numbers
 
