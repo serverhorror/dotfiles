@@ -15,7 +15,7 @@ echo "experimental-features = nix-command flakes" >~/.config/nix/nix.conf
 home-manager -v switch -b "'$(date +%F)'" --flake ~/src/dotfiles # that will take a while!
 rm -rf ~/.config/nix
 cd ~/src/dotfiles
-stow --adopt .
+stow --adopt . --simulate
 git reset --hard '@{u}'
 stow .
 ```
