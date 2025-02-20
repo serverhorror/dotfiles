@@ -4,7 +4,8 @@ bin/cobra-cli
 bin/dlv
 bin/goimports
 bin/golangci-lint
-bin/nilaway
-bin/staticcheck
 bin/goose
+bin/nilaway
 bin/sqlc
+bin/staticcheck
+bin/tailor
