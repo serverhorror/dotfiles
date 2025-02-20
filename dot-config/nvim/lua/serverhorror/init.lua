@@ -63,7 +63,7 @@ vim.opt.relativenumber = true
 -- This makes the relative line numbers toggle when entering a window or buffer
 vim.api.nvim_create_augroup("numbertoggle", { clear = true })
 vim.api.nvim_create_autocmd(
-    { "BufEnter", "WinEnter", "FocusGained", "InsertEnter" },
+    { "InsertEnter" },
     { group = "numbertoggle", pattern = "*", command = "set number relativenumber" }
 )
 vim.api.nvim_create_autocmd(
