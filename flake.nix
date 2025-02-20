@@ -27,7 +27,7 @@
         # # home-manager
         # home-manager
         # # common
-        awscli
+        # awscli  # this is v1! BAD!
         bash
         coreutils
         curl restish
