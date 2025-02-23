@@ -1,6 +1,7 @@
 .nvimlog
 startup.log
 bin/cobra-cli
+bin/gopls
 bin/dlv
 bin/goimports
 bin/golangci-lint
