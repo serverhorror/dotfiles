@@ -55,4 +55,4 @@
 ;(global-set-key (kbd "<C-w> k") 'other-window)
 
 
-(add-to-list 'default-frame-alist '(alpha-background . 90))
+;; (add-to-list 'default-frame-alist '(alpha-background . 90))
