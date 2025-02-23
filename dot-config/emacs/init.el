@@ -6,6 +6,7 @@
 
 ;; Remove the initial startup screen so we start directly in the scratch buffer
 (setq inhibit-startup-screen t)
+(setq frame-title-format "%b")
 
 ;; Configure packages and add MELPA to the list of repos...
 ; (package-initialize)
@@ -17,19 +18,23 @@
 ;; ;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
-;; I Do Things ...
-(ido-mode t)
-;(ido-everywhere t) ; no idea what this actually does ...
+;; ;; I Do Things ...
+;; (ido-mode t)
+;; (ido-everywhere t) ; no idea what this actually does ...
 
 ;; Yes! We want a new line at the end of the file!
 (setq mode-require-final-newline t)
 
 ;; Disable menu/tool bar
 ;;(menu-bar-mode -1)
-;;(tool-bar-mode -1)
+(tool-bar-mode -1)           ;; let's see ...
 ;;(scroll-bar-mode -1)
-;; ;;(set line-move-visual t) ;; this breaks startup, we have it in the
+;; (setq line-move-visual t) ;; we do not like this!
 
+(setq-default word-wrap nil)
+(setq truncate-lines t)
+(setq-default truncate-lines t)
+(set-default 'truncate-lines t)
 
 ;; Other useful stuff; Do "C-h f"
 (blink-cursor-mode t)
@@ -46,8 +51,8 @@
 ; (set-default-font "FiraCode Nerd Font Mono Ret-24") ; this is for old emacs versions!
 (set-frame-font "FiraCode Nerd Font Mono Ret-16")
 (set-face-font 'mode-line "Fira Code Nerd Font Mono Ret-10")
-(set-face-background 'mode-line-inactive nil) ;; is this smart?
-(set-face-font 'mode-line-inactive  "Fira Code Nerd Font Mono Ret-8")
+(set-face-background 'mode-line-inactive "gray") ;; is this smart?
+(set-face-font 'mode-line-inactive  "Fira Code Nerd Font Mono Ret-10")
 
 ;; Some nicer Keybindings!
 (global-set-key (kbd "<C-tab>") 'other-window)
@@ -56,3 +61,30 @@
 
 
 ;; (add-to-list 'default-frame-alist '(alpha-background . 90))
+
+;; MELPA company
+(use-package company)
+(use-package company-go)
+(require 'company)      ; load company mode
+(require 'company-go)   ; load company mode go backend
+(add-hook 'after-init-hook 'global-company-mode)
+
+;; MELPA go-mode
+;; (add-hook 'go-mode-hook 'eglot-ensure)
+;; This will add add use "save hooks" for Go
+(use-package go-mode
+  :bind "\\.go\\'"
+  :hook
+  (go-mode 'eglot-ensure)
+  (before-save 'eglot-code-action-organize-imports)
+  )
+
+;; MELPA treesit-auto
+(use-package treesit-auto)
+
+;; MELPA??
+(use-package eglot
+  :ensure t
+  :defer t
+  :hook
+  (go-mode . eglot-ensure))
