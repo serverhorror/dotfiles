@@ -45,10 +45,14 @@
 ;; Change the font to what I like
 ; (set-default-font "FiraCode Nerd Font Mono Ret-24") ; this is for old emacs versions!
 (set-frame-font "FiraCode Nerd Font Mono Ret-16")
-(set-face-font 'mode-line "Fira Code Nerd Font Mono Ret-8")
+(set-face-font 'mode-line "Fira Code Nerd Font Mono Ret-10")
+(set-face-background 'mode-line-inactive nil) ;; is this smart?
+(set-face-font 'mode-line-inactive  "Fira Code Nerd Font Mono Ret-8")
 
 ;; Some nicer Keybindings!
 (global-set-key (kbd "<C-tab>") 'other-window)
 ;(global-set-key (kbd "<C-w> j") 'other-window)
 ;(global-set-key (kbd "<C-w> k") 'other-window)
 
+
+(add-to-list 'default-frame-alist '(alpha-background . 90))
