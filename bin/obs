@@ -1,3 +1,8 @@
 #!/usr/bin/bash
 
-flatpak run com.obsproject.Studio
+if [ -x /usr/bin/obs ]; then
+    QT_QPA_PLATFORM=xcb exec /usr/bin/obs
+
+fi
+
+echo "Maybe: 'flatpak run com.obsproject.Studio'?"
