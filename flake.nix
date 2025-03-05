@@ -68,9 +68,9 @@
         cht-sh tlrc
         # crypto stuff
         sops age
-        # IaC, containers, K8S
-        docker-client
-        docker-buildx
+        # # IaC, containers, K8S
+        # docker-client
+        # docker-buildx
         imgpkg
         cri-tools
         kubernetes-helm
