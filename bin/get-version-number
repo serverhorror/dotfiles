@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+date '+0.0.%Y%m%d%H%M%S'
