@@ -11,3 +11,4 @@ bin/sqlc
 bin/staticcheck
 bin/tailor
 bin/datagrip
+bin/gateway
