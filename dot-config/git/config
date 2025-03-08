@@ -59,7 +59,9 @@
     provider = "github"
 
 [includeIf "hasconfig:remote.*.url:https://bitbucket.biscrum.com/**"]
-    path = ".config/git/boehringer-ingelheim.inc"
+    path = "~/.config/git/boehringer-ingelheim.inc"
+[includeIf "hasconfig:remote.*.url:https://github.com/opendevstack/**"]
+    path = "~/.config/git/boehringer-ingelheim.inc"
 
 [credential "https://config-repo.werum.com/scm/big/com.kphs.big.deployment.environment.git"]
 	provider = bitbucket
