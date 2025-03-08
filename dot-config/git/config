@@ -1,23 +1,33 @@
-[user]
-    email = "serverhorror@users.noreply.github.com"
-    name = "serverhorror"
 [core]
     eol = lf
     autocrlf = false
     whitespace = "trailing-space,space-before-tab"
     excludesfile = ~/.config/git/ignore
-[rerere]
-    enabled = true
+[user]
+    email = "serverhorror@users.noreply.github.com"
+    name = "serverhorror"
 [alias]
     br = branch
+    branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
     ci = commit
     civ = commit -v
     p = pull
+    pf = push --force-with-lease
     push-force = push --force-with-lease
     reset-upstream = reset --hard '@{u}'
     root = rev-parse --show-toplevel
     st = status
     sw = switch
+[merge]
+    ff = only
+[fetch]
+    prune = true
+[push]
+    default = current
+[rebase]
+	autosquash = true
+[rerere]
+    enabled = true
 
 [credential]
     credentialStore = "cache"
