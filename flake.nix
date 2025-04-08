@@ -88,6 +88,7 @@
         python313
         python313Packages.pip
         python313Packages.requests
+        pipenv
         poetry     # can be pip installed!
         uv         # can be pip installed!
         ruff       # can be pip installed!

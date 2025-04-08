@@ -8,7 +8,7 @@
    '("937401a2e532f2c8c881b6b3f20d9d4b6b9405bccf72ea6289c9d3f4507eb1ab" default))
  '(display-line-numbers-type t)
  '(package-selected-packages
-   '(which-key company company-go treesit-auto go-mode magit modus-themes))
+   '(groovy-imports groovy-mode auto-complete-rst sphinx-frontend sphinx-mode ## which-key company company-go treesit-auto go-mode magit modus-themes))
  '(require-final-newline t)
  '(show-trailing-whitespace t))
 (custom-set-faces
