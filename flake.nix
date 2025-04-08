@@ -67,13 +67,14 @@
         # cheat sheets and docs
         cht-sh tlrc
         # crypto stuff
-        sops age
+        sops age gnupg
         # # IaC, containers, K8S
         # docker-client
         # docker-buildx
         imgpkg
         cri-tools
         kubernetes-helm
+        kubernetes-helmPlugins.helm-secrets
         k9s
         cue
         kind
@@ -103,7 +104,7 @@
         # pre-commit dependencies
         ruby  # dear lord Chthulhu, no! (markdown)
         sqlfluff
-	texliveFull
+        texliveFull
         # nix stuff
         nixfmt-rfc-style
       ];
