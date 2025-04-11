@@ -1,0 +1,14 @@
+[window]
+opacity = 0.9
+padding.x = 25
+padding.y = 25
+# decorations = "None"
+blur = true
+
+[font]
+normal.family = 'FiraCode Nerd Font Mono Ret'
+bold.family = 'FiraCode Nerd Font Mono Ret'
+italic.family = 'FiraCode Nerd Font Mono Ret'
+bold_italic.family = 'FiraCode Nerd Font Mono Ret'
+
+size = 16.0
