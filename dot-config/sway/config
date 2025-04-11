@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term kitty
 # Your preferred application launcher
 set $font pango:FiraCode Nerd Font Mono Ret 14
 # set $menu "bash -c 'wmenu-run -l 24'"
@@ -41,6 +41,7 @@ output HDMI-A-1 {
     scale 1
     pos 0 0 res 3840x2160
     bg $bg_color solid_color
+    bg ~/Pictures/pexels-steve-1269968.jpg fill
 }
 ## Portrait Monitor (right)
 output HDMI-A-2 {
@@ -48,6 +49,7 @@ output HDMI-A-2 {
     transform 90
     pos 3840 -900 res 2160x3840
     bg $bg_color solid_color
+    bg ~/Pictures/pexels-steve-1269968_vertical.png fill
 }
 
 workspace 1 output HDMI-A-1
