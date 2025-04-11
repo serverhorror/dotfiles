@@ -22,13 +22,15 @@
 ;; (ido-mode t)
 ;; (ido-everywhere t) ; no idea what this actually does ...
 
+(add-to-list 'default-frame-alist '(undecorated . t))
+(add-to-list 'default-frame-alist '(alpha-background . 95))
 ;; Yes! We want a new line at the end of the file!
 (setq mode-require-final-newline t)
 
 ;; Disable menu/tool bar
-;;(menu-bar-mode -1)
+(menu-bar-mode -1)
 (tool-bar-mode -1)           ;; let's see ...
-;;(scroll-bar-mode -1)
+(scroll-bar-mode -1)
 ;; (setq line-move-visual t) ;; we do not like this!
 
 (setq-default word-wrap nil)
@@ -63,21 +65,21 @@
 ;; (add-to-list 'default-frame-alist '(alpha-background . 90))
 
 ;; MELPA company
-(use-package company)
-(use-package company-go)
-(require 'company)      ; load company mode
-(require 'company-go)   ; load company mode go backend
-(add-hook 'after-init-hook 'global-company-mode)
+;; (use-package company)
+;; (use-package company-go)
+;; (require 'company)      ; load company mode
+;; (require 'company-go)   ; load company mode go backend
+;; (add-hook 'after-init-hook 'global-company-mode)
 
 ;; MELPA go-mode
 ;; (add-hook 'go-mode-hook 'eglot-ensure)
 ;; This will add add use "save hooks" for Go
-(use-package go-mode
-  :bind "\\.go\\'"
-  :hook
-  (go-mode 'eglot-ensure)
-  (before-save 'eglot-code-action-organize-imports)
-  )
+;; (use-package go-mode
+;;   :bind "\\.go\\'"
+;;   :hook
+;;   (go-mode 'eglot-ensure)
+;;   (before-save 'eglot-code-action-organize-imports)
+;;   )
 
 ;; MELPA treesit-auto
 (use-package treesit-auto)
