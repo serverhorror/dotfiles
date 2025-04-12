@@ -1,15 +1,2 @@
 .nvimlog
-bin/cobra-cli
-bin/datagrip
-bin/dlv
-bin/gateway
-bin/goimports
-bin/golangci-lint
-bin/goose
-bin/gopls
-bin/idea
-bin/nilaway
-bin/sqlc
-bin/staticcheck
-bin/tailor
 startup.log
