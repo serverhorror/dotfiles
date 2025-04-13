@@ -26,13 +26,15 @@ fi
 ## END completion
 
 function _editor() {
+    if command -v nvim >/dev/null 2>&1; then
+        echo nvim
+        return
+    fi
     if command -v code >/dev/null 2>&1; then
         echo code --wait
-    elif command -v nvim >/dev/null 2>&1; then
-        echo nvim
-    else
-        echo vim
+        return
     fi
+    echo vim
 }
 export _editor
 
