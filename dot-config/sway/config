@@ -14,60 +14,56 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term kitty
+set $term foot
 # Your preferred application launcher
-set $font pango:FiraCode Nerd Font Mono Ret 14
-# set $menu "bash -c 'wmenu-run -l 24'"
-set $menu exec $term --app-id=launcher bash -c "compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec"
+set $menu rofi -show drun
 
-font $font
 
-gaps inner  5
-gaps outer  0
+set $default_bg_color #141b2e
+
+# Set default gaps
+gaps inner 5
+gaps outer 5
 
 ### Output configuration
 #
-# # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg ~/Pictures/pexels-steve-1269968_vertical.png fill
 #
 # Example configuration:
 #
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#   output HD<D-R>I-A-1 resolution 1920x1080 position 1920,0
 #
 ## Landscape Monitor (left/primary)
-set $bg_color #141b2e
-focus output HDMI-A-1
 output HDMI-A-1 {
     scale 1
     pos 0 0 res 3840x2160
-    bg $bg_color solid_color
+    # bg $default_bg_color solid_color
     bg ~/Pictures/pexels-steve-1269968.jpg fill
 }
 ## Portrait Monitor (right)
 output HDMI-A-2 {
     scale 1
     transform 90
-    pos 3840 -900 res 2160x3840
-    bg $bg_color solid_color
+    pos 3840 -885 res 2160x3840
+    bg $default_bg_color solid_color
     bg ~/Pictures/pexels-steve-1269968_vertical.png fill
 }
+focus output HDMI-A-1
 
 workspace 1 output HDMI-A-1
-workspace 2 output HDMI-A-2
+workspace 1 output HDMI-A-2
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-
-exec_always "systemctl --user import_environment PATH"
 
 ### Idle configuration
 #
 # Example configuration:
 #
-exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000 --indicator-idle-visible' \
-         timeout 600 'swaymsg "output * power off"' \
-         resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c 000000 --indicator-idle-visible'
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -109,9 +105,8 @@ input "1386:888:Wacom_Intuos_BT_M_Pen" {
     # Kill focused window
     bindsym $mod+Shift+q kill
 
-    # # Start your launcher
+    # Start your launcher
     bindsym $mod+d exec $menu
-    # bindsym $mod+space exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -213,50 +208,6 @@ input "1386:888:Wacom_Intuos_BT_M_Pen" {
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
-
-    # Focus next thing
-    bindsym $mod+semicolon focus next
-
-# #
-# # App launcher mode
-# #
-# # This mode lets you quickly lunch an app, bound to a hotkey or the $menu app
-# # launcher. Default mode switch is $mod+Ctrl+space.
-# # - pressing $mod+Ctrl+space twice quickly launches $menu
-# # - pressing $mod+Ctrl+space, then one of the app 'shortcuts' launches the app
-# # After any actions, the mode resets to default within $appmode_timeout seconds
-# set $appmode_timeout 3
-#
-# mode "app" {
-#     bindsym $mod+Ctrl+space exec $menu
-#     bindsym --release $mod+Ctrl+space mode "default"
-#
-#     # Mnemonic: [b]rowser
-#     bindsym b exec firefox
-#     # Mnemonic: [f]ile explorer
-#     bindsym f exec $term -e bash -ci 'ranger'
-#     # Mnemonic: [F]ile explorer, GUI
-#     bindsym shift+f exec thunar
-#     # Mnemonic: [m]usic
-#     bindsym m exec $term -e bash -ci 'ncmpcpp'
-#     # Mnemonic: [n]otes
-#     bindsym n exec $term -e bash -ci 'notes'
-#     # Mnemonic: [h]ome
-#     bindsym h exec $term -e bash -ci 'home'
-#     # Mnemonic: [o]pen. Opens a quick browser with ripgrep's result
-#     bindsym o exec xdg-open "$(rg --files | rofi -dmenu -i)"
-#     # Mnemonic: [p]assword
-#     bindsym p exec bwmenu --auto-lock 86400
-#     # Mnemonic: [v]irtual machine
-#     bindsym v exec env QT_QPA_PLATFORM=xcb virtualbox
-#     # Mnemonix: tmu[x]
-#     bindsym x exec $term -e bash -ci 'tmux-session'
-#
-#     bindsym Escape mode "default"
-# }
-# bindsym $mod+Ctrl+space mode "app"
-# bindsym --release $mod+Ctrl+space exec sleep $appmode_timeout && swaymsg mode "default"
-
 #
 # Resizing containers:
 #
@@ -293,27 +244,24 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
-    bindsym Print exec grimshot --notify savecopy anything
+    bindsym Print exec grim
 
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    # Use waybar instead of sway-bar
-    swaybar_command waybar
+    position top
 
-    # position bottom
-    #
-    # # When the status_command prints a new line to stdout, swaybar updates.
-    # # The default just shows the current date and time.
-    # status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-    #
-    # colors {
-    #     statusline #ffffff
-    #     background #323232
-    #     inactive_workspace #32323200 #32323200 #5c5c5c
-    # }
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #32323200 #32323200 #5c5c5c
+    }
 }
 
 include /etc/sway/config.d/*
