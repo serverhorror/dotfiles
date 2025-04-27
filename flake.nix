@@ -100,6 +100,8 @@
         nodejs_22
         # Go
         go gopls
+        # rust
+        rustup
         # Zig
         zig zls
         # pre-commit dependencies
