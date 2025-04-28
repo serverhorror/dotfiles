@@ -11,6 +11,7 @@ idea
 migrate
 nilaway
 protoc-gen-go
+protoc-gen-go-grpc
 sqlc
 staticcheck
 tailor
