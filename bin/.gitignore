@@ -1,5 +1,4 @@
 air
-migrate
 cobra-cli
 datagrip
 dlv
@@ -9,7 +8,9 @@ golangci-lint
 goose
 gopls
 idea
+migrate
 nilaway
+protoc-gen-go
 sqlc
 staticcheck
 tailor
