@@ -98,7 +98,7 @@ in {
       historySubstringSearch = {
         enable = false;
       };
-      initExtraFirst = ''
+      initContent = ''
         eval "$(oh-my-posh init zsh)"
       '';
       initExtra = ''

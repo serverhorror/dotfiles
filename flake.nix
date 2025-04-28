@@ -28,6 +28,7 @@
         # home-manager
         # # common
         # awscli  # this is v1! BAD!
+        air
         bash
         coreutils
         curl restish
@@ -82,6 +83,7 @@
         openshift
         skopeo
         pulumi-bin
+        protobuf
         # lua51Packages.luarocks
         lua51Packages.luarocks-nix
         # Python
