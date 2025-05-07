@@ -3,4 +3,8 @@ Thumbs.db
 *.tmp
 *.bak
 *.scratch
-**/scratch/
+**/scratch/**
+**/tmp/**
+
+# Do not auto ignore .gitignore files
+!**/.gitignore
