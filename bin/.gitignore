@@ -15,3 +15,6 @@ protoc-gen-go-grpc
 sqlc
 staticcheck
 tailor
+buf
+evans
+impl
