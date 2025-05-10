@@ -1,6 +1,6 @@
 * {
     font-family: 'FiraCode Nerd Font Mono Ret', 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 window#waybar {
@@ -12,7 +12,7 @@ window#waybar {
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+    opacity: 0.1;
 }
 
 /*
