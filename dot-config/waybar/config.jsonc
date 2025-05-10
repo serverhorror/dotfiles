@@ -8,9 +8,10 @@
     "spacing": 15, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
-        "sway/scratchpad"
+        "hyprland/workspaces"
+        // "sway/workspaces",
+        // "sway/mode",
+        // "sway/scratchpad"
     ],
     "modules-center": null,
     // "modules-center": [
@@ -33,17 +34,17 @@
         "tray"
     ],
     // Modules configuration
-    "sway/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
         "warp-on-scroll": false,
         "format": "{name}: {icon}",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
+            // "1": "",
+            // "2": "",
+            // "3": "",
+            // "4": "",
+            // "5": "",
             "urgent": "",
             "focused": "",
             "default": ""
@@ -200,7 +201,7 @@
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
+        // "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
         "format-source": "{volume}% ",
