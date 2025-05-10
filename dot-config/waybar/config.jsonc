@@ -45,9 +45,13 @@
             // "3": "",
             // "4": "",
             // "5": "",
-            "urgent": "",
-            "focused": "",
-            "default": ""
+            "default": "",
+            "active": "👁",
+            // "active": "<span style=\"\">👁</span>",
+            "special": "(S)",
+            "empty": "🗋",
+            "visible": "👁",
+            "persistent": "!"
         }
     },
     "keyboard-state": {
@@ -108,37 +112,33 @@
     },
     "clock": {
         // "timezone": "America/New_York",
-        "timezones": [
-            "",
-            "UTC",
-            "America/New_York",
-        ],
+        "timezones": ["", "UTC", "America/New_York"],
         "format": "{:%a, %Y-%m-%d %H:%M%z (%Z)}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
         // "format-alt": "{:%Y-%m-%d}"
         "calendar": {
-                "mode"          : "year",
-                "mode-mon-col"  : 3,
-                "weeks-pos"     : "right",
-                "on-scroll"     : 1,
-                "on-click-right": "mode",
-                "format": {
-                     "months":     "<span color='#ffead3'><b>{}</b></span>",
-                     "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                     "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-                     "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                     "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-                }
-       },
-       "actions": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
             "on-click-right": "mode",
             // "on-click-forward": "tz_up",
             // "on-click-backward": "tz_down",
             // "on-scroll-up": "shift_up",
             // "on-scroll-down": "shift_down"
             "on-scroll-up": "tz_up",
-            "on-scroll-down": "tz_down",
-       }
+            "on-scroll-down": "tz_down"
+        }
     },
     "cpu": {
         "format": "{usage}% ",
@@ -179,15 +179,15 @@
         "bat": "BAT2"
     },
     "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -230,15 +230,15 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
-        "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
+        "format": "⏻ ",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+        "menu-actions": {
+            "shutdown": "shutdown",
+            "reboot": "reboot",
+            "suspend": "systemctl suspend",
+            "hibernate": "systemctl hibernate"
+        }
     }
 }
