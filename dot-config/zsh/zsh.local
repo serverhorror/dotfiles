@@ -5,8 +5,14 @@
 
 bindkey -e
 
-bindkey '^A' beginning-of-line
-bindkey '^E' end-of-line
+bindkey "^[[H" beginning-of-line
+bindkey '^A'   beginning-of-line
+
+bindkey "^[[F" end-of-line
+bindkey '^E'   end-of-line
+
+# bindkey "^[[2~" ????-????  ## no idea if this is correct or what to use here
+bindkey "^[[3~" delete-char
 
 # available from Nix, but has to be configured separately
 eval "$(direnv hook zsh)"
