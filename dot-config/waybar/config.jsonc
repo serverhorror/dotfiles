@@ -2,13 +2,13 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 35, // Waybar height (to be removed for auto height)
+    // "height": 35, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 15, // Gaps between modules (4px)
     // "output": ["HDMI-A-1"], // Output to show the bar on ["HDMI-A-1", "eDP-1"]
 
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-left": ["waybar/privacy", "hyprland/workspaces"],
 
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -29,7 +29,7 @@
         }
     },
 
-    "modules-center": ["hyprland/window", "clock#long"],
+    "modules-center": ["hyprland/window", "clock#short"],
     "clock#short": {
         "timezones": ["", "UTC", "America/New_York"],
         "format": "{:%a, %H:%M%z (%Z)}",
@@ -41,10 +41,10 @@
         // "idle_inhibitor",
         "bluetooth",
         "network",
-        "cpu",
-        "disk",
-        "memory",
-        "temperature",
+        // "cpu",
+        // "disk",
+        // "memory",
+        // "temperature",
         "pulseaudio",
         // "pulseaudio/slider",
         "clock#long",
@@ -146,5 +146,27 @@
     "tray": {
         "icon-size": 15,
         "spacing": 10
+    },
+    "waybar/privacy": {
+        "icon-spacing": 4,
+        "icon-size": 18,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-out",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            }
+        ]
     }
 }
