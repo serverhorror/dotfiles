@@ -1,17 +1,16 @@
 * {
-    font-family: 'FiraCode Nerd Font Mono Ret', 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
+    font-family: "FiraCode Nerd Font Mono Ret", "Noto Sans Mono",
+        "Font Awesome 6 Free", "Font Awesome 6 Brands", monospace;
     font-size: 16px;
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.0);
+    background-color: rgba(43, 48, 59, 0);
     /* border-bottom: 15px solid rgba(100, 114, 125, 0.8); */
     color: rgb(206, 206, 206);
     transition-property: background-color;
-    transition-duration: .5s;
+    transition-duration: 0.5s;
 }
-
-
 
 .modules-left {
     margin-left: 1em;
@@ -34,7 +33,6 @@ window#waybar {
     border-radius: 30px;
 }
 
-
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
@@ -53,6 +51,12 @@ window#waybar {
     font-weight: bolder;
 }
 
+#privacy {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    border-radius: 30px;
+    background-color: rgba(245, 60, 60, 1);
+}
 
 #power-profiles-daemon.power-saver {
     background-color: rgba(46, 204, 113, 1);
