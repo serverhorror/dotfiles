@@ -11,16 +11,14 @@
         // Choose the order of the modules
         "modules-left": ["hyprland/workspaces", "clock#short"],
         "hyprland/workspaces": {
-            "disable-scroll": true,
-            "all-outputs": false,
-            "warp-on-scroll": false,
-            "format": "{icon}::{id}",
+            "all-outputs": true,
+            "format": "{id}::{icon}",
             "format-icons": {
                 "default": "",
-                "active": "👁"
+                "active": "👁",
                 // "special": "(S)",
                 // "empty": "🗋",
-                // "visible": "👁",
+                "visible": "👁"
                 // "persistent": "(P)"
             }
         },
@@ -30,7 +28,17 @@
             "tooltip": false
         },
 
-        "modules-center": ["privacy", "hyprland/window", "privacy"],
+        "modules-center": [
+            "privacy",
+            "hyprland/submap",
+            "hyprland/window",
+            "hyprland/submap",
+            "privacy"
+        ],
+        "hyprland/submap": {
+            "format": "🔴️Kebinding: {}🔴",
+            "expand": true
+        },
         "privacy": {
             "icon-spacing": 4,
             "icon-size": 18,
@@ -164,10 +172,8 @@
         // Choose the order of the modules
         "modules-left": ["hyprland/workspaces"],
         "hyprland/workspaces": {
-            "disable-scroll": true,
-            "all-outputs": false,
-            "warp-on-scroll": false,
-            "format": "{icon}::{id}",
+            "format": "{id}::{icon}",
+            "all-outputs": true,
             "format-icons": {
                 "default": "",
                 "active": "👁"
@@ -178,7 +184,15 @@
             }
         },
 
-        "modules-center": ["hyprland/window"],
+        "modules-center": [
+            "hyprland/submap",
+            "hyprland/window",
+            "hyprland/submap"
+        ],
+        "hyprland/submap": {
+            "format": "🔴️Kebinding: {}🔴",
+            "expand": true
+        },
         "hyprland/window": {
             "icon": true,
             "icon-size": 18,
