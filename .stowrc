@@ -16,4 +16,5 @@
 --ignore=home.nix
 --ignore=install
 --ignore=scripts/
+--ignore=setup.sh
 --ignore=README.md
