@@ -25,7 +25,8 @@
         "clock#short": {
             "timezones": ["", "UTC", "America/New_York"],
             "format": "{:%a, %H:%M%z (%Z)}",
-            "tooltip": false
+            "tooltip": false,
+            "on-click": "gnome-clocks"
         },
 
         "modules-center": [
@@ -80,6 +81,7 @@
             "bluetooth",
             "network",
             "pulseaudio",
+            // "wireplumber",
             "clock#long",
             "power-profiles-daemon",
             "tray"
@@ -97,11 +99,9 @@
         "pulseaudio": {
             // // "scroll-step": 1, // %, can be a float
             "format": "{volume}% {icon} {format_source}",
-            // // "format-bluetooth": "{volume}% {icon} {format_source}",
-            // "format-bluetooth-muted": " {icon} {format_source}",
-            // "format-muted": " {format_source}",
-            "format-source": "{volume}% ",
-            // "format-source-muted": "",
+            "format-muted": "🔇 {format_source}",
+            "format-source": "{volume}% 🎙",
+            "format-source-muted": "🔇",
             "format-icons": {
                 "headphone": "",
                 "hands-free": "",
@@ -110,40 +110,19 @@
                 "portable": "",
                 "car": "",
                 "default": ["", "", ""]
-            }
-            // "on-click": "pavucontrol"
+            },
+            "on-click": "pavucontrol"
         },
+        // "wireplumber": {
+        //     "format": "{node_name} {volume}%",
+        //     "format-muted": "MUTED {node_name} {volume}%"
+        // },
         "clock#long": {
             // "timezone": "America/New_York",
             "timezones": ["", "UTC", "America/New_York"],
             "format": "{:%a, %Y-%m-%d %H:%M%z (%Z)}",
             "tooltip": false,
-            // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
-            // "format-alt": "{:%Y-%m-%d}"
-            "calendar": {
-                "mode": "year",
-                "mode-mon-col": 3,
-                "weeks-pos": "right",
-                "on-scroll": 1,
-                "on-click-right": "mode",
-                "format": {
-                    "months": "<span color='#ffead3'><b>{}</b></span>",
-                    "days": "<span color='#ecc6d9'><b>{}</b></span>",
-                    "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-                    "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-                    "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-                }
-            },
-            "actions": {
-                // "on-click": "calendar",
-                // "on-click-right": "mode",
-                // "on-click-forward": "tz_up",
-                // "on-click-backward": "tz_down",
-                // "on-scroll-up": "shift_up",
-                // "on-scroll-down": "shift_down"
-                "on-scroll-up": "tz_up",
-                "on-scroll-down": "tz_down"
-            }
+            "on-click": "gnome-clocks"
         },
         "power-profiles-daemon": {
             "format": "{icon}",
@@ -211,7 +190,8 @@
         "clock#short": {
             "timezones": ["", "UTC", "America/New_York"],
             "format": "{:%a, %H:%M%z (%Z)}",
-            "tooltip": false
+            "tooltip": false,
+            "on-click": "gnome-clocks"
         },
         "tray": {
             "icon-size": 15,
