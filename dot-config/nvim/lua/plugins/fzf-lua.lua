@@ -1,0 +1,34 @@
+return {
+    -- {
+    --     "ibhagwan/fzf-lua",
+    --     -- optional for icon support
+    --     dependencies = { "nvim-tree/nvim-web-devicons" },
+    --     -- or if using mini.icons/mini.nvim
+    --     -- dependencies = { "echasnovski/mini.icons" },
+    --     opts = {
+    --         winopts = {
+    --             fullscreen = true,
+    --             backdrop  = 85,
+    --         },
+    --     },
+    --     config = function(_, opts)
+    --         -- Setup fzf-lua with its default configurations
+    --         require("fzf-lua").setup(opts)
+    --
+    --         local fzf = require("fzf-lua")
+    --
+    --         -- Keymap for listing files in the current directory
+    --         vim.keymap.set("n", "<leader>o", function()
+    --             fzf.files()
+    --         end, { desc = "FZF Files" })
+    --         -- Keymap for listing git files in the current directory
+    --         vim.keymap.set("n", "<leader>g", function()
+    --             fzf.git_files()
+    --         end, { desc = "FZF Git Files" })
+    --         -- Keymap for grepping in files, in the current directory
+    --         vim.keymap.set("n", "<leader>/", function()
+    --             fzf.grep()
+    --         end, { desc = "FZF Grep String" })
+    --     end,
+    -- }
+}
