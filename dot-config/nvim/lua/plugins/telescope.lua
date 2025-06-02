@@ -16,8 +16,12 @@ return {
             }
         },
         config = function(_, opts)
-            require("telescope").setup({})
-            require("telescope").load_extension("ui-select")
+            local telescope = require('telescope')
+            local actions = require('telescope.actions')
+            local action_state = require('telescope.actions.state')
+            telescope.load_extension("ui-select")
+
+            telescope.setup({ })
 
             local builtin = require("telescope.builtin")
 
