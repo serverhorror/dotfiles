@@ -16,7 +16,7 @@
             "format-icons": {
                 "default": "",
                 "active": "👁",
-                // "special": "(S)",
+                "special": "(S)",
                 // "empty": "🗋",
                 "visible": "👁"
                 // "persistent": "(P)"
@@ -155,10 +155,10 @@
             "all-outputs": true,
             "format-icons": {
                 "default": "",
-                "active": "👁"
-                // "special": "(S)",
+                "active": "👁",
+                "special": "(S)",
                 // "empty": "🗋",
-                // "visible": "👁",
+                "visible": "👁"
                 // "persistent": "(P)"
             }
         },
