@@ -2,11 +2,12 @@
 /auto-save-list/
 /eln-cache/
 /elpa/
+/eshell/
 /ido.last
+/init.elc
+/projects
 /recentf
 /tramp
 /transient/
 /tree-sitter/
-/eshell/
-/init.elc
-/projects
+/tutorial/
