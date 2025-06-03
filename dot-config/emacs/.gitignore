@@ -1,10 +1,14 @@
+/*.disabled
 /*~
+/.org-id-locations
 /auto-save-list/
+/bookmarks
 /eln-cache/
 /elpa/
 /eshell/
 /ido.last
 /init.elc
+/org-roam.db
 /projects
 /recentf
 /tramp
