@@ -1,3 +1,6 @@
 {
-  "gitdoc.enabled": false
+  "gitdoc.enabled": false,
+  "files.associations": {
+    "dot-config/sway/config": "plaintext"
+  }
 }
