@@ -39,6 +39,87 @@ stow --verbose . --simulate
 # stow .                       # alternative
 ```
 
+### sway
+
+```shell
+cat /usr/share/wayland-sessions/sway.desktop
+```
+
+```text
+[Desktop Entry]
+Name=Sway
+Comment=An i3-compatible Wayland compositor
+# add `--unsupported-gpu` to the Exec line if you have an unsupported GPU (e.g. NVidia proprietary driver)
+Exec=sway --unsupported-gpu
+Type=Application
+```
+
+### gdm multiple monitors
+
+* `~gdm/.config/monitors.xml`
+
+```xml
+<monitors version="2">
+  <configuration>
+    <layoutmode>logical</layoutmode>
+    <!-- primary monitor -->
+    <logicalmonitor>
+      <!-- position -->
+      <x>0</x>
+      <!--
+        * 915 is the top position of the primay monitor
+        * how many pixels the primary monitor is below the top border of the screen
+        -->
+      <y>915</y>
+      <scale>1</scale>
+      <primary>yes</primary>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-1</connector>
+          <vendor>HKC</vendor>
+          <product>N07</product>
+          <serial>0000000000001</serial>
+        </monitorspec>
+        <mode>
+          <width>3840</width>
+          <height>2160</height>
+          <rate>60.000</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+    <!-- secondary monitor -->
+    <logicalmonitor>
+      <!-- position -->
+      <!--
+        * 3840 is the width of the primary monitor
+        * this moves the secondary monitor to the right of the primary monitor
+        -->
+      <x>3840</x>
+      <y>0</y>
+      <scale>1</scale>
+      <transform>
+        <rotation>right</rotation>
+        <flipped>no</flipped>
+      </transform>
+      <monitor>
+        <monitorspec>
+          <connector>HDMI-2</connector>
+          <vendor>HKC</vendor>
+          <product>N07</product>
+          <serial>0000000000001</serial>
+        </monitorspec>
+        <mode>
+          <width>3840</width>
+          <height>2160</height>
+          <rate>60.000</rate>
+        </mode>
+      </monitor>
+    </logicalmonitor>
+  </configuration>
+</monitors>
+
+```
+
 ## Windows
 
 > [!WARNING]
