@@ -1,12 +1,6 @@
-;; We want an emacs-server to be running and we want to be sure,   
+;; We want an emacs-server to be running and we want to be sure,
 ;; even if it wasn't started with "emacs --daemon"
 (server-start)
-
-
-asdf
-
-
-(debug)
 
 ;; Make sure the customiziations from the GUI
 ;; do not mess up what we want to set
@@ -27,7 +21,7 @@ asdf
 ;;(setq frame-title-format "%b")
 
 ;; ;; I Do Things ...
-;; (ido-mode t)   
+;; (ido-mode t)
 ;; (ido-everywhere t) ; no idea what this actually does ...
 
 ;; (add-to-list 'default-frame-alist '(undecorated . t))
@@ -36,13 +30,13 @@ asdf
 
 ;; Yes! We want a new line at the end of the file!
 (setq mode-require-final-newline t)
-(setq show-trailing-whitespace t)
+(setq-default show-trailing-whitespace t)
 
 ;; ;; we do not like this!
 (setq line-move-visual t)
 
 (setq-default word-wrap nil)
-(setq truncate-lines t) ; asdf asdf asdf  asdf asdf asdf  asdf asdf asdf  asdf asdf asdf  asdf asdf asdf  asdf asdf asdf  asdf asdf asdf 
+(setq truncate-lines t) ; asdf asdf asdf  asdf asdf asdf  asdf asdf asdf  asdf asdf asdf  asdf asdf asdf  asdf asdf asdf  asdf asdf asdf
 (setq-default truncate-lines t)
 
 ;; Enable auto-save for the actual file
@@ -62,16 +56,13 @@ asdf
 (show-paren-mode t)
 ;; Remember recently opened files
 (recentf-mode t)
-;; ;; remember what I typed into the commands/search/...
-(save-hist-mode t)
-
 
 ;; Tests for ligatures:
 ;; >=  != ==
 
 ;; ;; Change the font to what I like
 ;; ; (set-default-font "FiraCode Nerd Font Mono Ret-24") ; this is for old emacs versions!
-;; (set-frame-font "FiraCode Nerd Font Mono Ret-14")
+(set-frame-font "FiraCode Nerd Font Mono Ret-16")
 ;; (set-face-font 'mode-line "Fira Code Nerd Font Mono Ret-10")
 ;; (set-face-background 'mode-line-inactive "gray") ;; is this smart?
 ;; (set-face-font 'mode-line-inactive  "Fira Code Nerd Font Mono Ret-10")
@@ -91,46 +82,24 @@ asdf
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-;; Make sure we always set the ':ensure t' for all packages
-(eval-and-compile
-  (setq use-package-always-ensure t
-	use-package-expand-minimally t))
+;; ;; Make sure we always set the ':ensure t' for all packages
+;; (eval-and-compile
+;;   (setq use-package-always-ensure t
+;; 	use-package-expand-minimally t))
 
 ;; This assumes you've installed the package via MELPA.
-(use-package ligature
-  :config
-  ;; Enable the "www" ligature in every possible major mode
-  (ligature-set-ligatures 't '("www"))
-  ;; Enable traditional ligature support in eww-mode, if the
-  ;; `variable-pitch' face supports it
-  (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
-  ;; Enable all Cascadia Code ligatures in programming modes
-  (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
-                                       ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
-                                       "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
-                                       "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
-                                       "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
-                                       "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
-                                       "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
-                                       "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
-                                       ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
-                                       "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
-                                       "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
-                                       "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
-                                       "\\\\" "://"))
-  ;; Enables ligature checks globally in all buffers. You can also do it
-  ;; per mode with `ligature-mode'.
-  (global-ligature-mode t))
-
 ;; org, org-roam mode
 ;; org-roam is a full management for a directory
 (use-package org
   :demand t
   :ensure t
   :init
-  (setq org-log-done 'time)
-  (setq org-agenda-files (list (file-truename "~/src/org")))
-  (org-indent-mode))
+  (setq org-directory (file-truename "~/src/org"))
+  (setq org-startup-indented t)
+  (setq org-startup-numerated t)
+  (setq org-startup-folded t)
+  (setq org-hide-leading-stars t)
+  (setq org-log-done "time"))
 
 (use-package org-roam
   :demand t
@@ -144,4 +113,3 @@ asdf
 	 ("C-c n l" . org-roam-buffer-toggle))
   :config
   (org-roam-db-autosync-enable))
-
