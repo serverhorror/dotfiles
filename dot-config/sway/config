@@ -1,3 +1,5 @@
+# vim: set ft=sway: :
+
 # Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
@@ -7,49 +9,24 @@
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
-set $mod Mod4
+##set $mod Mod4
+set $mod Mod1
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+# set $term foot
+set $term kitty
 # Your preferred application launcher
 set $menu rofi -show drun
-
 
 set $default_bg_color #141b2e
 
 # Set default gaps
-gaps inner 5
+gaps inner 15
 gaps outer 5
-
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/pexels-steve-1269968_vertical.png fill
-#
-# Example configuration:
-#
-#   output HD<D-R>I-A-1 resolution 1920x1080 position 1920,0
-#
-## Landscape Monitor (left/primary)
-output HDMI-A-1 {
-    scale 1
-    pos 0 0 res 3840x2160
-    # bg $default_bg_color solid_color
-    bg ~/Pictures/pexels-steve-1269968.jpg fill
-}
-## Portrait Monitor (right)
-output HDMI-A-2 {
-    scale 1
-    transform 90
-    pos 3840 -885 res 2160x3840
-    bg $default_bg_color solid_color
-    bg ~/Pictures/pexels-steve-1269968_vertical.png fill
-}
-focus output HDMI-A-1
 
 workspace 1 output HDMI-A-1
 workspace 1 output HDMI-A-2
@@ -69,44 +46,23 @@ workspace 1 output HDMI-A-2
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
+include ~/.config/sway/inputs
 
-input "3141:30354:SONiX_USB_Keyboard" {
-    xkb_options caps:escape
-}
-
-# input "1386:888:Wacom_Intuos_BT_M_Pad" {
-# }
-input "1386:888:Wacom_Intuos_BT_M_Pen" {
-    tool_mode * absolute
-    map_to_output "HDMI-A-1"
-    # map_to_region 0 0 3840 2160
-}
+include ~/.config/sway/autostart
 
 ### Key bindings
 #
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec $term
+    bindsym $mod+Shift+Return exec $term
 
     # Kill focused window
     bindsym $mod+Shift+q kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    bindsym $mod+o exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -147,6 +103,10 @@ input "1386:888:Wacom_Intuos_BT_M_Pen" {
 #
 # Workspaces:
 #
+    # Next/prev workspace
+    bindsym $mod+n workspace next
+    bindsym $mod+p workspace prev
+
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -251,17 +211,7 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+    swaybar_command waybar
 }
 
 include /etc/sway/config.d/*

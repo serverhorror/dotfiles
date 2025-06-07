@@ -1,0 +1,25 @@
+### Input configuration
+#
+# Example configuration:
+#
+#   input "2:14:SynPS/2_Synaptics_TouchPad" {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+input "3141:30354:SONiX_USB_Keyboard" {
+    xkb_options caps:escape
+}
+
+# input "1386:888:Wacom_Intuos_BT_M_Pad" {
+# }
+input "1386:888:Wacom_Intuos_BT_M_Pen" {
+    tool_mode * absolute
+    map_to_output "HDMI-A-1"
+    # map_to_region 0 0 3840 2160
+}

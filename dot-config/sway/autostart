@@ -1,0 +1,2 @@
+exec kitty && sway '[app_id="kitty"]' move container to workspace 1
+exec emacs && sway '[app_id="emacs"]' move container to workspace 4
