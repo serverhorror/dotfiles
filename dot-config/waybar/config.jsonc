@@ -9,10 +9,12 @@
         "output": ["HDMI-A-1"], // Output to show the bar on ["HDMI-A-1", "eDP-1"]
 
         // Choose the order of the modules
-        "modules-left": ["hyprland/workspaces", "clock#short"],
+        "modules-left": ["sway/workspaces", "hyprland/workspaces", "clock#short"],
         "hyprland/workspaces": {
             "all-outputs": true,
-            "format": "{id}::{icon}",
+            "show-special": true,
+            "special-visible-only": false,
+            "format": "{name}::{icon}",
             "format-icons": {
                 "default": "",
                 "active": "👁",
@@ -150,9 +152,12 @@
 
         // Choose the order of the modules
         "modules-left": ["hyprland/workspaces"],
+        "modules-left": ["sway/workspaces", "hyprland/workspaces"],
         "hyprland/workspaces": {
-            "format": "{id}::{icon}",
+            "format": "{name}::{icon}",
             "all-outputs": true,
+            "show-special": true,
+            "special-visible-only": true,
             "format-icons": {
                 "default": "",
                 "active": "👁",
