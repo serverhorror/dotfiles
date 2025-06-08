@@ -31,6 +31,10 @@ return {
                 }):find()
             end
 
+
+            local harpoon_extensions = require("harpoon.extensions")
+            harpoon:extend(harpoon_extensions.builtins.highlight_current_file())
+
             vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
             vim.keymap.set("n", "<leader>hh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
             -- vim.keymap.set("n", "<leader>hh", function()
