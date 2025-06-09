@@ -15,6 +15,9 @@ vim.opt.smartcase = true
 -- Enable break indent
 vim.opt.breakindent = true
 
+
+-- default border
+vim.o.winborder = "rounded"
 -- Configure how new splits should be opened
 vim.o.splitright = true
 vim.o.splitbelow = true
