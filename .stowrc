@@ -1,6 +1,7 @@
 --verbose
 --dotfiles
 --target=~
+--ignore=dot-config/systemd/user/tray.target
 --ignore=.editorconfig
 --ignore=.envrc
 --ignore=.gitattributes
