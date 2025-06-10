@@ -1,0 +1,477 @@
+{
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker",
+    "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
+  },
+  "[git-commit]": {
+    // "editor.fontSize": 24,
+    "editor.rulers": [50, 78]
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "diffEditor.ignoreTrimWhitespace": false,
+    // "editor.wordWrapColumn": 72,
+    "files.trimTrailingWhitespace": false
+  },
+  "[plaintext]": {
+    "editor.rulers": [50, 78]
+  },
+  "[powershell]": {
+    "debug.saveBeforeStart": "nonUntitledEditorsInActiveGroup",
+    "editor.defaultFormatter": "ms-vscode.powershell",
+    "editor.formatOnSave": true,
+    "editor.semanticHighlighting.enabled": true,
+    "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
+  },
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.unusedImports": "always"
+    },
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "[restructuredtext]": {
+    "files.trimTrailingWhitespace": true
+  },
+  "[shellscript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.shell-format": "always",
+      "source.fixAll.shellcheck": "always"
+    },
+    "editor.defaultFormatter": "mkhl.shfmt",
+    "editor.formatOnSave": true,
+    "files.eol": "\n"
+  },
+  "[yaml]": {
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.autoIndent": "full",
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.insertSpaces": true,
+    "editor.quickSuggestions": {
+      "comments": false,
+      "other": true,
+      "strings": true
+    },
+    "editor.tabSize": 2
+  },
+  "black-formatter.importStrategy": "fromEnvironment",
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.respectShebang": true,
+  "code-runner.saveFileBeforeRun": true,
+  "dev.containers.defaultExtensions": [
+    "EditorConfig.EditorConfig",
+    "GitHub.copilot",
+    // "eamodio.gitlens",
+    "formulahendry.code-runner"
+  ],
+  "dev.containers.dockerComposePath": "podman-compose",
+  "dev.containers.dockerPath": "podman",
+  "dev.containers.dockerSocketPath": "/run/user/1000/podman/podman.sock",
+  "dev.containers.mountWaylandSocket": false,
+  "diffEditor.experimental.showMoves": true,
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "docker.composeCommand": "podman compose",
+  "docker.dockerPath": "podman",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "always"
+  },
+  // >= ==, ===
+  // "editor.fontFamily": "'MesloLGM Nerd Font Mono'", //,'FiraCode Nerd Font Mono','Fira Code', 'Cascadia Code PL', 'MesloLGM NF', monospace", // >=
+  "editor.fontFamily": "'FiraCode Nerd Font Mono Ret','MesloLGM Nerd Font Mono', monospace", // >=
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.lineHeight": 1.75,
+  "editor.minimap.enabled": false,
+  "editor.renderLineHighlight": "all",
+  "editor.renderWhitespace": "boundary",
+  "editor.rulers": [78],
+  "editor.stickyScroll.enabled": false,
+  "editor.unicodeHighlight.ambiguousCharacters": true,
+  "editor.unicodeHighlight.invisibleCharacters": true,
+  "editor.wordWrap": "on",
+  "errorLens.enabled": true,
+  "excalidraw.image": {
+    "exportScale": 1,
+    "exportWithBackground": true,
+    "exportWithDarkMode": false
+  },
+  "excalidraw.theme": "dark",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.go": "${capture}_test.go, ${capture}_example_test.go",
+    "*.ps1": "${capture}.Tests.ps1",
+    "*.py": "${capture}_test.py, test_${capture}.py",
+    "*.sh": "${capture}_test.bats",
+    "*.tf": "${capture}_test.go"
+  },
+  "explorer.incrementalNaming": "smart",
+  "explorer.openEditors.visible": 3,
+  // "terminal.external.windowsExec": "${env.programfiles}\\PowerShell\\7\\pwsh.exe",
+  "extensions.allowed": {
+    "*": true,
+    "LinJUn.git-graph-pro": false,
+    "mhutchie.git-graph": false
+  },
+  "files.autoSave": "onFocusChange",
+  "files.hotExit": "onExitAndWindowClose",
+  "files.insertFinalNewline": true,
+  "files.simpleDialog.enable": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.watcherExclude": {
+    "**/.venv": true
+  },
+  "git.allowForcePush": true,
+  "git.autofetch": false,
+  "git.branchPrefix": "scratch/",
+  "git.branchProtection": ["main", "master"],
+  "git.branchRandomName.enable": true,
+  "git.confirmSync": false,
+  "git.fetchOnPull": true,
+  "git.mergeEditor": true,
+  "git.pruneOnFetch": true,
+  "git.replaceTagsWhenPull": true,
+  "git.suggestSmartCommit": false,
+  "git.terminalGitEditor": true,
+  "gitdoc.autoCommitDelay": 5000,
+  "gitdoc.autoPush": "off",
+  "gitdoc.commitMessageFormat": "yyyy-LL-dd'T'TTZZZ",
+  "gitdoc.commitValidationLevel": "warning",
+  "gitdoc.enabled": true,
+  "gitdoc.filePattern": "**/*",
+  "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": true,
+    "plaintext": false,
+    "scminput": true
+  },
+  "gitignore.cacheExpirationInterval": 86400,
+  "gitlens.autolinks": [
+    {
+      "prefix": "BEAR-",
+      "url": "https://jira.biscrum.com/browse/BEAR-<num>"
+    },
+    {
+      "prefix": "ARCF-",
+      "url": "https://jira.biscrum.com/browse/ARCF-<num>"
+    },
+    {
+      "prefix": "TECHTRAIN-",
+      "url": "https://jira.biscrum.com/browse/TECHTRAIN-<num>"
+    },
+    {
+      "prefix": "IBBSDDC-",
+      "url": "https://jira.biscrum.com/browse/IBBSDDC-<num>"
+    },
+    {
+      "prefix": "PAMES-",
+      "url": "https://jira.biscrum.com/browse/PAMES-<num>"
+    }
+  ],
+  "gitlens.blame.avatars": false,
+  "gitlens.blame.highlight.locations": ["gutter", "line", "overview"],
+  "gitlens.changes.locations": ["overview", "gutter", "line"],
+  "gitlens.codeLens.scopes": ["document", "containers"],
+  "gitlens.graph.dimMergeCommits": true,
+  "gitlens.hovers.currentLine.enabled": false,
+  "gitlens.plusFeatures.enabled": false,
+  "gitlens.sortRepositoriesBy": "name:asc",
+  "gitlens.views.repositories.files.layout": "tree",
+  "gitlens.views.repositories.showWorktrees": false,
+  "gitlens.views.scm.grouped.views": {
+    "branches": false,
+    "commits": false,
+    "contributors": true,
+    "launchpad": false,
+    "remotes": true,
+    "repositories": false,
+    "searchAndCompare": false,
+    "stashes": true,
+    "tags": true,
+    "worktrees": true
+  },
+  "go.coverOnSingleTest": true,
+  "go.coverOnSingleTestFile": true,
+  "go.inlayHints.constantValues": true,
+  "hediet.vscode-drawio.resizeImages": null,
+  "hediet.vscode-drawio.theme": "automatic",
+  "interactiveWindow.executeWithShiftEnter": true,
+  "isort.importStrategy": "fromEnvironment",
+  "keyboard.dispatch": "keyCode",
+  "markdown.extension.orderedList.marker": "one",
+  "markdown.extension.preview.autoShowPreviewToSide": false,
+  "markdownlint.lintWorkspaceGlobs": [
+    "**/*.{md,mkd,mdwn,mdown,markdown,markdn,mdtxt,mdtext,workbook}",
+    "!**/bower_components",
+    "!**/node_modules",
+    "!**/vendor",
+    "!**/.git",
+    "!**/.venv"
+  ],
+  "mypy-type-checker.importStrategy": "fromEnvironment",
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "right"
+  },
+  "notebook.formatOnSave.enabled": true,
+  "notebook.lineNumbers": "on",
+  "output.smartScroll.enabled": false,
+  "redhat.telemetry.enabled": true,
+  "remote.SSH.defaultExtensions": [
+    "EditorConfig.EditorConfig",
+    "GitHub.copilot",
+    // "eamodio.gitlens",
+    "formulahendry.code-runner",
+    "ms-azuretools.vscode-docker",
+    "esbenp.prettier-vscode"
+  ],
+  "remote.SSH.remotePlatform": {
+    "bi-urp": "linux",
+    "ibbsddc-devbox": "linux",
+    "pames-devbox": "linux",
+    "play-devbox": "linux",
+    "play-devbox.new": "linux",
+    "play-devbox.pames": "linux"
+  },
+  "search.searchEditor.focusResultsOnSearch": false,
+  "sqlfluff.linter.run": "onSave",
+  "terminal.external.linuxExec": "kitty",
+  "terminal.external.windowsExec": "pwsh.exe",
+  "terminal.integrated.autoReplies": {
+    "Terminate batch job (Y/N)": "Y\r"
+  },
+  "terminal.integrated.commandsToSkipShell": ["-workbench.action.quickOpen"],
+  "terminal.integrated.fontLigatures.enabled": true,
+  "terminal.integrated.enablePersistentSessions": false,
+  // "terminal.integrated.fontFamily": "'MesloLGM Nerd Font Mono', monospace",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.hideOnStartup": "whenEmpty",
+  "terminal.integrated.lineHeight": 1.25,
+  "testing.automaticallyOpenTestResults": "neverOpen",
+  "testing.coverageToolbarEnabled": true,
+  "vim.cursorStylePerMode.insert": "line",
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.hlsearch": true,
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "after": ["g", "j"],
+      "before": ["j"]
+    },
+    {
+      "after": ["g", "k"],
+      "before": ["k"]
+    },
+    {
+      "before": ["<leader>", ":"],
+      "commands": [
+        {
+          "command": "workbench.action.showCommands"
+        }
+      ],
+      "silent": true
+    },
+    {
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["<C-h>"],
+      "commands": [
+        {
+          "command": "workbench.action.focusLeftGroup"
+        }
+      ]
+    },
+    {
+      "before": ["<C-l>"],
+      "commands": [
+        {
+          "command": "workbench.action.focusRightGroup"
+        }
+      ]
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": [
+        {
+          "command": "workbench.action.focusAboveGroup"
+        }
+      ]
+    },
+    {
+      "before": ["<C-j>"],
+      "commands": [
+        {
+          "command": "workbench.action.focusBelowGroup"
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "i"],
+      "commands": [
+        {
+          "command": "workbench.action.terminal.focus"
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "u"],
+      "commands": [
+        {
+          "command": "workbench.action.focusActiveEditorGroup"
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "o"],
+      "commands": [
+        {
+          "command": "workbench.action.quickOpen"
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "s"],
+      "commands": [
+        {
+          "command": "workbench.action.splitEditorDown"
+        },
+        {
+          "command": "workbench.action.focusPreviousGroup"
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "<leader>", "l"],
+      "commands": [
+        {
+          "command": "workbench.action.toggleLockedScrolling"
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "<leader>", "c"],
+      "commands": [
+        {
+          "command": "workbench.action.closeEditorsInOtherGroups"
+        },
+        {
+          "command": "workbench.action.closeOtherEditors"
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "v"],
+      "commands": [
+        {
+          "command": "workbench.action.splitEditor"
+        },
+        {
+          "command": "workbench.action.focusPreviousGroup"
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "n"],
+      "commands": [
+        {
+          "command": ":nohl"
+        }
+      ]
+    },
+    {
+      "before": ["g", "I"],
+      "commands": [
+        {
+          "command": "editor.action.goToImplementation"
+        }
+      ]
+    }
+  ],
+  "vim.searchHighlightColor": "#fed359",
+  "vim.searchHighlightTextColor": "#1f1f1f",
+  "vim.searchMatchTextColor": "#f1f1f1",
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "i"],
+      "commands": [
+        {
+          "command": "workbench.action.terminal.focus"
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "<leader>", "d"],
+      "commands": ["github.copilot.chat.generateDocs"]
+    },
+    {
+      "before": ["<leader>", "<leader>", "?"],
+      "commands": ["github.copilot.chat.explain"]
+    }
+  ],
+  "window.autoDetectColorScheme": false,
+  "window.menuBarVisibility": "compact",
+  "window.newWindowDimensions": "inherit",
+  "window.newWindowProfile": "Default",
+  "window.titleBarStyle": "custom",
+  "workbench.editor.showTabs": "none",
+  "workbench.panel.showLabels": true,
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "none",
+  "yaml.customTags": [
+    "!And",
+    "!And sequence",
+    "!If",
+    "!If sequence",
+    "!Not",
+    "!Not sequence",
+    "!Equals",
+    "!Equals sequence",
+    "!Or",
+    "!Or sequence",
+    "!FindInMap",
+    "!FindInMap sequence",
+    "!Base64",
+    "!Join",
+    "!Join sequence",
+    "!Cidr",
+    "!Ref",
+    "!Sub",
+    "!Sub sequence",
+    "!GetAtt",
+    "!GetAZs",
+    "!ImportValue",
+    "!ImportValue sequence",
+    "!Select",
+    "!Select sequence",
+    "!Split",
+    "!Split sequence"
+  ],
+  "yaml.schemas": {
+    "file:///c%3A/Users/marcherm/.vscode/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "zenMode.centerLayout": true,
+  "zenMode.fullScreen": true,
+  "zenMode.hideLineNumbers": false,
+  "zig.path": "zig",
+  "editor.fontSize": 16
+}
