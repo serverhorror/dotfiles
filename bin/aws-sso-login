@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-export BROWSER=chromium-browser
+export BROWSER="work-browser"
 
 selected_profile="$(/usr/local/bin/aws configure list-profiles \
     | sort -u \

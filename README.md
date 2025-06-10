@@ -39,19 +39,11 @@ stow --verbose . --simulate
 # stow .                       # alternative
 ```
 
-### sway
+### Browser
 
-```shell
-cat /usr/share/wayland-sessions/sway.desktop
-```
-
-```text
-[Desktop Entry]
-Name=Sway
-Comment=An i3-compatible Wayland compositor
-# add `--unsupported-gpu` to the Exec line if you have an unsupported GPU (e.g. NVidia proprietary driver)
-Exec=sway --unsupported-gpu
-Type=Application
+```sh
+sudo update-alternatives --install /usr/local/bin/work-browser work-browser /usr/bin/chromium-browser 100
+sudo update-alternatives --install /usr/local/bin/work-browser work-browser /usr/bin/microsoft-edge-stable 200
 ```
 
 ### gdm multiple monitors
@@ -119,6 +111,22 @@ Type=Application
 </monitors>
 
 ```
+
+## sway
+
+```shell
+cat /usr/share/wayland-sessions/sway.desktop
+```
+
+```text
+[Desktop Entry]
+Name=Sway
+Comment=An i3-compatible Wayland compositor
+# add `--unsupported-gpu` to the Exec line if you have an unsupported GPU (e.g. NVidia proprietary driver)
+Exec=sway --unsupported-gpu
+Type=Application
+```
+
 
 ## Windows
 
