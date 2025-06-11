@@ -30,6 +30,7 @@
         # awscli  # this is v1! BAD!
         air
         bash
+        powershell
         coreutils
         curl restish
         dig
