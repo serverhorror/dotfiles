@@ -31,7 +31,7 @@
     ff = only
 
 [fetch]
-    prune = true
+    prune = false
 
 [push]
     default = current
@@ -72,3 +72,7 @@
 
 [includeIf "hasconfig:remote.*.url:https://github.com/opendevstack/**"]
     path = "~/.config/git/boehringer-ingelheim.inc"
+[credential "https://bitbucket.biscrum.com/scm/arcf/arcf-docroot.git"]
+	provider = bitbucket
+[credential "https://bitbucket.biscrum.com/scm/arcf/arcf-contribution-guide.git"]
+	provider = bitbucket
