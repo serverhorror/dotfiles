@@ -47,13 +47,13 @@
     cacheOptions = "--timeout 86399"
     helper = "cache --timeout 86399"
     helper = "manager"
-    useHttpPath = "true"
+    useHttpPath = "false"
 
-[credential "https://dev.azure.com"]
-    useHttpPath = "true"
+# [credential "https://dev.azure.com"]
+#     useHttpPath = "true"
 
-[credential "https://huggingface.co"]
-    provider = "generic"
+# [credential "https://huggingface.co"]
+#     provider = "generic"
 
 [credential "https://gist.github.com"]
     helper = "cache --timeout 86399"
