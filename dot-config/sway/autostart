@@ -1,2 +1,28 @@
-exec kitty && sway '[app_id="kitty"]' move container to workspace 1
-exec emacs && sway '[app_id="emacs"]' move container to workspace 4
+# vim: set ft=sway: :
+
+# assign [class="Code"] 1
+# assign [app_id="org.mozilla.firefox"] 2
+# assign [class="Microsoft-edge"] 3
+# assign [app_id="gimp"] 4
+
+##############################################################################
+#                              initial app setup                             #
+##############################################################################
+exec --no-startup-id swaymsg 'workspace 1; exec code --new-window; exec kitty'
+exec --no-startup-id swaymsg 'workspace 2; exec firefox'
+exec --no-startup-id swaymsg 'workspace 3; exec microsoft-edge'
+exec --no-startup-id swaymsg 'workspace 4; exec firefox -P Kiosk --kiosk --private-window https://excalidraw.com; exec gimp'
+
+##############################################################################
+#                            tools / notifications                           #
+##############################################################################
+exec nm-applet --indicator
+
+##############################################################################
+#                            tools / notifications                           #
+##############################################################################
+exec swaymsg workspace 1
+
+
+# assign [app_id="emacs"] 4
+# exec emacs

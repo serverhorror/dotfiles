@@ -6,34 +6,61 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-### Variables
+##############################################################################
+#                                  Variables                                 #
+##############################################################################
 #
 # Logo key. Use Mod1 for Alt.
-##set $mod Mod4
-set $mod Mod1
+set $mod Mod4
+#set $mod Mod1
+
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
+
 # Your preferred terminal emulator
 # set $term foot
 set $term kitty
+
 # Your preferred application launcher
 set $menu rofi -show drun
 
 set $default_bg_color #141b2e
 
-# Set default gaps
+##############################################################################
+#                                 default gaps                               #
+##############################################################################
 gaps inner 15
 gaps outer 5
 
+##############################################################################
+#                                   outputs                                  #
+##############################################################################
+output HDMI-A-1 pos 0 0 res 3840x2160
+output HDMI-A-2 pos 3840 -860 res 3840x2160
+output HDMI-A-2 transform 90
+
+
+##############################################################################
+#                                  workspaces                                #
+##############################################################################
 workspace 1 output HDMI-A-1
-workspace 1 output HDMI-A-2
+workspace 2 output HDMI-A-1
+workspace 3 output HDMI-A-1
+workspace 4 output HDMI-A-1
+workspace 10 output HDMI-A-2
+
+
+mouse_warping container
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-### Idle configuration
+##############################################################################
+#                              idle configuration                            #
+##############################################################################
+
 #
 # Example configuration:
 #
@@ -46,131 +73,152 @@ workspace 1 output HDMI-A-2
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+##############################################################################
+#                                   includes                                 #
+##############################################################################
 include ~/.config/sway/inputs
-
 include ~/.config/sway/autostart
 
-### Key bindings
-#
-# Basics:
-#
-    # Start a terminal
-    bindsym $mod+Shift+Return exec $term
+##############################################################################
+#                                 key bindings                               #
+##############################################################################
 
-    # Kill focused window
-    bindsym $mod+Shift+q kill
+# launcher
+#bindsym $mod+d exec $menu
+bindsym $mod+o exec $menu
 
-    # Start your launcher
-    bindsym $mod+d exec $menu
-    bindsym $mod+o exec $menu
+# Reload the configuration file
+bindsym $mod+shift+c reload
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+shift+e exec \
+    swaynag -y overlay -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' \
+        -B 'Yes, exit sway' 'swaymsg exit'
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
+# Kill focused window
+bindsym $mod+shift+q kill
 
-    # Reload the configuration file
-    bindsym $mod+Shift+c reload
+# terminal
+bindsym $mod+Return exec $term
 
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+
 #
 # Moving around:
 #
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+# Or use $mod+[up|down|left|right]
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
-    # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
-#
-# Workspaces:
-#
-    # Next/prev workspace
-    bindsym $mod+n workspace next
-    bindsym $mod+p workspace prev
+# Move the focused window with the same, but add shift
+bindsym $mod+shift+$left move left
+bindsym $mod+shift+$down move down
+bindsym $mod+shift+$up move up
+bindsym $mod+shift+$right move right
+# Ditto, with arrow keys
+bindsym $mod+shift+Left move left
+bindsym $mod+shift+Down move down
+bindsym $mod+shift+Up move up
+bindsym $mod+shift+Right move right
 
-    # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-#
-# Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
 
-    # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+################################################################################
+#                                  Workspaces                                  #
+################################################################################
+# Move to the last workspace
+bindsym $mod+Escape workspace back_and_forth
 
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+# Next/prev workspace
+bindsym $mod+n workspace next
+bindsym $mod+p workspace prev
 
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+# Note: workspaces can have any name you want, not just numbers.
+# We just use 1-10 as the default.
 
-    # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
-#
-# Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
+# Move focused container to workspace
+bindsym $mod+shift+1 move container to workspace number 1
+bindsym $mod+shift+2 move container to workspace number 2
+bindsym $mod+shift+3 move container to workspace number 3
+bindsym $mod+shift+4 move container to workspace number 4
+bindsym $mod+shift+5 move container to workspace number 5
+bindsym $mod+shift+6 move container to workspace number 6
+bindsym $mod+shift+7 move container to workspace number 7
+bindsym $mod+shift+8 move container to workspace number 8
+bindsym $mod+shift+9 move container to workspace number 9
+bindsym $mod+shift+0 move container to workspace number 10
 
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
 
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
-#
-# Resizing containers:
-#
+##############################################################################
+#                                 Layout stuff                               #
+##############################################################################
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# You can "split" the current object of your focus with
+# $mod+b or $mod+v, for horizontal and vertical splits
+# respectively.
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout toggle stacking
+bindsym $mod+w layout toggle tabbed
+bindsym $mod+e layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+
+##############################################################################
+#                                  scratchpad                                #
+##############################################################################
+
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+##############################################################################
+#                             resizing containers                            #
+##############################################################################
+
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width
@@ -190,8 +238,10 @@ mode "resize" {
     # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
+
 #
 # Utilities:
 #
