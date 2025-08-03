@@ -1,9 +1,24 @@
+vim.opt.diffopt = {
+    "internal",
+    "context:2",                -- context lines for diff
+    "filler,closeoff,vertical", -- filler lines, closeoff for vertical diffs
+    "iwhiteall",                -- ignore all whitespace
+    "indent-heuristic",         -- use indent heuristic for diffing
+    "algorithm:patience",       -- use patience algorithm for diffing
+    "linematch:6000",           -- enable alignment matching for lines (x/2 for diff and x/3 for diff3)
+}
+-- vim syntax:
+-- set diffopt=context:4,linematch:6000,algorithm:patience,iwhiteall,followwrap,horizontal,icase
+
+
+
+
 -- disable wrapping
 vim.opt.wrap = false
 
 -- Make line numbers default
 vim.opt.number = true
-vim.opt.colorcolumn = {"78", "80", "100"}
+vim.opt.colorcolumn = { "78", "80", "100" }
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = "yes"
@@ -40,4 +55,3 @@ vim.o.inccommand = 'split'
 
 -- Show which line your cursor is on
 vim.o.cursorline = true
-
