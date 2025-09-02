@@ -1,13 +1,17 @@
 air
+buf
 cobra-cli
 datagrip
 dlv
+evans
 gateway
 goimports
 golangci-lint
 goose
 gopls
 idea
+impl
+instruqt
 migrate
 nilaway
 protoc-gen-go
@@ -15,7 +19,3 @@ protoc-gen-go-grpc
 sqlc
 staticcheck
 tailor
-buf
-evans
-impl
-instruqt
