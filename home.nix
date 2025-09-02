@@ -100,8 +100,6 @@ in {
       };
       initContent = ''
         eval "$(oh-my-posh init zsh)"
-      '';
-      initExtra = ''
         if [ -r "$HOME/.config/zsh/zsh.local" ]; then source "$HOME/.config/zsh/zsh.local"; fi
       '';
     };
@@ -121,13 +119,10 @@ in {
         if [ -e /home/${inputs.systemUserName}/.nix-profile/etc/profile.d/nix.sh ]; then . /home/${inputs.systemUserName}/.nix-profile/etc/profile.d/nix.sh; fi                                  # added by Nix installer
         if [ -r /etc/profiles/per-user/${inputs.systemUserName}/etc/profile.d/hm-session-vars.sh ]; then . /etc/profiles/per-user/${inputs.systemUserName}/etc/profile.d/hm-session-vars.sh; fi  # added by Nix installer
         if [ -r ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then echo "sourcing session vars"; . ~/.nix-profile/etc/profile.d/hm-session-vars.sh; fi                                                                    # added by Nix installer
-        # echo "#INIT [ -e zsh ] && exec zsh"
-        # echo '#INIT [ -d ~/bin ] && export PATH="~/bin:$PATH"'
       '';
 
       ## near the end
       bashrcExtra = ''
-        # echo "#EXTRA [ -e zsh ] && exec zsh"
         if [ -r "$HOME/.bashrc.local" ]; then source "$HOME/.bashrc.local"; fi
       '';
     };
