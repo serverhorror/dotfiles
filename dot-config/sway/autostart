@@ -6,20 +6,20 @@
 # assign [app_id="gimp"] 4
 
 ##############################################################################
+#                            tools / notifications                           #
+##############################################################################
+exec --no-startup-id nm-applet --indicator
+
+##############################################################################
 #                              initial app setup                             #
 ##############################################################################
-exec --no-startup-id swaymsg 'workspace 1; exec code --new-window; exec kitty'
-exec --no-startup-id swaymsg 'workspace 2; exec firefox'
-exec --no-startup-id swaymsg 'workspace 3; exec microsoft-edge'
-exec --no-startup-id swaymsg 'workspace 4; exec firefox -P Kiosk --kiosk --private-window https://excalidraw.com; exec gimp'
+exec --no-startup-id swaymsg 'workspace 1; exec kitty; exec firefox'
+exec --no-startup-id swaymsg 'workspace 2; exec kitty; exec microsoft-edge'
+exec --no-startup-id swaymsg 'workspace 3; exec kitty; exec code --new-window'
+exec --no-startup-id swaymsg 'workspace 4; exec gimp; exec firefox -P Kiosk --kiosk --private-window https://excalidraw.com'
 
 ##############################################################################
-#                            tools / notifications                           #
-##############################################################################
-exec nm-applet --indicator
-
-##############################################################################
-#                            tools / notifications                           #
+#                                starting point                              #
 ##############################################################################
 exec swaymsg workspace 1
 

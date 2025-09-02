@@ -35,6 +35,7 @@
             "privacy",
             "hyprland/submap",
             "hyprland/window",
+            "sway/window",
             "hyprland/submap",
             "privacy"
         ],
@@ -71,6 +72,19 @@
             // "format": "{title}",
             "separate-outputs": true,
             "format": "{}",
+            "rewrite": {
+                "(.*) - Visual Studio Code": "[VSCode]",
+                "(Outlook \\(PWA\\)) - (.*)": "[$1]",
+                "(.*) \\| (Microsoft Teams)": "[$1]"
+            }
+        },
+        "sway/window": {
+            "icon": true,
+            "icon-size": 18,
+            // "format": "{title}",
+            "all-outputs": true,
+            "format": "{}",
+            "expand": true,
             "rewrite": {
                 "(.*) - Visual Studio Code": "[VSCode]",
                 "(Outlook \\(PWA\\)) - (.*)": "[$1]",
@@ -171,6 +185,7 @@
         "modules-center": [
             "hyprland/submap",
             "hyprland/window",
+            "sway/window",
             "hyprland/submap"
         ],
         "hyprland/submap": {
