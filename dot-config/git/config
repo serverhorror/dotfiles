@@ -66,6 +66,7 @@
 
 [includeIf "hasconfig:remote.*.url:https://bitbucket.biscrum.com/**"]
     path = "~/.config/git/boehringer-ingelheim.inc"
+    useHttpPath = "false"
 
 [includeIf "hasconfig:remote.*.url:https://config-repo.werum.com/**"]
     path = "~/.config/git/boehringer-ingelheim.inc"
