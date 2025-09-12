@@ -3,5 +3,7 @@
   "files.associations": {
     "dot-config/sway/**": "plaintext",
     "dot-config/git/**": "plaintext"
-  }
+  },
+  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "python-envs.pythonProjects": []
 }
