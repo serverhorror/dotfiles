@@ -1,0 +1,7 @@
+# set commit-date-text = "%h"
+set main-view-id = true
+set main-view-ref = true
+set main-view-date = false
+set main-view-date-format = "%Y-%m-%d %H:%M"
+#set main-view-date-format = "%h"
+
