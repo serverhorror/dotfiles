@@ -128,7 +128,22 @@
     "mhutchie.git-graph": false,
     "nimashoghi.gistfs-updated-main-nsh": false,
     "redhat.vscode-openshift-extension-pack": false,
-    "vsls-contrib.gistfs": false
+    "vsls-contrib.gistfs": false,
+
+    // From BI Coders / Announcements
+    "codejoy.codejoy-vscode-extension": false,
+    "l-igh-t.vscode-theme-seti-folder": false,
+    "kleinesfilmroellchen.serenity-dsl-syntaxhighlight": false,
+    "JScearcy.rust-doc-viewer": false,
+    "SIRILMP.dark-theme-sm": false,
+    "CodeInKlingon.git-worktree-menu": false,
+    "ginfuru.better-nunjucks": false,
+    "ellacrity.recoil": false,
+    "grrrck.positron-plus-1-e": false,
+    "jeronimoekerdt.color-picker-universal": false,
+    "srcery-colors.srcery-colors": false,
+    "sissel.shopify-liquid": false,
+    "TretinV3.forts-api-extention": false
   },
   "files.autoSave": "onFocusChange",
   "files.defaultLanguage": "",
