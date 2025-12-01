@@ -76,7 +76,6 @@
   ],
   "dev.containers.mountWaylandSocket": false,
   "diffEditor.experimental.showMoves": true,
-  "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "docker.composeCommand": "podman compose",
   "docker.dockerPath": "podman",
@@ -266,7 +265,7 @@
   "remote.SSH.defaultExtensions": [
     "EditorConfig.EditorConfig",
     "GitHub.copilot",
-    // "eamodio.gitlens",
+    "eamodio.gitlens",
     "formulahendry.code-runner",
     "ms-azuretools.vscode-docker",
     "esbenp.prettier-vscode"
@@ -281,8 +280,8 @@
   },
   "sonarlint.connectedMode.connections.sonarqube": [
     {
-      "connectionId": "https-sonarqube-ods-apps-eu-dev-ocp-aws-boehringer-com-",
-      "serverUrl": "https://sonarqube-ods.apps.eu-dev.ocp.aws.boehringer.com"
+      "serverUrl": "https://sonarqube-ods.apps.eu-dev.ocp.aws.boehringer.com",
+      "connectionId": "https-sonarqube-ods-apps-eu-dev-ocp-aws-boehringer-com-"
     }
   ],
   "sqlfluff.linter.run": "onSave",
@@ -511,5 +510,7 @@
   "zenMode.fullScreen": true,
   "zenMode.hideLineNumbers": false,
   "zig.path": "zig",
-  "github.copilot.nextEditSuggestions.enabled": true
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "git.blame.editorDecoration.enabled": false,
+  "sonarlint.automaticAnalysis": true
 }
