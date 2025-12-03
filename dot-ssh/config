@@ -15,7 +15,8 @@ Host play-devbox
     # HostName i-08782a2c3ebe4ec37
     # HostName i-098f1c6d551295dac
     # HostName i-0caf2017b94cac978
-    HostName i-06c971d96d2f0f604
+    # HostName i-06c971d96d2f0f604
+    HostName i-04d11ec162a1a2282
 
 Host play-devbox.pames
     User ec2-user
