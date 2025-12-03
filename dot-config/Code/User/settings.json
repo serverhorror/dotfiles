@@ -511,6 +511,5 @@
   "zenMode.hideLineNumbers": false,
   "zig.path": "zig",
   "github.copilot.nextEditSuggestions.enabled": true,
-  "git.blame.editorDecoration.enabled": false,
   "sonarlint.automaticAnalysis": true
 }
