@@ -1,0 +1,43 @@
+#!/bin/sh
+
+# 1. Get the remote URL of origin
+REMOTE_URL=$(git config --get remote.origin.url)
+
+# 2. Define your Bitbucket domain
+BB_DOMAIN="bitbucket.biscrum.com"
+
+red_text() {
+    printf "\033[0;31m%s\033[0m\n" "$1"
+}
+
+green_text() {
+    printf "\033[0;32m%s\033[0m\n" "$1"
+}
+
+# 3. Check if the remote URL contains the domain
+if echo "$REMOTE_URL" | grep -q "$BB_DOMAIN"; then
+
+    echo "$(red_text "[Bitbucket Auto-Config]") Bitbucket Datacenter repository detected."
+
+    # Check if we have already added the config to avoid duplication
+    if ! git config --get-all remote.origin.fetch | grep -q "refs/pull-requests"; then
+
+        echo "$(red_text "[Bitbucket Auto-Config]") Detected Bitbucket Datacenter repository."
+
+        # Add the fetch configuration
+        echo "$(red_text "[Bitbucket Auto-Config]") Adding fetch configuration for pull requests..."
+        git config --add remote.origin.fetch '+refs/pull-requests/*/from:refs/remotes/origin/pr/*'
+
+
+        # Optional: Fetch the PRs immediately so they are available right now
+        echo "$(red_text "[Bitbucket Auto-Config]") Fetching pull request references..."
+        git fetch origin --quiet
+
+        echo "$(red_text "[Bitbucket Auto-Config]") Setting up git aliases for PR operations..."
+        git config alias.pr '!f() { git fetch origin refs/pull-requests/$1/from:refs/remotes/origin/pr/$1 && git checkout -t origin/pr/$1; }; f'
+        git config alias.pr-fetch '!f() { git fetch origin; }; f'
+        git config alias.pr-list '!f() { git branch -r | grep "origin/pr/" | sed "s|  origin/pr/||"; }; f'
+
+        echo "$(green_text "[Bitbucket Auto-Config]") Configuration complete."
+    fi
+fi

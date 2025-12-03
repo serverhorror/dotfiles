@@ -1,3 +1,5 @@
+[init]
+	templateDir = ~/.config/git/templates
 [core]
     eol = lf
     autocrlf = false
@@ -20,12 +22,11 @@
     slog = shortlog --summary --group=format:"%aE" --numbered
 
     # convenience commands
-    branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+    branches = for-each-ref --sort=-committerdate --format='%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)' refs/remotes
     force-push = push --force-with-lease
     reset-upstream = reset --hard '@{u}'
     root = rev-parse --show-toplevel
-    cd-root = "!f() { cd $(git root) ; }; f"
-    alias = "!f() { git config --get-regexp "^alias.${1}" ; }; f"
+    alias = '!f() { git config --get-regexp "^alias.${1}" ; }; f'
 
 [merge]
     ff = only
@@ -73,7 +74,3 @@
 
 [includeIf "hasconfig:remote.*.url:https://github.com/opendevstack/**"]
     path = "~/.config/git/boehringer-ingelheim.inc"
-[credential "https://bitbucket.biscrum.com/scm/arcf/arcf-docroot.git"]
-	provider = bitbucket
-[credential "https://bitbucket.biscrum.com/scm/arcf/arcf-contribution-guide.git"]
-	provider = bitbucket
