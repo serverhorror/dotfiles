@@ -1,13 +1,27 @@
 ## These are the MAGIC lines, use them!
 
 ## Connections to On-Prem servers via bi-urp (OBIC for Contractors)
-# ProxyCommand C:\Windows\System32\OpenSSH\ssh.exe -q -l x2marcherm4pa -W %h:%p bi-urp
-# ProxyCommand C:\Windows\System32\OpenSSH\ssh.exe -W %h:%p bi-urp
-# ProxyJump x2marcherm4pa@bi-urp
+# * ProxyCommand C:\Windows\System32\OpenSSH\ssh.exe -q -l x2marcherm4pa -W %h:%p bi-urp
+# * ProxyCommand C:\Windows\System32\OpenSSH\ssh.exe -W %h:%p bi-urp
+# * ProxyJump x2marcherm4pa@bi-urp
 
 ## Connections to AWS Boxes managed via SSM
-# ProxyCommand aws --profile BI-WCDEUseCases-362404229566 ssm start-session --target %h --document-name AWS-StartSSHSession --parameters portNumber=%p"
+# ProxyCommand aws --profile YOUR-PROFILE-NAME ssm start-session --target %h --document-name AWS-StartSSHSession --parameters portNumber=%p
 
+Host i-*
+    User ec2-user
+    ProxyCommand aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters portNumber=%p
+
+Host *
+    NoHostAuthenticationForLocalhost yes
+    Compression yes
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking accept-new
+    ForwardAgent yes
+    AddKeysToAgent yes
+    TCPKeepAlive yes
+    ServerAliveCountMax 100
+    ServerAliveInterval 4
 
 Host play-devbox
     User ec2-user
@@ -42,18 +56,3 @@ Host pames-devbox
     User ec2-user
     ProxyCommand aws --profile bi-is-ideationspace-pames-teamspace ssm start-session --target %h --document-name AWS-StartSSHSession --parameters portNumber=%p
     HostName i-03571082145bab948
-
-Host i-*
-    User ec2-user
-    ProxyCommand aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters portNumber=%p
-
-Host *
-    NoHostAuthenticationForLocalhost yes
-    Compression yes
-    UserKnownHostsFile /dev/null
-    StrictHostKeyChecking accept-new
-    ForwardAgent yes
-    AddKeysToAgent yes
-    TCPKeepAlive yes
-    ServerAliveCountMax 100
-    ServerAliveInterval 4
