@@ -511,5 +511,7 @@
   "zenMode.hideLineNumbers": false,
   "zig.path": "zig",
   "github.copilot.nextEditSuggestions.enabled": true,
-  "sonarlint.automaticAnalysis": true
+  "sonarlint.automaticAnalysis": true,
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1"
 }
