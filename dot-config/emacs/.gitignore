@@ -1,0 +1,7 @@
+*~
+.#*
+/elpa/
+/eshell/
+/eln-cache/
+history
+custom.el
