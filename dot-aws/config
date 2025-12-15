@@ -68,3 +68,27 @@ region = eu-west-1
 sso_session = boehringer-eu-west-1-bi-wcdeusecases
 sso_account_id = 920372996079
 region = eu-west-1
+
+[profile edp-bi-is-aidocs-sb-dev-0001]
+sso_session = boehringer-eu-west-1-bi-usecasadmins
+sso_account_id = 305919526567
+region = eu-west-1
+sso_role_name = BI-UseCaseAdmins
+
+[profile rdm-bi-is-ginidocs-dev-0001]
+sso_session = boehringer-eu-west-1-bi-usecasadmins
+sso_account_id = 360760094844
+region = eu-west-1
+sso_role_name = BI-UseCaseAdmins
+
+[profile rdm-bi-is-ginidocs-qa-0001]
+sso_session = boehringer-eu-west-1-bi-usecasadmins
+sso_account_id = 057349650826
+region = eu-west-1
+sso_role_name = BI-UseCaseAdmins
+
+[profile rdm-bi-is-ginidocs-prod-0001]
+sso_session = boehringer-eu-west-1-bi-usecasadmins
+sso_account_id = 287030536591
+region = eu-west-1
+sso_role_name = BI-UseCaseAdmins
