@@ -26,7 +26,7 @@
     force-push = push --force-with-lease
     reset-upstream = reset --hard '@{u}'
     root = rev-parse --show-toplevel
-    alias = '!f() { git config --get-regexp "^alias.${1}" ; }; f'
+    alias = "!f() { git config --get-regexp "^alias.${1}" ; }; f"
 
 [merge]
     ff = only
