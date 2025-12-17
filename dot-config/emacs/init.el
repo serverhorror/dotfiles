@@ -19,7 +19,8 @@
 (dolist (mode '(org-mode-hook
 		term-mode-hook
 		eshell-mode-hook
-		help-mode-hook))
+		help-mode-hook
+		which-key-mode-hook))
   (add-hook mode(lambda () (display-line-numbers-mode 0))))
 
 
@@ -97,3 +98,11 @@
 (use-package rainbow-delimiters
   :ensure t
   :hook (prog-mode-hook . rainbow-delimiters-mode))
+
+(use-package which-key
+  :init (which-key-mode)
+  :config
+  (setq which-key-idle-delay 0.25)
+  (setq
+   which-key-popup-type 'side-window
+   which-key-side-window-location 'right))
