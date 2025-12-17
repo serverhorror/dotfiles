@@ -515,5 +515,11 @@
   "gitlens.ai.model": "vscode",
   "gitlens.ai.vscode.model": "copilot:gpt-4.1",
   "terminal.integrated.suggest.cdPath": "off",
-  "terminal.integrated.suggest.enabled": false
+  "terminal.integrated.suggest.enabled": false,
+  "mssql.connectionGroups": [
+    {
+      "name": "ROOT",
+      "id": "8A909B49-7746-40D0-A394-7C30D25FF354"
+    }
+  ]
 }
