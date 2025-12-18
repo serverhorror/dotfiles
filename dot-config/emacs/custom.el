@@ -5,9 +5,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(affe centered-cursor-mode company darkroom evil evil-collection
-	  go-mode magit ob-mermaid olivetti org-roam org-roam-ui
-	  topspace writeroom-mode)))
+   '(0blayout evil-collection go-mode htmlize lsp-pyright magit
+	      ob-mermaid orderless org-preview-html org-roam vertico
+	      which-key)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

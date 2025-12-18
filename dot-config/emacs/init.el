@@ -17,8 +17,6 @@
 (add-hook 'before-save-hook #'delete-trailing-whitespace nil t)
 (add-hook 'prog-mode-hook #'serverhorror/nuke-trailing-spaces)
 
-;; yes-or-no becomes y-or-n
-(setopt use-short-answers t)
 
 ;; Remove the initial startup screen so we start directly in the scratch buffer
 (setq inhibit-startup-screen t)
@@ -34,33 +32,28 @@
 
 ;; Show line numbers everywhere
 (global-display-line-numbers-mode t)
+(setq display-line-numbers-type 'relative)
 ;; Exclude these from showing line numbers
-(dolist (mode '(org-mode-hook
-		term-mode-hook
+(dolist (mode '(
 		eshell-mode-hook
 		help-mode-hook
-		which-key-mode-hook))
+		term-mode-hook
+		which-key-mode-hook
+		org-mode-hook
+		eww-mode-hook
+		))
   (add-hook mode(lambda () (display-line-numbers-mode 0))))
 
 
 ;; Core settings
-(setq ;; Yes, this is Emacs
-      inhibit-startup-message t
-
-      ;; Instruct auto-save-mode to save to the current file, not a backup file
-      auto-save-default nil
-
-      ;; No backup files, please
-      make-backup-files nil)
-
-;; Yes! We want a new line at the end of the file!
-(setq mode-require-final-newline t)
+(setopt use-short-answers t) ; yes-or-no becomes y-or-n
+(setq inhibit-startup-message t)
+(setq auto-save-default nil) ; Instruct auto-save-mode to save to the current file, not a backup file
+(setq make-backup-files nil) ; No backup files, please
+(setq mode-require-final-newline t) ; Yes! We want a new line at the end of the file!
+(setq delete-trailing-lines t) ; delete extra trailing lines
 (setq-default show-trailing-whitespace t)
-
-;; ;; we do not like this!
-(setq line-move-visual t)
-
-
+(setq line-move-visual t) ; we do not like this!
 (setq make-backup-files nil) ; Disable backup files
 (setq-default word-wrap nil)
 (setq truncate-lines t) ; asdf asdf asdf  asdf asdf asdf  asdf asdf asdf  asdf asdf asdf  asdf asdf asdf  asdf asdf asdf  asdf asdf asdf
@@ -95,7 +88,7 @@
 ;; (set-face-background 'mode-line-inactive "gray") ;; is this smart?
 ;; (set-face-font 'mode-line-inactive  "Fira Code Nerd Font Mono Ret-10")
 
-
+;; Theme
 (load-theme 'modus-vivendi)
 
 ;; Some nicer Keybindings!
@@ -117,27 +110,70 @@
 ;; (eval-and-compile
 ;;   (setq use-package-always-ensure t
 ;; 	use-package-expand-minimally t))
+(setq use-package-always-ensure t)
+
+;; Enable Vertico.
+(use-package vertico
+  :ensure t
+  :custom
+  ;; (vertico-scroll-margin 0) ;; Different scroll margin
+  ;; (vertico-count 20) ;; Show more candidates
+  (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
+  (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
+  :init
+  (vertico-mode))
+
+;; Persist history over Emacs restarts. Vertico sorts by history position.
+(use-package savehist
+  :ensure t
+  :init
+  (savehist-mode))
+
+;; Emacs minibuffer configurations.
+(use-package emacs
+  :ensure t
+  :custom
+  ;; Enable context menu. `vertico-multiform-mode' adds a menu in the minibuffer
+  ;; to switch display modes.
+  (context-menu-mode t)
+  ;; Support opening new minibuffers from inside existing minibuffers.
+  (enable-recursive-minibuffers t)
+  ;; Hide commands in M-x which do not work in the current mode.  Vertico
+  ;; commands are hidden in normal buffers. This setting is useful beyond
+  ;; Vertico.
+  (read-extended-command-predicate #'command-completion-default-include-p)
+  ;; Do not allow the cursor in the minibuffer prompt
+  (minibuffer-prompt-properties
+   '(read-only t cursor-intangible t face minibuffer-prompt)))
+
+;; Optionally use the `orderless' completion style.
+(use-package orderless
+  :ensure t
+  :custom
+  ;; Configure a custom style dispatcher (see the Consult wiki)
+  ;; (orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch))
+  ;; (orderless-component-separator #'orderless-escapable-split-on-space)
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles partial-completion))))
+  (completion-category-defaults nil) ;; Disable defaults, use our settings
+  (completion-pcm-leading-wildcard t)) ;; Emacs 31: partial-completion behaves like substring
 
 (use-package magit
   :ensure t)
 
-(use-package evil
-  :ensure t
-  :init
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  :config
-  (evil-mode t))
-
-(use-package evil-collection
-  :ensure t
-  :after evil
-  :config
-  (evil-collection-init))
-
-;; (use-package magit
+;; (use-package evil
 ;;   :ensure t
-;;   )
+;;   :init
+;;   (setq evil-want-integration t)
+;;   (setq evil-want-keybinding nil)
+;;   :config
+;;   (evil-mode t))
+
+;; (use-package evil-collection
+;;   :ensure t
+;;   :after evil
+;;   :config
+;;   (evil-collection-init))
 
 ;; This assumes you've installed the package via MELPA.
 ;; org, org-roam mode
@@ -174,6 +210,19 @@
   :config
   (org-roam-setup)
   (org-roam-db-autosync-enable))
+
+
+(use-package eglot
+  :ensure t
+  :defer t
+  :hook ((python-mode . eglot-ensure)
+         (go-mode . eglot-ensure))
+  :config
+  (add-to-list 'eglot-server-programs
+               `(python-mode
+                 . ,(eglot-alternatives '(("pyright-langserver" "--stdio")
+                                          "jedi-language-server"
+                                          "pylsp")))))
 
 (use-package ob-mermaid
   :ensure t)
