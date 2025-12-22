@@ -1,5 +1,7 @@
 /*.disabled
+/settings.el
 *~
+*.html
 /.org-id-locations
 /auto-save-list/
 /org-persist/
