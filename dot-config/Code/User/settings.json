@@ -232,7 +232,7 @@
   "go.coverOnSingleTestFile": true,
   "go.inlayHints.constantValues": true,
   "hediet.vscode-drawio.resizeImages": null,
-  "hediet.vscode-drawio.theme": "automatic",
+  "hediet.vscode-drawio.theme": "min",
   "interactiveWindow.executeWithShiftEnter": true,
   "isort.importStrategy": "fromEnvironment",
   "keyboard.dispatch": "keyCode",
@@ -521,5 +521,6 @@
       "name": "ROOT",
       "id": "8A909B49-7746-40D0-A394-7C30D25FF354"
     }
-  ]
+  ],
+  "hediet.vscode-drawio.appearance": "automatic"
 }
