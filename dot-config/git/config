@@ -74,3 +74,5 @@
 
 [includeIf "hasconfig:remote.*.url:https://github.com/opendevstack/**"]
     path = "~/.config/git/boehringer-ingelheim.inc"
+[credential "https://bitbucket.biscrum.com"]
+	provider = bitbucket
