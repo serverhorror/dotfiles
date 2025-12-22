@@ -522,5 +522,6 @@
       "id": "8A909B49-7746-40D0-A394-7C30D25FF354"
     }
   ],
-  "hediet.vscode-drawio.appearance": "automatic"
+  "hediet.vscode-drawio.appearance": "automatic",
+  "scm.repositories.selectionMode": "single"
 }
