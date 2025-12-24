@@ -21,11 +21,15 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-# set $term foot
-set $term kitty
+set $term foot
+# set $term kitty
+
+default_border pixel 5
+#default_border normal 10
 
 # Your preferred application launcher
 set $menu rofi -show drun
+bindsym alt+tab exec rofi -show window
 
 set $default_bg_color #141b2e
 
@@ -38,9 +42,11 @@ gaps outer 5
 ##############################################################################
 #                                   outputs                                  #
 ##############################################################################
-output HDMI-A-1 pos 0 0 res 3840x2160
-output HDMI-A-2 pos 3840 -860 res 3840x2160
+output HDMI-A-1 pos 0 560 res 3840x2160 scale 1.0
+output HDMI-A-2 pos 3840 0 res 3840x2160 scale 1.2
 output HDMI-A-2 transform 90
+
+output * bg /usr/share/backgrounds/default.jxl fill
 
 
 ##############################################################################
@@ -76,8 +82,7 @@ mouse_warping container
 ##############################################################################
 #                                   includes                                 #
 ##############################################################################
-include ~/.config/sway/inputs
-include ~/.config/sway/autostart
+include ~/.config/sway/config.d/*
 
 ##############################################################################
 #                                 key bindings                               #
@@ -100,14 +105,12 @@ bindsym $mod+shift+q kill
 # terminal
 bindsym $mod+Return exec $term
 
-
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
 # Change normal to inverse to use left mouse button for resizing and right
 # mouse button for dragging.
 floating_modifier $mod normal
-
 
 #
 # Moving around:
@@ -254,7 +257,7 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
-    bindsym Print exec grim
+    bindsym Print exec env XDG_SCREENSHOTS_DIR="$HOME/Pictures/Screenshots/" GRIMSHOT_FILENAME_FORMAT="$(date --iso-8601=s | tr ':' '-')" grimshot savecopy anything
 
 #
 # Status Bar:
