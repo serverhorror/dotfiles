@@ -1,0 +1,8 @@
+# shellcheck disable=SC2148
+# .bashrc
+
+shopt -s histappend
+shopt -s checkwinsize
+shopt -s extglob
+shopt -s globstar
+shopt -s checkjobs

@@ -1,0 +1,6 @@
+# shellcheck disable=SC2148
+# .bashrc
+
+if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
+    eval "$(fzf --bash)"
+fi

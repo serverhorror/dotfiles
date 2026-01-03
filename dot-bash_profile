@@ -1,5 +1,10 @@
-# include .profile if it exists
-[[ -f ~/.profile ]] && . ~/.profile
+# shellcheck disable=SC2148
+# .bash_profile
 
-# include .bashrc if it exists
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+    # shellcheck source=/dev/null
+    . ~/.bashrc
+fi
+
+# User specific environment and startup programs
