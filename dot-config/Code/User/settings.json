@@ -25,7 +25,9 @@
     "files.trimTrailingWhitespace": false
   },
   "[plaintext]": {
-    "editor.rulers": [50, 78]
+    "editor.rulers": [50, 78],
+    "editor.colorDecorators": true,
+    "editor.colorDecoratorsActivatedOn": "clickAndHover"
   },
   "[powershell]": {
     "debug.saveBeforeStart": "nonUntitledEditorsInActiveGroup",
