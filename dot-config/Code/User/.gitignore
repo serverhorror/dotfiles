@@ -1,0 +1,6 @@
+*
+!.gitignore
+!keybindings.json
+!mcp.json
+!settings.json
+!snippets

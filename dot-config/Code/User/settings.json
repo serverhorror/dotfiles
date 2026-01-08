@@ -64,6 +64,7 @@
     "editor.tabSize": 2
   },
   "black-formatter.importStrategy": "fromEnvironment",
+  "chat.mcp.gallery.enabled": true,
   "code-runner.clearPreviousOutput": true,
   "code-runner.respectShebang": true,
   "code-runner.saveFileBeforeRun": true,
@@ -176,11 +177,14 @@
   "gitdoc.pushMode": "push",
   "github.copilot.enable": {
     "*": true,
-    "plaintext": false,
     "markdown": true,
+    "plaintext": false,
     "scminput": true
   },
+  "github.copilot.nextEditSuggestions.enabled": true,
   "gitignore.cacheExpirationInterval": 86400,
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
   "gitlens.autolinks": [
     {
       "prefix": "ARCF-",
@@ -231,6 +235,7 @@
   "go.coverOnSingleTest": true,
   "go.coverOnSingleTestFile": true,
   "go.inlayHints.constantValues": true,
+  "hediet.vscode-drawio.appearance": "automatic",
   "hediet.vscode-drawio.resizeImages": null,
   "hediet.vscode-drawio.theme": "min",
   "interactiveWindow.executeWithShiftEnter": true,
@@ -245,6 +250,12 @@
     "!**/vendor",
     "!**/.git",
     "!**/.venv"
+  ],
+  "mssql.connectionGroups": [
+    {
+      "id": "8A909B49-7746-40D0-A394-7C30D25FF354",
+      "name": "ROOT"
+    }
   ],
   "mypy-type-checker.importStrategy": "fromEnvironment",
   "notebook.cellToolbarLocation": {
@@ -278,10 +289,12 @@
     "play-devbox.new": "linux",
     "play-devbox.pames": "linux"
   },
+  "scm.repositories.selectionMode": "single",
+  "sonarlint.automaticAnalysis": true,
   "sonarlint.connectedMode.connections.sonarqube": [
     {
-      "serverUrl": "https://sonarqube-ods.apps.eu-dev.ocp.aws.boehringer.com",
-      "connectionId": "https-sonarqube-ods-apps-eu-dev-ocp-aws-boehringer-com-"
+      "connectionId": "https-sonarqube-ods-apps-eu-dev-ocp-aws-boehringer-com-",
+      "serverUrl": "https://sonarqube-ods.apps.eu-dev.ocp.aws.boehringer.com"
     }
   ],
   "sqlfluff.linter.run": "onSave",
@@ -297,6 +310,8 @@
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.hideOnStartup": "whenEmpty",
   "terminal.integrated.lineHeight": 1.25,
+  "terminal.integrated.suggest.cdPath": "off",
+  "terminal.integrated.suggest.enabled": false,
   "testing.automaticallyOpenTestResults": "neverOpen",
   "testing.coverageToolbarEnabled": true,
   "vim.cursorStylePerMode.insert": "line",
@@ -508,20 +523,5 @@
   },
   "zenMode.centerLayout": true,
   "zenMode.fullScreen": true,
-  "zenMode.hideLineNumbers": false,
-  "zig.path": "zig",
-  "github.copilot.nextEditSuggestions.enabled": true,
-  "sonarlint.automaticAnalysis": true,
-  "gitlens.ai.model": "vscode",
-  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
-  "terminal.integrated.suggest.cdPath": "off",
-  "terminal.integrated.suggest.enabled": false,
-  "mssql.connectionGroups": [
-    {
-      "name": "ROOT",
-      "id": "8A909B49-7746-40D0-A394-7C30D25FF354"
-    }
-  ],
-  "hediet.vscode-drawio.appearance": "automatic",
-  "scm.repositories.selectionMode": "single"
+  "zenMode.hideLineNumbers": false
 }
