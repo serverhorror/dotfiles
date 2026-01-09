@@ -1,7 +1,0 @@
-#!/usr/bin/bash
-
-if [ -x /usr/bin/obs ]; then
-    QT_QPA_PLATFORM=xcb exec /usr/bin/obs
-else
-    flatpak run com.obsproject.Studio
-fi
