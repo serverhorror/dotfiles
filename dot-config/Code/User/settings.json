@@ -25,9 +25,7 @@
     "files.trimTrailingWhitespace": false
   },
   "[plaintext]": {
-    "editor.rulers": [50, 78],
-    "editor.colorDecorators": true,
-    "editor.colorDecoratorsActivatedOn": "clickAndHover"
+    "editor.rulers": [50, 78]
   },
   "[powershell]": {
     "debug.saveBeforeStart": "nonUntitledEditorsInActiveGroup",
@@ -292,6 +290,8 @@
     "play-devbox.pames": "linux"
   },
   "scm.repositories.selectionMode": "single",
+  "containers.containerCommand": "podman",
+  "containers.composeCommand": "podman compose",
   "sonarlint.automaticAnalysis": true,
   "sonarlint.connectedMode.connections.sonarqube": [
     {
@@ -525,23 +525,5 @@
   },
   "zenMode.centerLayout": true,
   "zenMode.fullScreen": true,
-  "zenMode.hideLineNumbers": false,
-  "zig.path": "zig",
-  "zig.zls.path": "c:\\Users\\m\\AppData\\Roaming\\Code\\User\\globalStorage\\ziglang.vscode-zig\\zls_install\\zls.exe",
-  "github.copilot.nextEditSuggestions.enabled": true,
-  "sonarlint.automaticAnalysis": true,
-  "gitlens.ai.model": "vscode",
-  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
-  "terminal.integrated.suggest.cdPath": "off",
-  "terminal.integrated.suggest.enabled": false,
-  "mssql.connectionGroups": [
-    {
-      "name": "ROOT",
-      "id": "8A909B49-7746-40D0-A394-7C30D25FF354"
-    }
-  ],
-  "hediet.vscode-drawio.appearance": "automatic",
-  "scm.repositories.selectionMode": "single",
-  "containers.containerCommand": "podman",
-  "containers.composeCommand": "podman compose"
+  "zenMode.hideLineNumbers": false
 }

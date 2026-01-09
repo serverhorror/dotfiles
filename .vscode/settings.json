@@ -1,8 +1,11 @@
 {
   "gitdoc.enabled": false,
   "files.associations": {
-    "dot-config/sway/**": "plaintext",
-    "dot-config/git/**": "plaintext"
+    "dot-config/git/*": "plaintext",
+    "dot-config/git/**": "plaintext",
+    "dot-config/sway/*": "plaintext",
+    "dot-config/sway/config.d/*": "plaintext",
+    "dot-config/sway/**": "plaintext"
   },
   "python-envs.defaultEnvManager": "ms-python.python:system",
   "python-envs.pythonProjects": []
