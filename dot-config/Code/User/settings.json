@@ -156,9 +156,9 @@
     "**/.venv": true
   },
   "git.allowForcePush": true,
-  "git.autofetch": false,
+  "git.autofetch": true,
   "git.branchPrefix": "scratch/",
-  "git.branchProtection": ["main", "master"],
+  // "git.branchProtection": ["main", "master"],
   "git.branchRandomName.enable": true,
   "git.confirmSync": false,
   "git.fetchOnPull": true,
