@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+# Run Zed (Flatpak) — simple wrapper in the same style as the other bin scripts.
+
+if ! command -v flatpak &>/dev/null; then
+    echo "flatpak is not installed or not in PATH." >&2
+    exit 1
+fi
+
+# Check whether the Flatpak is installed
+if ! flatpak info dev.zed.Zed &>/dev/null; then
+    echo "Zed (dev.zed.Zed) does not appear to be installed as a Flatpak." >&2
+    echo "Install it with: flatpak install flathub dev.zed.Zed" >&2
+    exit 1
+fi
+
+# Replace the shell with the Flatpak-run process, forwarding any arguments
+exec flatpak run dev.zed.Zed "$@"
