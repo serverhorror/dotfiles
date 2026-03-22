@@ -30,7 +30,7 @@ bindsym alt+tab exec rofi -show window
 
 default_border pixel 5
 default_floating_border pixel 3
-floating_minimum_size 1920 x 1080
+#floating_minimum_size 1280 x  720
 floating_maximum_size 2880 x 1620
 #default_border normal 5
 
