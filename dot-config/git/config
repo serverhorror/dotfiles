@@ -47,7 +47,8 @@
     credentialStore = "cache"
     cacheOptions = "--timeout 86399"
     helper = "cache --timeout 86399"
-    helper = "manager"
+    helper = "libsecret"
+    helper = "oauth"
     useHttpPath = "false"
 
 # [credential "https://dev.azure.com"]
@@ -58,11 +59,13 @@
 
 [credential "https://gist.github.com"]
     helper = "cache --timeout 86399"
-    helper = "manager"
+    helper = "libsecret"
+    helper = "oauth"
 
 [credential "https://github.com"]
     helper = "cache --timeout 86399"
-    helper = "manager --no-ui"
+    helper = "libsecret"
+    helper = "oauth"
     provider = "github"
 
 [includeIf "hasconfig:remote.*.url:https://bitbucket.biscrum.com/**"]
