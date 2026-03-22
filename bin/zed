@@ -1,13 +1,25 @@
 #!/usr/bin/bash
 
-# Run Zed (Flatpak) — simple wrapper in the same style as the other bin scripts.
+# Prefer local zed binary in ~/.local/bin; fall back to Flatpak if not available.
 
+local_zed="$HOME/.local/bin/zed"
+
+# If the local zed binary exists and is executable, use it.
+if [ -x "$local_zed" ]; then
+    exec "$local_zed" "$@"
+fi
+
+# If a zed is available on PATH (system install or user-installed elsewhere), use it.
+if command -v zed &>/dev/null; then
+    exec zed "$@"
+fi
+
+# Otherwise, fall back to Flatpak.
 if ! command -v flatpak &>/dev/null; then
-    echo "flatpak is not installed or not in PATH." >&2
+    echo "zed not found locally and flatpak is not installed or not in PATH." >&2
     exit 1
 fi
 
-# Check whether the Flatpak is installed
 if ! flatpak info dev.zed.Zed &>/dev/null; then
     echo "Zed (dev.zed.Zed) does not appear to be installed as a Flatpak." >&2
     echo "Install it with: flatpak install flathub dev.zed.Zed" >&2
