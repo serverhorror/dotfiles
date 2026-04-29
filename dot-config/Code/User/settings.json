@@ -1,55 +1,55 @@
 {
   "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-containers"
+    "editor.defaultFormatter": "ms-azuretools.vscode-containers",
   },
   "[git-commit]": {
     // "editor.fontSize": 24,
-    "editor.rulers": [50, 78]
+    "editor.rulers": [50, 78],
   },
   "[gotmpl]": {
-    "editor.defaultFormatter": "golang.go"
+    "editor.defaultFormatter": "golang.go",
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[markdown]": {
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.defaultFormatter": "yzhang.markdown-all-in-one",
     // "editor.wordWrapColumn": 72,
-    "files.trimTrailingWhitespace": false
+    "files.trimTrailingWhitespace": false,
   },
   "[plaintext]": {
-    "editor.rulers": [50, 78]
+    "editor.rulers": [50, 78],
   },
   "[powershell]": {
     "debug.saveBeforeStart": "nonUntitledEditorsInActiveGroup",
     "editor.defaultFormatter": "ms-vscode.powershell",
     "editor.formatOnSave": true,
-    "editor.semanticHighlighting.enabled": true
+    "editor.semanticHighlighting.enabled": true,
   },
   "[python]": {
     "editor.codeActionsOnSave": {
-      "source.unusedImports": "always"
+      "source.unusedImports": "always",
     },
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "charliermarsh.ruff",
   },
   "[restructuredtext]": {
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
   },
   "[shellscript]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.shell-format": "always",
-      "source.fixAll.shellcheck": "always"
+      "source.fixAll.shellcheck": "always",
     },
     "editor.defaultFormatter": "mkhl.shfmt",
     "editor.formatOnSave": true,
-    "files.eol": "\n"
+    "files.eol": "\n",
   },
   "[yaml]": {
     "diffEditor.ignoreTrimWhitespace": false,
@@ -59,9 +59,9 @@
     "editor.quickSuggestions": {
       "comments": false,
       "other": true,
-      "strings": true
+      "strings": true,
     },
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
   },
   "black-formatter.importStrategy": "fromEnvironment",
   "chat.mcp.gallery.enabled": true,
@@ -75,7 +75,7 @@
     "EditorConfig.EditorConfig",
     "GitHub.copilot",
     // "eamodio.gitlens",
-    "formulahendry.code-runner"
+    "formulahendry.code-runner",
   ],
   "dev.containers.mountWaylandSocket": false,
   "diffEditor.experimental.showMoves": true,
@@ -85,7 +85,7 @@
   "docker.extension.enableComposeLanguageServer": false,
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit",
-    "source.organizeImports": "always"
+    "source.organizeImports": "always",
   },
   // >= ==, ===
   // "editor.fontFamily": "'MesloLGM Nerd Font Mono'", //,'FiraCode Nerd Font Mono','Fira Code', 'Cascadia Code PL', 'MesloLGM NF', monospace", // >=
@@ -108,7 +108,7 @@
   "excalidraw.image": {
     "exportScale": 1,
     "exportWithBackground": true,
-    "exportWithDarkMode": false
+    "exportWithDarkMode": false,
   },
   "excalidraw.theme": "dark",
   "explorer.confirmDelete": false,
@@ -119,7 +119,7 @@
     "*.ps1": "${capture}.Tests.ps1",
     "*.py": "${capture}_test.py, test_${capture}.py",
     "*.sh": "${capture}_test.bats",
-    "*.tf": "${capture}_test.go"
+    "*.tf": "${capture}_test.go",
   },
   "explorer.incrementalNaming": "smart",
   "explorer.openEditors.visible": 3,
@@ -147,7 +147,8 @@
     "sissel.shopify-liquid": false,
     "srcery-colors.srcery-colors": false,
     "TretinV3.forts-api-extention": false,
-    "vsls-contrib.gistfs": false
+    "vsls-contrib.gistfs": false,
+    "foxundermoon.shell-format": false,
   },
   "files.autoSave": "onFocusChange",
   "files.defaultLanguage": "",
@@ -157,7 +158,7 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "files.watcherExclude": {
-    "**/.venv": true
+    "**/.venv": true,
   },
   "git.allowForcePush": true,
   "git.autofetch": true,
@@ -184,7 +185,7 @@
     "markdown": true,
     "plaintext": false,
     "scminput": true,
-    "toml": true
+    "toml": true,
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   "gitignore.cacheExpirationInterval": 86400,
@@ -193,28 +194,28 @@
   "gitlens.autolinks": [
     {
       "prefix": "ARCF-",
-      "url": "https://jira.biscrum.com/browse/ARCF-<num>"
+      "url": "https://jira.biscrum.com/browse/ARCF-<num>",
     },
     {
       "prefix": "BEAR-",
-      "url": "https://jira.biscrum.com/browse/BEAR-<num>"
+      "url": "https://jira.biscrum.com/browse/BEAR-<num>",
     },
     {
       "prefix": "IDACM-",
-      "url": "https://jira.biscrum.com/browse/IDACM-<num>"
+      "url": "https://jira.biscrum.com/browse/IDACM-<num>",
     },
     {
       "prefix": "TECHTRAIN-",
-      "url": "https://jira.biscrum.com/browse/TECHTRAIN-<num>"
+      "url": "https://jira.biscrum.com/browse/TECHTRAIN-<num>",
     },
     {
       "prefix": "IBBSDDC-",
-      "url": "https://jira.biscrum.com/browse/IBBSDDC-<num>"
+      "url": "https://jira.biscrum.com/browse/IBBSDDC-<num>",
     },
     {
       "prefix": "PAMES-",
-      "url": "https://jira.biscrum.com/browse/PAMES-<num>"
-    }
+      "url": "https://jira.biscrum.com/browse/PAMES-<num>",
+    },
   ],
   "gitlens.blame.avatars": false,
   "gitlens.blame.highlight.locations": ["gutter", "line", "overview"],
@@ -236,7 +237,7 @@
     "fileHistory": true,
     "repositories": true,
     "searchAndCompare": true,
-    "launchpad": false
+    "launchpad": false,
   },
   "go.coverOnSingleTest": true,
   "go.coverOnSingleTestFile": true,
@@ -255,18 +256,18 @@
     "!**/node_modules",
     "!**/vendor",
     "!**/.git",
-    "!**/.venv"
+    "!**/.venv",
   ],
   "mssql.connectionGroups": [
     {
       "id": "8A909B49-7746-40D0-A394-7C30D25FF354",
-      "name": "ROOT"
-    }
+      "name": "ROOT",
+    },
   ],
   "mypy-type-checker.importStrategy": "fromEnvironment",
   "notebook.cellToolbarLocation": {
     "default": "right",
-    "jupyter-notebook": "right"
+    "jupyter-notebook": "right",
   },
   "notebook.formatOnSave.enabled": true,
   "notebook.lineNumbers": "on",
@@ -277,14 +278,14 @@
       "host": "localhost",
       "name": "Local Postgres",
       "port": "5432",
-      "username": "postgres"
-    }
+      "username": "postgres",
+    },
   ],
   "powershell.buttons.showPanelMovementButtons": false,
   "powershell.codeFolding.showLastLine": true,
   "powershell.integratedConsole.focusConsoleOnExecute": true,
   "powershell.powerShellAdditionalExePaths": {
-    "PowerShell@NIX (x64)": "/home/ec2-user/.nix-profile/bin/pwsh"
+    "PowerShell@NIX (x64)": "/home/ec2-user/.nix-profile/bin/pwsh",
   },
   "powershell.sideBar.CommandExplorerVisibility": false,
   "redhat.telemetry.enabled": true,
@@ -294,7 +295,7 @@
     "eamodio.gitlens",
     "formulahendry.code-runner",
     "ms-azuretools.vscode-docker",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
   ],
   "remote.SSH.remotePlatform": {
     "bi-urp": "linux",
@@ -302,27 +303,25 @@
     "pames-devbox": "linux",
     "play-devbox": "linux",
     "play-devbox.new": "linux",
-    "play-devbox.pames": "linux"
+    "play-devbox.pames": "linux",
   },
   "scm.repositories.selectionMode": "single",
   "sonarlint.automaticAnalysis": true,
   "sonarlint.connectedMode.connections.sonarqube": [
     {
       "connectionId": "https-sonarqube-ods-apps-eu-dev-ocp-aws-boehringer-com-",
-      "serverUrl": "https://sonarqube-ods.apps.eu-dev.ocp.aws.boehringer.com"
-    }
+      "serverUrl": "https://sonarqube-ods.apps.eu-dev.ocp.aws.boehringer.com",
+    },
   ],
   "sqlfluff.linter.run": "onSave",
   "terminal.external.linuxExec": "kitty",
   "terminal.external.windowsExec": "pwsh.exe",
   "terminal.integrated.autoReplies": {
-    "Terminate batch job (Y/N)": "Y\r"
+    "Terminate batch job (Y/N)": "Y\r",
   },
   "terminal.integrated.commandsToSkipShell": ["-workbench.action.quickOpen"],
   "terminal.integrated.enablePersistentSessions": false,
   "terminal.integrated.fontLigatures.enabled": true,
-  // "terminal.integrated.fontFamily": "'MesloLGM Nerd Font Mono', monospace",
-  "terminal.integrated.fontSize": 14,
   "terminal.integrated.hideOnStartup": "whenEmpty",
   "terminal.integrated.lineHeight": 1.25,
   "terminal.integrated.suggest.cdPath": "off",
@@ -336,142 +335,142 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "after": ["g", "j"],
-      "before": ["j"]
+      "before": ["j"],
     },
     {
       "after": ["g", "k"],
-      "before": ["k"]
+      "before": ["k"],
     },
     {
       "before": ["<leader>", ":"],
       "commands": [
         {
-          "command": "workbench.action.showCommands"
-        }
+          "command": "workbench.action.showCommands",
+        },
       ],
-      "silent": true
+      "silent": true,
     },
     {
       "before": ["[", "d"],
-      "commands": ["editor.action.marker.prev"]
+      "commands": ["editor.action.marker.prev"],
     },
     {
       "before": ["]", "d"],
-      "commands": ["editor.action.marker.next"]
+      "commands": ["editor.action.marker.next"],
     },
     {
       "before": ["<C-h>"],
       "commands": [
         {
-          "command": "workbench.action.focusLeftGroup"
-        }
-      ]
+          "command": "workbench.action.focusLeftGroup",
+        },
+      ],
     },
     {
       "before": ["<C-l>"],
       "commands": [
         {
-          "command": "workbench.action.focusRightGroup"
-        }
-      ]
+          "command": "workbench.action.focusRightGroup",
+        },
+      ],
     },
     {
       "before": ["<C-k>"],
       "commands": [
         {
-          "command": "workbench.action.focusAboveGroup"
-        }
-      ]
+          "command": "workbench.action.focusAboveGroup",
+        },
+      ],
     },
     {
       "before": ["<C-j>"],
       "commands": [
         {
-          "command": "workbench.action.focusBelowGroup"
-        }
-      ]
+          "command": "workbench.action.focusBelowGroup",
+        },
+      ],
     },
     {
       "before": ["<leader>", "i"],
       "commands": [
         {
-          "command": "workbench.action.terminal.focus"
-        }
-      ]
+          "command": "workbench.action.terminal.focus",
+        },
+      ],
     },
     {
       "before": ["<leader>", "u"],
       "commands": [
         {
-          "command": "workbench.action.focusActiveEditorGroup"
-        }
-      ]
+          "command": "workbench.action.focusActiveEditorGroup",
+        },
+      ],
     },
     {
       "before": ["<leader>", "o"],
       "commands": [
         {
-          "command": "workbench.action.quickOpen"
-        }
-      ]
+          "command": "workbench.action.quickOpen",
+        },
+      ],
     },
     {
       "before": ["<leader>", "s"],
       "commands": [
         {
-          "command": "workbench.action.splitEditorDown"
+          "command": "workbench.action.splitEditorDown",
         },
         {
-          "command": "workbench.action.focusPreviousGroup"
-        }
-      ]
+          "command": "workbench.action.focusPreviousGroup",
+        },
+      ],
     },
     {
       "before": ["<leader>", "<leader>", "l"],
       "commands": [
         {
-          "command": "workbench.action.toggleLockedScrolling"
-        }
-      ]
+          "command": "workbench.action.toggleLockedScrolling",
+        },
+      ],
     },
     {
       "before": ["<leader>", "<leader>", "c"],
       "commands": [
         {
-          "command": "workbench.action.closeEditorsInOtherGroups"
+          "command": "workbench.action.closeEditorsInOtherGroups",
         },
         {
-          "command": "workbench.action.closeOtherEditors"
-        }
-      ]
+          "command": "workbench.action.closeOtherEditors",
+        },
+      ],
     },
     {
       "before": ["<leader>", "v"],
       "commands": [
         {
-          "command": "workbench.action.splitEditor"
+          "command": "workbench.action.splitEditor",
         },
         {
-          "command": "workbench.action.focusPreviousGroup"
-        }
-      ]
+          "command": "workbench.action.focusPreviousGroup",
+        },
+      ],
     },
     {
       "before": ["<leader>", "n"],
       "commands": [
         {
-          "command": ":nohl"
-        }
-      ]
+          "command": ":nohl",
+        },
+      ],
     },
     {
       "before": ["g", "I"],
       "commands": [
         {
-          "command": "editor.action.goToImplementation"
-        }
-      ]
-    }
+          "command": "editor.action.goToImplementation",
+        },
+      ],
+    },
   ],
   "vim.searchHighlightColor": "#fed359",
   "vim.searchHighlightTextColor": "#1f1f1f",
@@ -481,25 +480,25 @@
       "before": ["<leader>", "i"],
       "commands": [
         {
-          "command": "workbench.action.terminal.focus"
-        }
-      ]
+          "command": "workbench.action.terminal.focus",
+        },
+      ],
     },
     {
       "before": ["<leader>", "<leader>", "d"],
-      "commands": ["github.copilot.chat.generateDocs"]
+      "commands": ["github.copilot.chat.generateDocs"],
     },
     {
       "before": ["<leader>", "<leader>", "?"],
-      "commands": ["github.copilot.chat.explain"]
-    }
+      "commands": ["github.copilot.chat.explain"],
+    },
   ],
   "window.autoDetectColorScheme": false,
   "window.menuBarVisibility": "compact",
   "window.newWindowDimensions": "inherit",
   "window.newWindowProfile": "Default",
   "window.titleBarStyle": "custom",
-  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.colorTheme": "Dark Modern",
   "workbench.editor.showTabs": "none",
   "workbench.panel.showLabels": true,
   "workbench.sideBar.location": "right",
@@ -531,13 +530,13 @@
     "!Select",
     "!Select sequence",
     "!Split",
-    "!Split sequence"
+    "!Split sequence",
   ],
   "yaml.schemas": {
-    "file:///c%3A/Users/marcherm/.vscode/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    "file:///c%3A/Users/marcherm/.vscode/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml",
   },
   "zenMode.centerLayout": true,
   "zenMode.fullScreen": true,
   "zenMode.hideLineNumbers": false,
-  "chat.viewSessions.orientation": "stacked"
+  "chat.viewSessions.orientation": "stacked",
 }
