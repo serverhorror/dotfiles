@@ -16,30 +16,33 @@
   "buffer_font_size": 20,
   "cursor_shape": "bar",
   "close_panel_on_toggle": true,
-  "relative_line_numbers": "enabled",
+  "relative_line_numbers": "disabled",
   "ensure_final_newline_on_save": true,
   "remove_trailing_whitespace_on_save": true,
   "format_on_save": "on",
   "show_whitespaces": "trailing",
+  "which_key": {
+    "enabled": true
+  },
   "resize_all_panels_in_dock": ["left", "right", "bottom"],
   "rounded_selection": false,
   "minimap": { "show": "never" },
   "active_pane_modifiers": {
-    "border_size": 10,
+    "border_size": 10
     // "inactive_opacity": 0.7,
   },
   "bottom_dock_layout": "right_aligned",
   "buffer_line_height": "comfortable",
   // "buffer_line_height": { "custom": 1.5 },
   "auto_install_extensions": {
-    "editorconfig": true,
+    "editorconfig": true
   },
   "file_finder": {
-    "file_icons": true,
+    "file_icons": true
   },
   "status_bar": {
     "active_encoding_button": "enabled",
-    "line_endings_button": true,
+    "line_endings_button": true
   },
   "debugger": { "dock": "right" },
   "tab_bar": { "show": false },
@@ -47,35 +50,50 @@
   "git_panel": { "dock": "right", "default_width": 360 },
   "git": {
     "inline_blame": {
-      "enabled": false,
-    },
+      "enabled": false
+    }
   },
   "outline_panel": { "dock": "right", "default_width": 240 },
   "collaboration_panel": { "dock": "right", "default_width": 240 },
   "edit_predictions": {
-    "provider": "copilot",
+    "provider": "copilot"
   },
   "session": { "restore_unsaved_buffers": true },
   "agent": {
+    "tool_permissions": {
+      "default": "confirm"
+    },
+    "default_profile": "write",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5.1-codex-max",
+      "enable_thinking": false,
+      "effort": "high"
+    },
     "dock": "left",
     "favorite_models": [
       {
         "provider": "copilot_chat",
         "model": "gpt-5-mini",
-        "enable_thinking": false,
+        "enable_thinking": false
       },
+      {
+        "provider": "copilot_chat",
+        "model": "claude-opus-4.6",
+        "enable_thinking": false
+      }
     ],
-    "model_parameters": [],
+    "model_parameters": []
   },
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "One Dark",
+    "dark": "One Dark"
   },
   "icon_theme": {
     "mode": "dark",
     "light": "Zed (Default)",
-    "dark": "Zed (Default)",
+    "dark": "Zed (Default)"
   },
   "profiles": {
     "Presentation": {
@@ -91,7 +109,7 @@
         "line_numbers": true,
         "runnables": false,
         "breakpoints": false,
-        "folds": false,
+        "folds": false
       },
       "indent_guides": { "enabled": false },
       "minimap": { "show": "always", "current_line_highlight": "none" },
@@ -103,7 +121,7 @@
         "show_project_items": false,
         "show_sign_in": false,
         "show_user_menu": false,
-        "show_user_picture": false,
+        "show_user_picture": false
       },
       "tab_bar": { "show": false },
       "toolbar": {
@@ -111,19 +129,19 @@
         "breadcrumbs": false,
         "code_actions": false,
         "quick_actions": false,
-        "selections_menu": false,
+        "selections_menu": false
       },
       "scrollbar": {
         "axes": {
-          "horizontal": false,
-        },
+          "horizontal": false
+        }
       },
       "status_bar": {
         "active_encoding_button": "disabled",
         "active_language_button": false,
         "cursor_position_button": false,
-        "line_endings_button": false,
-      },
-    },
-  },
+        "line_endings_button": false
+      }
+    }
+  }
 }
