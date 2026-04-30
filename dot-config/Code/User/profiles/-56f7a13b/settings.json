@@ -3,13 +3,13 @@
     // "editor.rulers": [50, 78],
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
   "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
@@ -22,7 +22,7 @@
     "*.ps1": "${capture}.Tests.ps1",
     "*.py": "${capture}_test.py, test_${capture}.py",
     "*.sh": "${capture}_test.bats",
-    "*.tf": "${capture}_test.go",
+    "*.tf": "${capture}_test.go"
   },
   "explorer.incrementalNaming": "smart",
   "files.autoSave": "onFocusChange",
@@ -45,12 +45,12 @@
   "terminal.integrated.stickyScroll.enabled": false,
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#5d4495",
-    // "activityBar.activeFocusBorder": "#00e47c",
     "activityBar.background": "#08312A",
-    "titleBar.activeBackground": "#08312A",
+    "titleBar.activeBackground": "#86251b",
+    "titleBar.inactiveBackground": "#08312A",
     "titleBar.border": "#08312A",
-    "window.activeBorder": "#00e47c",
-    "window.inactiveBorder": "#e5e3de",
+    "window.activeBorder": "#86251b",
+    "window.inactiveBorder": "#e5e3de"
   },
-  "workbench.colorTheme": "GitHub Dark High Contrast",
+  "workbench.colorTheme": "GitHub Dark High Contrast"
 }
