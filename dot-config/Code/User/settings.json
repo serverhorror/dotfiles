@@ -4,7 +4,7 @@
   },
   "[git-commit]": {
     // "editor.fontSize": 24,
-    "editor.rulers": [50, 78],
+    // "editor.rulers": [50, 78],
   },
   "[gotmpl]": {
     "editor.defaultFormatter": "golang.go",
@@ -25,7 +25,7 @@
     "files.trimTrailingWhitespace": false,
   },
   "[plaintext]": {
-    "editor.rulers": [50, 78],
+    // "editor.rulers": [50, 78],
   },
   "[powershell]": {
     "debug.saveBeforeStart": "nonUntitledEditorsInActiveGroup",
@@ -68,8 +68,8 @@
   "code-runner.clearPreviousOutput": true,
   "code-runner.respectShebang": true,
   "code-runner.saveFileBeforeRun": true,
-  "containers.composeCommand": "podman compose",
-  "containers.containerCommand": "podman",
+  "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
+  "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
   "debug.openDebug": "openOnDebugBreak",
   "dev.containers.defaultExtensions": [
     "EditorConfig.EditorConfig",
@@ -80,9 +80,6 @@
   "dev.containers.mountWaylandSocket": false,
   "diffEditor.experimental.showMoves": true,
   "diffEditor.ignoreTrimWhitespace": false,
-  "docker.composeCommand": "podman compose",
-  "docker.dockerPath": "podman",
-  "docker.extension.enableComposeLanguageServer": false,
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit",
     "source.organizeImports": "always",
@@ -99,8 +96,9 @@
   "editor.minimap.enabled": false,
   "editor.renderLineHighlight": "all",
   "editor.renderWhitespace": "boundary",
-  "editor.rulers": [78],
+  // "editor.rulers": [78],
   "editor.stickyScroll.enabled": false,
+  "terminal.integrated.stickyScroll.enabled": false,
   "editor.unicodeHighlight.ambiguousCharacters": true,
   "editor.unicodeHighlight.invisibleCharacters": true,
   // "editor.wordSeparators": "`~!@#$%^&*()_-=+[{]}\\|;:'\",.<>/?",

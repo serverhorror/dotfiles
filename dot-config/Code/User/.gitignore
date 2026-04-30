@@ -1,6 +1,4 @@
-*
-!.gitignore
-!keybindings.json
-!mcp.json
-!settings.json
-!snippets
+globalStorage/
+History/
+sync/
+workspaceStorage/
