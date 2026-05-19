@@ -2,9 +2,9 @@
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-containers"
   },
-  "[git-commit]": {
-    // "editor.fontSize": 24,
-    // "editor.rulers": [50, 78],
+  // "[git-commit]": { "editor.fontSize": 24, "editor.rulers": [50, 78], },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[gotmpl]": {
     "editor.defaultFormatter": "golang.go"
@@ -21,12 +21,9 @@
   "[markdown]": {
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.defaultFormatter": "yzhang.markdown-all-in-one",
-    // "editor.wordWrapColumn": 72,
     "files.trimTrailingWhitespace": false
   },
-  "[plaintext]": {
-    // "editor.rulers": [50, 78],
-  },
+  // "[plaintext]": { "editor.rulers": [50, 78], },
   "[powershell]": {
     "debug.saveBeforeStart": "nonUntitledEditorsInActiveGroup",
     "editor.defaultFormatter": "ms-vscode.powershell",
@@ -65,6 +62,7 @@
   },
   "black-formatter.importStrategy": "fromEnvironment",
   "chat.mcp.gallery.enabled": true,
+  "chat.viewSessions.orientation": "stacked",
   "code-runner.clearPreviousOutput": true,
   "code-runner.respectShebang": true,
   "code-runner.saveFileBeforeRun": true,
@@ -74,7 +72,6 @@
   "dev.containers.defaultExtensions": [
     "EditorConfig.EditorConfig",
     "GitHub.copilot",
-    // "eamodio.gitlens",
     "formulahendry.code-runner"
   ],
   "dev.containers.mountWaylandSocket": false,
@@ -84,7 +81,6 @@
     "source.fixAll": "explicit",
     "source.organizeImports": "always"
   },
-  // >= ==, ===
   // "editor.fontFamily": "'MesloLGM Nerd Font Mono'", //,'FiraCode Nerd Font Mono','Fira Code', 'Cascadia Code PL', 'MesloLGM NF', monospace", // >=
   "editor.fontFamily": "'FiraCode Nerd Font Mono Ret','MesloLGM Nerd Font Mono', monospace", // >=
   "editor.fontLigatures": true,
@@ -98,11 +94,11 @@
   "editor.renderWhitespace": "boundary",
   // "editor.rulers": [78],
   "editor.stickyScroll.enabled": false,
-  "terminal.integrated.stickyScroll.enabled": false,
   "editor.unicodeHighlight.ambiguousCharacters": true,
   "editor.unicodeHighlight.invisibleCharacters": true,
   // "editor.wordSeparators": "`~!@#$%^&*()_-=+[{]}\\|;:'\",.<>/?",
   "errorLens.enabled": true,
+  "evenBetterToml.formatter.allowedBlankLines": 1,
   "excalidraw.image": {
     "exportScale": 1,
     "exportWithBackground": true,
@@ -125,12 +121,11 @@
   "extensions.allowed": {
     "*": true,
     "CodeInKlingon.git-worktree-menu": false,
-    // From BI Coders / Announcements
-    "codejoy.codejoy-vscode-extension": false,
-    // Closed Source
-    "cweijan.vscode-postgresql-client2": false,
+    "codejoy.codejoy-vscode-extension": false, // From BI Coders / Announcements
+    "cweijan.vscode-postgresql-client2": false, // Closed Source
     "dotenv.dotenv-vscode": false,
     "ellacrity.recoil": false,
+    "foxundermoon.shell-format": false,
     "ginfuru.better-nunjucks": false,
     "grrrck.positron-plus-1-e": false,
     "jeronimoekerdt.color-picker-universal": false,
@@ -145,8 +140,7 @@
     "sissel.shopify-liquid": false,
     "srcery-colors.srcery-colors": false,
     "TretinV3.forts-api-extention": false,
-    "vsls-contrib.gistfs": false,
-    "foxundermoon.shell-format": false
+    "vsls-contrib.gistfs": false
   },
   "files.autoSave": "onFocusChange",
   "files.defaultLanguage": "",
@@ -158,6 +152,7 @@
   "files.watcherExclude": {
     "**/.venv": true
   },
+  "git.addAICoAuthor": "off",
   "git.allowForcePush": true,
   "git.autofetch": true,
   "git.branchPrefix": "scratch/",
@@ -185,7 +180,7 @@
     "scminput": true,
     "toml": true
   },
-  "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.nextEditSuggestions.enabled": false,
   "gitignore.cacheExpirationInterval": 86400,
   "gitlens.ai.model": "vscode",
   "gitlens.ai.vscode.model": "copilot:gpt-4.1",
@@ -225,17 +220,17 @@
   "gitlens.views.repositories.files.layout": "tree",
   "gitlens.views.repositories.showWorktrees": false,
   "gitlens.views.scm.grouped.views": {
-    "commits": true,
     "branches": false,
-    "remotes": false,
-    "stashes": true,
-    "tags": true,
-    "worktrees": true,
+    "commits": true,
     "contributors": true,
     "fileHistory": true,
+    "launchpad": false,
+    "remotes": false,
     "repositories": true,
     "searchAndCompare": true,
-    "launchpad": false
+    "stashes": true,
+    "tags": true,
+    "worktrees": true
   },
   "go.coverOnSingleTest": true,
   "go.coverOnSingleTestFile": true,
@@ -256,12 +251,6 @@
     "!**/.git",
     "!**/.venv"
   ],
-  "mssql.connectionGroups": [
-    {
-      "id": "8A909B49-7746-40D0-A394-7C30D25FF354",
-      "name": "ROOT"
-    }
-  ],
   "mypy-type-checker.importStrategy": "fromEnvironment",
   "notebook.cellToolbarLocation": {
     "default": "right",
@@ -270,22 +259,15 @@
   "notebook.formatOnSave.enabled": true,
   "notebook.lineNumbers": "on",
   "output.smartScroll.enabled": false,
-  "pgsql.connections": [
-    {
-      "database": "postgres",
-      "host": "localhost",
-      "name": "Local Postgres",
-      "port": "5432",
-      "username": "postgres"
-    }
-  ],
   "powershell.buttons.showPanelMovementButtons": false,
   "powershell.codeFolding.showLastLine": true,
   "powershell.integratedConsole.focusConsoleOnExecute": true,
+  "powershell.integratedConsole.suppressStartupBanner": true,
   "powershell.powerShellAdditionalExePaths": {
     "PowerShell@NIX (x64)": "/home/ec2-user/.nix-profile/bin/pwsh"
   },
   "powershell.sideBar.CommandExplorerVisibility": false,
+  "prettier.trailingComma": "none",
   "redhat.telemetry.enabled": true,
   "remote.SSH.defaultExtensions": [
     "EditorConfig.EditorConfig",
@@ -300,14 +282,6 @@
     "play-devbox.pames": "linux"
   },
   "scm.repositories.selectionMode": "single",
-  "sonarlint.automaticAnalysis": true,
-  "sonarlint.connectedMode.connections.sonarqube": [
-    {
-      "connectionId": "https-sonarqube-ods-apps-eu-dev-ocp-aws-boehringer-com-",
-      "serverUrl": "https://sonarqube-ods.apps.eu-dev.ocp.aws.boehringer.com"
-    }
-  ],
-  "sqlfluff.linter.run": "onSave",
   "terminal.external.linuxExec": "kitty",
   "terminal.external.windowsExec": "pwsh.exe",
   "terminal.integrated.autoReplies": {
@@ -318,6 +292,7 @@
   "terminal.integrated.fontLigatures.enabled": true,
   "terminal.integrated.hideOnStartup": "whenEmpty",
   "terminal.integrated.lineHeight": 1.25,
+  "terminal.integrated.stickyScroll.enabled": false,
   "terminal.integrated.suggest.cdPath": "off",
   "terminal.integrated.suggest.enabled": false,
   "testing.automaticallyOpenTestResults": "neverOpen",
@@ -493,7 +468,7 @@
   "window.newWindowProfile": "Default",
   "window.titleBarStyle": "custom",
   "workbench.colorTheme": "Dark Modern",
-  "workbench.editor.showTabs": "none",
+  "workbench.editor.showTabs": "single",
   "workbench.panel.showLabels": true,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none",
@@ -531,6 +506,5 @@
   },
   "zenMode.centerLayout": true,
   "zenMode.fullScreen": true,
-  "zenMode.hideLineNumbers": false,
-  "chat.viewSessions.orientation": "stacked"
+  "zenMode.hideLineNumbers": false
 }

@@ -1,56 +1,53 @@
 [notebook]
-  dir = "$HOME/src/brain"
+dir = "~/src/brain.github"
 
 [note]
-  language = "en"
-  default-title = "scratch"
-  filename = "{{slug title}}"
-  extension = "md"
+language = "en"
+default-title = "scratch"
+filename = "{{slug title}}"
+extension = "md"
 
-  # relative to templates/
-  template = "default.md"
-  exlude = [
-    "drafts/*",
-  ]
+# relative to templates/
+template = "default.md"
+exlude = ["drafts/*"]
 
-  id-charset = "hex"
-  id-length = 7
-  id-case = "lower"
+id-charset = "hex"
+id-length = 7
+id-case = "lower"
 
 [extra]
-  author = "serverhorror"
+author = "serverhorror"
 
 [format.markdown]
-  link-format = "wiki"
-  hashtags = true
-  colon-tags = false
-  multiword-tags = false
+link-format = "wiki"
+hashtags = true
+colon-tags = false
+multiword-tags = false
 
 [tool]
-  editor = "nvim"
-  shell = "bash"
-  pager = "less -FIRX"
-  #fzf-preview = "bat -p --color always {-1}"
+# shell = "pwsh"
+editor = "nvim.exe"
+pager = "more"
+#pager = "less -FIRX"
+fzf-preview = "bat -p --color always {-1}"
 
 [alias]
-  edit = "zk edit --interactive"
-  inline = "zk list --quiet --format {{path}} --delimiter , $@"
-  # Edit the last modified note.
-  edlast = "zk edit --limit 1 --sort modified- $@"
+edit = "zk edit --interactive"
+inline = "zk list --quiet --format {{path}} --delimiter , $@"
+# Edit the last modified note.
+edlast = "zk edit --limit 1 --sort modified- $@"
 
-  # Edit the notes selected interactively among the notes created the last two weeks.
-  recent = "zk edit --sort created- --created-after 'last two weeks' --interactive"
+# Edit the notes selected interactively among the notes created the last two weeks.
+recent = "zk edit --sort created- --created-after 'last two weeks' --interactive"
 
-  # Show a random note.
-  lucky = "zk list --quiet --format full --sort random --limit 1"
+# Show a random note.
+lucky = "zk list --quiet --format full --sort random --limit 1"
 
 # LSP (EDITOR INTEGRATION)
 [lsp]
 
-[lsp.diagnostics]
-  # Report titles of wiki-links as hints.
-  wiki-title = "hint"
-  # Warn for dead links between notes.
-  dead-link = "error"
-
-  
+# [lsp.diagnostics]
+# # Report titles of wiki-links as hints.
+# wiki-title = "hint"
+# # Warn for dead links between notes.
+# dead-link = "error"
