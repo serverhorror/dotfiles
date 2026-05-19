@@ -287,7 +287,7 @@
   "terminal.integrated.autoReplies": {
     "Terminate batch job (Y/N)": "Y\r"
   },
-  "terminal.integrated.commandsToSkipShell": ["-workbench.action.quickOpen"],
+  // "terminal.integrated.commandsToSkipShell": ["-workbench.action.quickOpen"],
   "terminal.integrated.enablePersistentSessions": false,
   "terminal.integrated.fontLigatures.enabled": true,
   "terminal.integrated.hideOnStartup": "whenEmpty",
